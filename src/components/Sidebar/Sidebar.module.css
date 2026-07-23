@@ -1,3 +1,15 @@
 .sidebar {
+    display:flex;
+    flex-direction: column;
+    
     width: 280px;
+    min-height: 100vh;
+
+    padding: 2rem;
+
+    background-color: #c99479;
+}
+
+.header {
+    margin-bottom: 3rem;
 }

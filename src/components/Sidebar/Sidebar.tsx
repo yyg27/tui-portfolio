@@ -1,11 +1,14 @@
 import styles from "./Sidebar.module.css";
+import Navigation from "../Navigation/Navigation";
 
-function Sidebar() {
+export default function Sidebar() {
     return (
         <aside className={styles.sidebar}>
-            Sidebar
+            <header>
+                <a href="/">yyg27</a>
+            </header>
+            <Navigation />
         </aside>
     );
 }
 
-export default Sidebar;

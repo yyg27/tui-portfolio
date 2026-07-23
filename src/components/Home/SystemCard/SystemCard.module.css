@@ -1,0 +1,26 @@
+.systemCard{
+    display: flex;
+    background-color: #1e1e1e;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.left{
+    display: flex;
+    width: 180px;
+    justify-content: center;
+    align-items: center;
+    background-color: #7c6161;
+}
+.right{
+    flex: 1;
+    background-color: #aa1f1f;
+}
+
+.left pre {
+    margin: 0;
+
+    font-family: monospace;
+    font-size: 0.9rem;
+    line-height: 1.2;
+}
