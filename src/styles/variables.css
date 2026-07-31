@@ -1,0 +1,24 @@
+:root {
+
+    --background: #190a00;
+    --surface: #341707;
+    --surface-hover: #592a0d;
+
+    --text: #c18b56;
+    --heading: #fb9817;
+    --accent: #9d642c;
+
+    --border: #592a0d;
+
+    
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2rem;
+    --space-xl: 3rem;
+
+    
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+}
