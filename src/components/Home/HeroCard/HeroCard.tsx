@@ -1,9 +1,9 @@
-import styles from "./AboutCard.module.css";
+import styles from "./HeroCard.module.css";
 
-export default function AboutCard() {
+export default function HeroCard() {
     return (
-        <section className={styles.aboutCard}>
-            About Card
+        <section className={styles.heroCard}>
+            Hero Card
         </section>
     );
 }
