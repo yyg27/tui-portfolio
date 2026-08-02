@@ -1,26 +1,39 @@
-.systemCard{
+.systemCard {
+    padding: var(--space-lg);
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-md);
+}
+
+.header {
+    margin-bottom: var(--space-lg);
+
+    padding-bottom: var(--space-sm);
+
+    border-bottom: 1px solid var(--border);
+}
+
+.info {
     display: flex;
-    background-color: #1e1e1e;
-    gap: 2rem;
-    justify-content: center;
+
+    flex-direction: column;
+
+    gap: var(--space-sm);
 }
 
-.left{
-    display: flex;
-    width: 180px;
-    justify-content: center;
-    align-items: center;
-    background-color: #7c6161;
-}
-.right{
-    flex: 1;
-    background-color: #aa1f1f;
+.infoRow {
+    display: grid;
+
+    grid-template-columns: 120px 1fr;
 }
 
-.left pre {
-    margin: 0;
+.label {
+    color: var(--heading);
+}
 
-    font-family: monospace;
-    font-size: 0.9rem;
-    line-height: 1.2;
+.value {
+    color: var(--text);
 }
