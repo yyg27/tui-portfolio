@@ -1,15 +1,21 @@
 .sidebar {
-    display:flex;
+    display: flex;
     flex-direction: column;
-    
     width: 280px;
     min-height: 100vh;
-
-    padding: 2rem;
-
-    background-color: #c99479;
+    padding: var(--space-lg);
+    background-color: var(--surface);
+    border-right: 1px solid var(--border);
 }
 
 .header {
-    margin-bottom: 3rem;
+    margin-bottom: var(--space-xl);
 }
+
+.header a {
+    color: var(--heading);
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+
