@@ -1,39 +1,78 @@
+
+
 .systemCard {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-xl);
     padding: var(--space-lg);
-
     background: var(--surface);
-
-    border: 1px solid var(--border);
-
+    border: 2px solid var(--border);
     border-radius: var(--radius-md);
 }
 
-.header {
-    margin-bottom: var(--space-lg);
-
-    padding-bottom: var(--space-sm);
-
-    border-bottom: 1px solid var(--border);
+.portrait {
+    flex: 2;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
-.info {
+.portrait pre {
+    margin: 0;
+    font-family: monospace;
+    font-size: 1.1rem;
+    line-height: 0.95;
+    letter-spacing: -1px;
+    color: var(--accent);
+}
+
+.content {
+    flex: 1;
     display: flex;
-
     flex-direction: column;
+    justify-content: flex-start;
+    text-align: left;
+    margin-top: 0.5rem;
+}
 
-    gap: var(--space-sm);
+.fastfetchHeader {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--text);
+}
+
+.separator {
+    color: var(--muted);
+    font-family: monospace;
+    margin: 0.2rem 0 0.8rem 0;
+}
+
+.fastfetchInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 0.95rem;
 }
 
 .infoRow {
-    display: grid;
-
-    grid-template-columns: 120px 1fr;
+    color: var(--text);
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-start;
 }
 
 .label {
-    color: var(--heading);
+    color: var(--accent);
+    font-weight: 700;
 }
 
-.value {
-    color: var(--text);
+.cursor {
+    animation: blink 1s step-end infinite;
+    color: var(--accent);
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
