@@ -1,14 +1,46 @@
 .heroCard {
+    position: relative;
     display: flex;
     align-items: center;
     gap: var(--space-xl);
-
     padding: var(--space-lg);
-
-    background: var(--surface);
-
-    border: 1px solid var(--border);
+    background: var(--accent);
+    border: 2px solid var(--accent);
     border-radius: var(--radius-md);
+    color: var(--background);
+}
+
+.sysStatus {
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: var(--background);
+    color: var(--accent);
+    padding: 0 10px;
+    font-size: 0.75rem;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.sysMem {
+    position: absolute;
+    bottom: -12px;
+    right: 20px;
+    background: var(--background);
+    color: var(--accent);
+    padding: 0 10px;
+    font-size: 0.75rem;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.blink {
+    animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 .portrait {
@@ -28,7 +60,7 @@
     font-size: 0.95rem;
     line-height: 1.1;
 
-    color: var(--heading);
+    color: var(--accent);
 }
 
 .content {
@@ -42,40 +74,40 @@
 }
 
 .intro {
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
 }
 
 .intro h1 {
-    color: var(--heading);
-
+    color: var(--background);
     font-size: 2rem;
     font-weight: 700;
+    margin: 0;
 }
 
 .intro p {
-    color: var(--text);
-
+    color: var(--background);
     line-height: 1.7;
-
     max-width: 65ch;
+    font-weight: 500;
 }
 
 .links {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-md);
-
     margin-top: var(--space-lg);
 }
 
 .links a {
-    color: var(--text);
-
-    transition: color 0.2s ease;
+    color: var(--background);
+    text-decoration: none;
+    font-weight: 700;
+    transition: opacity 0.2s ease;
 }
 
 .links a:hover {
-    color: var(--heading);
+    opacity: 0.7;
 }
