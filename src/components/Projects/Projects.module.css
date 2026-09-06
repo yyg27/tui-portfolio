@@ -138,6 +138,9 @@
 .loading {
     color: var(--accent);
     font-family: monospace;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 10vh;
     animation: pulse 1.5s infinite;
 }
 
