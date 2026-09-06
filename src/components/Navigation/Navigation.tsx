@@ -11,10 +11,10 @@ export default function Navigation() {
                     <li key={item.href}>
                         <a href={item.href}>
                             <span>
-                            {item.href === activePage ? "> " : ""}
+                                {item.href === activePage ? "> " : "  "}
                             </span>
                             <span>
-                            {item.label}
+                                {item.label}
                             </span>
                         </a>
                     </li>

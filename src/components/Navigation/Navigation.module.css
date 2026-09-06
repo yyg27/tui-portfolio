@@ -2,4 +2,24 @@
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.navigationList a {
+    display: flex;
+    align-items: center;
+    padding: var(--space-md) var(--space-lg);
+    border-bottom: 1px solid var(--accent);
+    color: var(--accent);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    transition: background-color 0.2s, color 0.2s;
+    text-decoration: none;
+    gap: var(--space-sm);
+}
+
+.navigationList a:hover {
+    background-color: var(--accent);
+    color: var(--background);
 }
