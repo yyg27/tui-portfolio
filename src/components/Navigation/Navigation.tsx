@@ -1,20 +1,22 @@
 import { navigationItems } from "../../data/navigation.data";
 import styles from "./Navigation.module.css";
 
-export default function Navigation() {
-    const activePage = "/";
+export default function Navigation({ isCollapsed = false }: { isCollapsed?: boolean }) {
+    const activePage = window.location.pathname;
 
     return (
         <nav>
-            <ul className={styles.navigationList}>
+            <ul className={`${styles.navigationList} ${isCollapsed ? styles.collapsed : ''}`}>
                 {navigationItems.map((item) => (
                     <li key={item.href}>
-                        <a href={item.href}>
+                        <a href={item.href} title={item.label}>
+                            {!isCollapsed && (
+                                <span style={{ width: '1rem', display: 'inline-block', fontFamily: 'monospace' }}>
+                                    {item.href === activePage ? ">" : ""}
+                                </span>
+                            )}
                             <span>
-                                {item.href === activePage ? "> " : "  "}
-                            </span>
-                            <span>
-                                {item.label}
+                                {isCollapsed ? `[${item.label[0]}]` : item.label}
                             </span>
                         </a>
                     </li>

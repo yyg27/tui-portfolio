@@ -1,25 +1,67 @@
 .sidebar {
+    width: 280px;
+    background-color: var(--panel);
+    border-right: 2px solid var(--border);
     display: flex;
     flex-direction: column;
-    width: 240px;
-    min-height: 100vh;
-    background-color: var(--surface);
-    border-right: 1px solid var(--accent);
+    height: 100vh;
+    transition: width 0.2s ease;
+}
+
+.collapsed {
+    width: 80px;
 }
 
 .header {
-    padding: var(--space-lg);
-    border-bottom: 1px solid var(--accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: var(--space-xl) var(--space-lg);
+    border-bottom: 2px solid var(--border);
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
 .header a {
-    color: var(--heading);
-    font-size: 1.5rem;
-    font-weight: bold;
-    letter-spacing: 0.05em;
+    color: var(--accent);
     text-decoration: none;
+    font-family: monospace;
 }
 
+.footer {
+    margin-top: auto;
+    border-top: 2px solid var(--border);
+    display: flex;
+    flex-direction: column;
+}
+
+.clock {
+    padding: 1rem;
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: var(--background);
+    background-color: var(--accent);
+    text-align: center;
+    border-bottom: 2px solid var(--border);
+}
+
+.actions {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+    padding: 0.5rem;
+}
+
+.actionBtn {
+    background: none;
+    border: none;
+    color: var(--accent);
+    cursor: pointer;
+    font-family: monospace;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 0.2rem;
+}
+
+.actionBtn:hover {
+    background-color: var(--accent);
+    color: var(--background);
+}

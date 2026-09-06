@@ -5,6 +5,7 @@ import Navigation from "../Navigation/Navigation";
 export default function Sidebar() {
     const [frame, setFrame] = useState(0);
     const [time, setTime] = useState(new Date());
+    const [isCollapsed, setIsCollapsed] = useState(false);
     const frames = ["/", "-", "\\", "|"];
 
     useEffect(() => {
@@ -25,27 +26,29 @@ export default function Sidebar() {
     const timeString = time.toLocaleTimeString('en-US', { hour12: false });
 
     return (
-        <aside className={styles.sidebar}>
+        <aside className={`${styles.sidebar} ${isCollapsed ? styles.collapsed : ''}`}>
             <header className={styles.header}>
                 <a href="/">
-                    <span style={{ marginRight: '8px', opacity: 0.8, fontFamily: 'monospace' }}>
-                        [{frames[frame]}]
+                    <span style={{ marginRight: '8px', opacity: 0.8 }}>
+                        {isCollapsed ? "***" : `[${frames[frame]}]`}
                     </span>
-                    yyg27
+                    {!isCollapsed && "yyg27"}
                 </a>
             </header>
-            <Navigation />
+            <Navigation isCollapsed={isCollapsed} />
             
-            <div style={{
-                marginTop: 'auto',
-                padding: '1rem',
-                borderTop: '1px solid var(--accent)',
-                fontFamily: 'monospace',
-                fontSize: '0.8rem',
-                color: 'var(--accent)',
-                textAlign: 'center'
-            }}>
-                SYS_TIME: {timeString}
+            <div className={styles.footer}>
+                <div className={styles.clock}>
+                    {!isCollapsed ? `SYS_TIME: ${timeString}` : timeString.split(':')[0] + 'h'}
+                </div>
+                <div className={styles.actions}>
+                    <button onClick={() => setIsCollapsed(!isCollapsed)} className={styles.actionBtn} title="Toggle Sidebar">
+                        {isCollapsed ? '[>]' : '[<]'}
+                    </button>
+                    <button className={styles.actionBtn} title="Toggle Theme">
+                        [T]
+                    </button>
+                </div>
             </div>
         </aside>
     );

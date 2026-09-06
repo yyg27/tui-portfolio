@@ -1,19 +1,12 @@
 .terminal {
-    position: fixed;
-    bottom: var(--space-lg);
-    left: calc(240px + var(--space-lg));
-    right: var(--space-lg);
-    z-index: 100;
-    
-    background-color: var(--surface);
-    border: 2px solid var(--accent);
-    padding: var(--space-md);
+    background-color: var(--panel);
+    border-top: 2px solid var(--border);
+    padding: var(--space-md) var(--space-lg);
     display: flex;
     align-items: center;
     gap: var(--space-sm);
     font-family: monospace;
-    
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    flex-shrink: 0;
 }
 
 .prompt {

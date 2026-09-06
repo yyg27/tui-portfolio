@@ -1,0 +1,147 @@
+.projectsContainer {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+    max-width: 1200px;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    max-width: 900px;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto 1rem auto;
+}
+
+.title {
+    font-weight: 700;
+    font-family: monospace;
+    color: var(--muted);
+}
+
+.layoutBtn {
+    background: none;
+    border: none;
+    color: var(--accent);
+    cursor: pointer;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 0.2rem 0.5rem;
+    transition: all 0.2s;
+}
+
+.layoutBtn:hover {
+    background-color: var(--accent);
+    color: var(--background);
+}
+
+.repoCard {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    padding: var(--space-lg);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    transition: all 0.2s;
+    color: var(--text);
+}
+
+.repoCard:hover {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: var(--background);
+}
+
+.repoHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.repoName {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.repoCard:hover .repoName {
+    color: var(--background);
+}
+
+.repoName:hover {
+    text-decoration: underline;
+}
+
+.repoVisibility {
+    font-size: 0.8rem;
+    border: 1px solid var(--muted);
+    padding: 2px 6px;
+    border-radius: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    transition: all 0.2s;
+}
+
+.repoCard:hover .repoVisibility {
+    border-color: var(--background);
+    color: var(--background);
+}
+
+.repoDescription {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    opacity: 0.9;
+}
+
+.repoFooter {
+    display: flex;
+    gap: var(--space-lg);
+    font-size: 0.85rem;
+    font-family: monospace;
+    opacity: 0.8;
+}
+
+.repoLang {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.langColor {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--accent);
+    transition: background-color 0.2s;
+}
+
+.repoCard:hover .langColor {
+    background-color: var(--background);
+}
+
+.loading {
+    color: var(--accent);
+    font-family: monospace;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
