@@ -13,6 +13,8 @@ export default function Terminal() {
                 window.location.href = "/skills";
             } else if (cmd === "/contact" || cmd === "cd contact") {
                 window.location.href = "/contact";
+            } else if (cmd === "/home" || cmd === "cd home") {
+                window.location.href = "/";
             } else if (cmd === "clear") {
                 setInput("");
             }

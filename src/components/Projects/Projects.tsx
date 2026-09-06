@@ -12,11 +12,20 @@ interface Repo {
 }
 
 const FEATURED_PROJECTS = [
-    { name: "eva-unit-01-autonomous-exploration", customDescription: "" },
-    { name: "aptt", customDescription: "" },
-    { name: "AnimalsAR_mediapie", customDescription: "" },
-    { name: "custom_transport_protocol", customDescription: "" },
-    { name: "multi_user_chat_app", customDescription: "" },
+    { name: "tui-portfolio", customDescription: "You are now viewing this project" },
+    { name: "yildiz-fizyoterapi"},
+    { name: "yayy"},
+    { name: "aptt"},
+    { name: "eva-unit-01-autonomous-exploration"},
+    { name: "PlanetsAR"},
+    { name: "network_diagnostic_and_tool_package"},
+    { name: "custom_transport_protocol"},
+    { name: "multi_user_chat_app"},
+    { name: "network_toolkit_and_rps_game"},
+    { name: "NLP_insurance_agent"},
+    { name: "NLP_lora_finetuning"},
+    { name: "AnimalsAR_mediapie"},
+    { name: "yyg-arch-gnome-setup"},
 ];
 
 export default function Projects() {
