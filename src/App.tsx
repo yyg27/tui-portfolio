@@ -2,6 +2,7 @@ import "./App.css";
 
 import Sidebar from './components/Sidebar/Sidebar';
 import Home from "./components/Home/Home";
+import Terminal from "./components/Terminal/Terminal";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <main className="main">
         <Home />
       </main>
+      <Terminal />
     </div>
   );
 }

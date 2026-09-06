@@ -1,0 +1,43 @@
+.terminal {
+    position: fixed;
+    bottom: var(--space-lg);
+    left: calc(240px + var(--space-lg));
+    right: var(--space-lg);
+    z-index: 100;
+    
+    background-color: var(--surface);
+    border: 2px solid var(--accent);
+    padding: var(--space-md);
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-family: monospace;
+    
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+.prompt {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.inputWrapper {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    font-family: monospace;
+    font-size: 1rem;
+    outline: none;
+}
+
+.input::placeholder {
+    color: var(--muted);
+}
