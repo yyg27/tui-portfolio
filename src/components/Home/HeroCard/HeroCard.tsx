@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import styles from "./HeroCard.module.css";
 import { socialLinks } from "../../../data/social.data";
+import { heroStatus } from "../../../data/system.data";
 
 export default function HeroCard() {
     const [textLen, setTextLen] = useState(0);
     const title = "YUSUF YIGIT GULTEKIN";
-    const desc = "Computer engineering student graduating January 2027. Building toward IT, one repo at a time.";
+    const desc = "Junior Web & Mobile Developer & Linux enthusiast. I build things across the stack, explore how systems work, and enjoy turning technical ideas into something people can actually use.";
     const fullText = title + desc;
 
     useEffect(() => {
@@ -37,6 +38,17 @@ export default function HeroCard() {
                     </div>
                 )}
             </div>
+            
+            {/*STATUS BANNER */}
+            {/* 
+            {textLen === fullText.length && (
+                <div className={styles.statusBanner}>
+                    <span className={styles.blink}>[ ! ]</span>
+                    <div>STATUS:</div>
+                    <div className={styles.statusHighlight}>{heroStatus}</div>
+                </div>
+            )}
+            */}
             
             <div className={styles.sysMem}>MEM_ALLC: 1024KB</div>
         </section>
