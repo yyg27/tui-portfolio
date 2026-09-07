@@ -4,15 +4,20 @@ import { socialLinks } from "../../../data/social.data";
 import { heroStatus } from "../../../data/system.data";
 
 export default function HeroCard() {
-    const [textLen, setTextLen] = useState(0);
     const title = "YUSUF YIGIT GULTEKIN";
     const desc = "Junior Web & Mobile Developer & Linux enthusiast. I build things across the stack, explore how systems work, and enjoy turning technical ideas into something people can actually use.";
     const fullText = title + desc;
+
+    const [textLen, setTextLen] = useState(() => {
+        return sessionStorage.getItem("heroAnimated") ? fullText.length : 0;
+    });
 
     useEffect(() => {
         if (textLen < fullText.length) {
             const timer = setTimeout(() => setTextLen(l => l + 1), 30);
             return () => clearTimeout(timer);
+        } else {
+            sessionStorage.setItem("heroAnimated", "true");
         }
     }, [textLen, fullText.length]);
 

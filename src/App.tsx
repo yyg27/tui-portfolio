@@ -19,9 +19,19 @@ function App() {
               marginLeft: '1rem',
               color: 'var(--text)', 
               fontFamily: 'monospace',
-              opacity: 0.7
+              opacity: 0.7,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.8rem'
           }}>
-            <span style={{ color: 'var(--accent)' }}>~</span> /{currentPage}
+            <div style={{ display: 'flex', gap: '4px', fontSize: '22px' }}>
+                <span style={{ color: '#ff5f56' }}>●</span>
+                <span style={{ color: '#ffbd2e' }}>●</span>
+                <span style={{ color: '#27c93f' }}>●</span>
+            </div>
+            <div>
+                <span style={{ color: 'var(--accent)' }}>~</span> /{currentPage}
+            </div>
           </div>
           {currentPage === "home" && <Home />}
           {currentPage === "projects" && <Projects />}
