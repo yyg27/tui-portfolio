@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "./HeroCard.module.css";
 import { socialLinks } from "../../../data/social.data";
-import { heroStatus } from "../../../data/system.data";
+
 
 export default function HeroCard() {
     const title = "YUSUF YIGIT GULTEKIN";
