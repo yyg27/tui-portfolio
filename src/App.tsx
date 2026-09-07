@@ -3,6 +3,7 @@ import "./App.css";
 import Sidebar from './components/Sidebar/Sidebar';
 import Home from "./components/Home/Home";
 import Projects from "./components/Projects/Projects";
+import Skills from "./components/Skills/Skills";
 import Contact from "./components/Contact/Contact";
 import Terminal from "./components/Terminal/Terminal";
 
@@ -36,6 +37,7 @@ function App() {
           </div>
           {currentPage === "home" && <Home />}
           {currentPage === "projects" && <Projects />}
+          {currentPage === "skills" && <Skills />}
           {currentPage === "contact" && <Contact />}
         </main>
         <Terminal />

@@ -1,0 +1,84 @@
+.skillsContainer {
+    /* The Inverted TUI Look */
+    background-color: var(--accent);
+    color: var(--background);
+    
+    min-height: 100%;
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+}
+
+.header {
+    font-family: monospace;
+    font-size: 2rem;
+    font-weight: bold;
+    border-bottom: 4px solid var(--background);
+    padding-bottom: var(--space-md);
+    margin-bottom: var(--space-md);
+}
+
+.blinker {
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+.group {
+    border: 2px solid var(--background);
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl); /* space between categories */
+}
+
+.categoryBlock {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.categoryTitle {
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--background);
+    margin-bottom: var(--space-sm);
+}
+
+.items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--space-md);
+}
+
+.skillRow {
+    border: 1px dashed var(--background);
+    padding: var(--space-sm) var(--space-md);
+    background-color: transparent;
+    color: var(--background);
+    cursor: default;
+    transition: all 0.1s;
+}
+
+.skillRow:hover {
+    background-color: var(--background);
+    color: var(--accent);
+    border: 1px solid var(--background);
+}
+
+.skillRow:hover .skillHeader {
+    color: var(--accent);
+}
+
+.skillHeader {
+    display: flex;
+    justify-content: space-between;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--background);
+}

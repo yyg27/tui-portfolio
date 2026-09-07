@@ -6,8 +6,8 @@ export default function Contact() {
         <section className={styles.contactContainer}>
             <div className={styles.idCard}>
                 <div className={styles.cardHeader}>
-                    <span className={styles.sysText}>[ ID_CARD ] SECURE_ACCESS</span>
-                    <span className={styles.sysText}>LVL: ADMIN</span>
+                    <span className={styles.sysText}>[ ID_CARD ]</span>
+                    <span className={styles.sysText}>ACCESS: ROOT</span>
                 </div>
                 
                 <div className={styles.cardBody}>
