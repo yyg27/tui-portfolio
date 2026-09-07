@@ -1,0 +1,156 @@
+.contactContainer {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    height: 100%;
+    padding: var(--space-lg);
+}
+
+.idCard {
+    background-color: var(--surface);
+    border: 2px solid var(--accent);
+    max-width: 1400px;
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.cardHeader {
+    background-color: var(--accent);
+    color: var(--background);
+    padding: var(--space-md) var(--space-lg);
+    display: flex;
+    justify-content: space-between;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.cardBody {
+    padding: var(--space-xl);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: stretch;
+    flex: 1;
+}
+
+.photoWrapper {
+    flex: 1 1 300px;
+    max-width: 450px;
+    border: 2px solid var(--accent);
+    padding: 6px;
+    background-color: var(--background);
+}
+
+.photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.details {
+    flex: 2 1 350px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    font-family: monospace;
+    font-size: 1.1rem;
+    min-width: 0;
+}
+
+.row {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-md);
+    border-bottom: 1px dashed var(--muted);
+    padding-bottom: 6px;
+}
+
+.label {
+    color: var(--muted);
+    min-width: 80px;
+}
+
+.value {
+    color: var(--accent);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.statusBlink {
+    color: var(--background);
+    background-color: var(--accent);
+    padding: 2px 8px;
+    font-weight: bold;
+    animation: blink 2s infinite;
+}
+
+@keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0.7; }
+}
+
+.socialBox {
+    margin-top: auto; /* Pushes the social box to the bottom */
+    border: 1px solid var(--border);
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.boxTitle {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+.linksWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xl);
+    align-items: center;
+}
+
+.socialLink {
+    color: var(--text);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    transition: color 0.2s;
+    font-size: 1.1rem;
+}
+
+.socialLink:hover {
+    color: var(--accent);
+}
+
+.socialLink:hover .icon {
+    background-color: var(--accent);
+    color: var(--background);
+}
+
+.icon {
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 4px 8px;
+    min-width: 50px;
+    text-align: center;
+    transition: all 0.2s;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .cardBody {
+        flex-direction: column;
+        align-items: center;
+    }
+    .details {
+        width: 100%;
+    }
+}
