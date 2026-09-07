@@ -16,3 +16,13 @@ main{
     overflow-y: auto;
     padding: 1rem;
 }
+
+@media (max-width: 768px) {
+    .App {
+        flex-direction: column;
+    }
+    .contentWrapper {
+        order: 1;
+        height: calc(100vh - 60px); /* Leave room for bottom bar */
+    }
+}

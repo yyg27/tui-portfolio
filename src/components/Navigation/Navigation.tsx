@@ -11,11 +11,11 @@ export default function Navigation({ isCollapsed = false }: { isCollapsed?: bool
                     <li key={item.href}>
                         <a href={item.href} title={item.label}>
                             {!isCollapsed && (
-                                <span style={{ width: '1rem', display: 'inline-block', fontFamily: 'monospace' }}>
+                                <span className={styles.navArrow} style={{ width: '1rem', display: 'inline-block', fontFamily: 'monospace' }}>
                                     {item.href === activePage ? ">" : ""}
                                 </span>
                             )}
-                            <span>
+                            <span className={styles.navText}>
                                 {isCollapsed ? `[${item.label[0]}]` : item.label}
                             </span>
                         </a>

@@ -17,6 +17,19 @@
     align-items: flex-start;
 }
 
+@media (max-width: 768px) {
+    .systemCard {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .portrait {
+        justify-content: center;
+        width: 100%;
+        overflow-x: auto;
+        margin-top: var(--space-lg);
+    }
+}
+
 .portrait pre {
     margin: 0;
     font-family: monospace;

@@ -81,3 +81,19 @@
     background-color: var(--accent);
     color: var(--background);
 }
+
+@media (max-width: 768px) {
+    .sidebar {
+        order: 2;
+        width: 100% !important;
+        height: 60px;
+        flex-direction: row;
+        border-right: none;
+        border-top: 2px solid var(--border);
+        align-items: center;
+    }
+
+    .header, .footer {
+        display: none;
+    }
+}
