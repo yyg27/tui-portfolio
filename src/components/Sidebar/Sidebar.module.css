@@ -17,12 +17,21 @@
     border-bottom: 2px solid var(--border);
     font-size: 1.5rem;
     font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+.headerCollapsed {
+    padding: var(--space-xl) 0;
+    text-align: center;
 }
 
 .header a {
     color: var(--accent);
     text-decoration: none;
     font-family: monospace;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .footer {
@@ -40,6 +49,13 @@
     background-color: var(--accent);
     text-align: center;
     border-bottom: 2px solid var(--border);
+    transition: all 0.2s ease;
+}
+
+.clockCollapsed {
+    padding: 1rem 0;
+    font-size: 0.7rem;
+    letter-spacing: -0.5px;
 }
 
 .actions {

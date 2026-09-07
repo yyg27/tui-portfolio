@@ -5,8 +5,14 @@ import Navigation from "../Navigation/Navigation";
 export default function Sidebar() {
     const [frame, setFrame] = useState(0);
     const [time, setTime] = useState(new Date());
-    const [isCollapsed, setIsCollapsed] = useState(false);
+    const [isCollapsed, setIsCollapsed] = useState(() => {
+        return localStorage.getItem("sidebarCollapsed") === "true";
+    });
     const frames = ["/", "-", "\\", "|"];
+
+    useEffect(() => {
+        localStorage.setItem("sidebarCollapsed", String(isCollapsed));
+    }, [isCollapsed]);
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -27,9 +33,9 @@ export default function Sidebar() {
 
     return (
         <aside className={`${styles.sidebar} ${isCollapsed ? styles.collapsed : ''}`}>
-            <header className={styles.header}>
+            <header className={`${styles.header} ${isCollapsed ? styles.headerCollapsed : ''}`}>
                 <a href="/">
-                    <span style={{ marginRight: '8px', opacity: 0.8 }}>
+                    <span style={{ marginRight: isCollapsed ? '0' : '8px', opacity: 0.8 }}>
                         {isCollapsed ? "***" : `[${frames[frame]}]`}
                     </span>
                     {!isCollapsed && "yyg27"}
@@ -38,16 +44,29 @@ export default function Sidebar() {
             <Navigation isCollapsed={isCollapsed} />
             
             <div className={styles.footer}>
-                <div className={styles.clock}>
-                    {!isCollapsed ? `SYS_TIME: ${timeString}` : timeString.split(':')[0] + 'h'}
+                <div className={`${styles.clock} ${isCollapsed ? styles.clockCollapsed : ''}`}>
+                    {!isCollapsed ? `SYS_TIME: ${timeString}` : timeString}
                 </div>
                 <div className={styles.actions}>
-                    <button onClick={() => setIsCollapsed(!isCollapsed)} className={styles.actionBtn} title="Toggle Sidebar">
-                        {isCollapsed ? '[>]' : '[<]'}
-                    </button>
-                    <button className={styles.actionBtn} title="Toggle Theme">
-                        [T]
-                    </button>
+                    {isCollapsed ? (
+                        <>
+                            <button onClick={() => setIsCollapsed(!isCollapsed)} className={styles.actionBtn} title="Toggle Sidebar">
+                                {"[>]"}
+                            </button>
+                            <button className={styles.actionBtn} title="Toggle Theme">
+                                [T]
+                            </button>
+                        </>
+                    ) : (
+                        <>
+                            <button className={styles.actionBtn} title="Toggle Theme">
+                                [T]
+                            </button>
+                            <button onClick={() => setIsCollapsed(!isCollapsed)} className={styles.actionBtn} title="Toggle Sidebar">
+                                {"[<]"}
+                            </button>
+                        </>
+                    )}
                 </div>
             </div>
         </aside>
