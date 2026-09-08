@@ -63,6 +63,34 @@ export default function Sidebar() {
         fener: "#E4A419"
     };
 
+    const darkThemes = ["amber", "matrix", "cyan", "dracula", "layor", "peach", "fener"];
+    const lightThemes = ["royal"];
+    
+    const [themeTab, setThemeTab] = useState<'dark' | 'light'>('dark');
+
+    const renderThemeBtn = (theme: string) => {
+        const idx = themes.indexOf(theme);
+        return (
+            <button 
+                key={theme}
+                className={styles.themeOptionBtn}
+                onClick={() => handleThemeSelect(idx)}
+                title={`Set theme: ${theme}`}
+            >
+                {isCollapsed ? (
+                    <span 
+                        className={styles.themeDot} 
+                        style={{ backgroundColor: themeColors[theme] }}
+                    />
+                ) : (
+                    <span style={{ color: themeColors[theme] }}>{themeIndex === idx ? `[${theme}]` : ` ${theme} `}</span>
+                )}
+            </button>
+        );
+    };
+
+    const currentThemesList = themeTab === 'dark' ? darkThemes : lightThemes;
+
     return (
         <aside className={`${styles.sidebar} ${isCollapsed ? styles.collapsed : ''}`}>
             <header className={`${styles.header} ${isCollapsed ? styles.headerCollapsed : ''}`}>
@@ -78,7 +106,7 @@ export default function Sidebar() {
             <div className={styles.footer}>
                 {isThemeMenuOpen && (
                     <div className={styles.themeMenu}>
-                        <div style={{ display: 'flex', justifyContent: isCollapsed ? 'center' : 'flex-start', marginBottom: '4px' }}>
+                        <div style={{ display: 'flex', justifyContent: isCollapsed ? 'center' : 'flex-start', marginBottom: '8px' }}>
                             <button 
                                 onClick={() => setIsThemeMenuOpen(false)}
                                 style={{ background: 'none', border: 'none', color: 'var(--muted)', cursor: 'pointer', fontFamily: 'monospace' }}
@@ -87,23 +115,35 @@ export default function Sidebar() {
                                 [V]
                             </button>
                         </div>
-                        {themes.map((theme, idx) => (
+                        
+                        <div style={{ minHeight: '160px', display: 'flex', flexDirection: 'column' }}>
+                            {currentThemesList.map(renderThemeBtn)}
+                        </div>
+                        
+                        <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginTop: '8px', borderTop: '1px solid var(--border)', paddingTop: '4px' }}>
                             <button 
-                                key={theme}
-                                className={styles.themeOptionBtn}
-                                onClick={() => handleThemeSelect(idx)}
-                                title={`Set theme: ${theme}`}
+                                onClick={() => setThemeTab('dark')}
+                                style={{ background: 'none', border: 'none', color: themeTab === 'dark' ? 'var(--accent)' : 'var(--muted)', cursor: 'pointer', fontFamily: 'monospace', fontSize: '0.8rem', fontWeight: 'bold', display: 'flex', alignItems: 'center' }}
+                                title="Dark Themes"
                             >
                                 {isCollapsed ? (
-                                    <span 
-                                        className={styles.themeDot} 
-                                        style={{ backgroundColor: themeColors[theme] }}
-                                    />
+                                    <span style={{ display: 'inline-block', width: '14px', height: '14px', borderRadius: '50%', backgroundColor: '#000', border: '2px solid #fff', opacity: themeTab === 'dark' ? 1 : 0.4 }} />
                                 ) : (
-                                    <span style={{ color: themeColors[theme] }}>{themeIndex === idx ? `[${theme}]` : ` ${theme} `}</span>
+                                    themeTab === 'dark' ? '[DARK]' : 'DARK'
                                 )}
                             </button>
-                        ))}
+                            <button 
+                                onClick={() => setThemeTab('light')}
+                                style={{ background: 'none', border: 'none', color: themeTab === 'light' ? 'var(--accent)' : 'var(--muted)', cursor: 'pointer', fontFamily: 'monospace', fontSize: '0.8rem', fontWeight: 'bold', display: 'flex', alignItems: 'center' }}
+                                title="Light Themes"
+                            >
+                                {isCollapsed ? (
+                                    <span style={{ display: 'inline-block', width: '14px', height: '14px', borderRadius: '50%', backgroundColor: '#fff', border: '2px solid #000', opacity: themeTab === 'light' ? 1 : 0.4 }} />
+                                ) : (
+                                    themeTab === 'light' ? '[LIGHT]' : 'LIGHT'
+                                )}
+                            </button>
+                        </div>
                     </div>
                 )}
                 <div className={`${styles.clock} ${isCollapsed ? styles.clockCollapsed : ''}`}>
