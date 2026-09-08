@@ -11,11 +11,8 @@ export default function Skills() {
             
             <div className={styles.group}>
                 <div className={styles.categoriesWrapper}>
-                    {skillsData.map((group) => {
-                        const isInverted = group.category === "FRONTEND & MOBILE";
-                        const isLanguages = group.category === "LANGUAGES";
-                        return (
-                        <div key={group.category} className={`${styles.itemsBox} ${isInverted ? styles.inverted : ''} ${isLanguages ? styles.textStyle : ''}`}>
+                    {skillsData.map((group) => (
+                        <div key={group.category} className={styles.itemsBox}>
                             <div className={styles.categoryTitle}>// {group.category}</div>
                             <div className={styles.itemsGrid}>
                                 {group.items.map((item) => (
@@ -27,8 +24,7 @@ export default function Skills() {
                                 ))}
                             </div>
                         </div>
-                        );
-                    })}
+                    ))}
                 </div>
             </div>
         </section>
