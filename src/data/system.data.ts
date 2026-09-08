@@ -1,4 +1,4 @@
-export const heroStatus = "OPEN TO INTERNSHIPS";
+// export const heroStatus = "OPEN TO INTERNSHIPS";
 
 export const systemInfo = [
     {

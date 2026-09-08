@@ -1,7 +1,5 @@
 .skillsContainer {
-    /* The Inverted TUI Look */
-    background-color: var(--accent);
-    color: var(--background);
+    /* Normal TUI Look */
     
     min-height: 100%;
     padding: var(--space-xl);
@@ -14,7 +12,7 @@
     font-family: monospace;
     font-size: 2rem;
     font-weight: bold;
-    border-bottom: 4px solid var(--background);
+    border-bottom: 4px solid var(--accent);
     padding-bottom: var(--space-md);
     margin-bottom: var(--space-md);
 }
@@ -28,7 +26,9 @@
 }
 
 .group {
-    border: 2px solid var(--background);
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
     padding: var(--space-lg);
     display: flex;
     flex-direction: column;
@@ -45,7 +45,7 @@
     font-family: monospace;
     font-weight: bold;
     font-size: 1.2rem;
-    color: var(--background);
+    color: var(--accent);
     margin-bottom: var(--space-sm);
 }
 
@@ -56,22 +56,22 @@
 }
 
 .skillRow {
-    border: 1px dashed var(--background);
+    border: 1px dashed var(--accent);
     padding: var(--space-sm) var(--space-md);
     background-color: transparent;
-    color: var(--background);
+    color: var(--accent);
     cursor: default;
     transition: all 0.1s;
 }
 
 .skillRow:hover {
-    background-color: var(--background);
-    color: var(--accent);
-    border: 1px solid var(--background);
+    background-color: var(--accent);
+    color: var(--background);
+    border: 1px solid var(--accent);
 }
 
 .skillRow:hover .skillHeader {
-    color: var(--accent);
+    color: var(--background);
 }
 
 .skillHeader {
@@ -80,5 +80,5 @@
     font-family: monospace;
     font-weight: bold;
     font-size: 1.1rem;
-    color: var(--background);
+    color: var(--accent);
 }

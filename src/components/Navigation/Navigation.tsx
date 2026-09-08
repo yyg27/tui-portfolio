@@ -9,7 +9,11 @@ export default function Navigation({ isCollapsed = false }: { isCollapsed?: bool
             <ul className={`${styles.navigationList} ${isCollapsed ? styles.collapsed : ''}`}>
                 {navigationItems.map((item) => (
                     <li key={item.href}>
-                        <a href={item.href} title={item.label}>
+                        <a 
+                            href={item.href} 
+                            title={item.label}
+                            className={item.href === activePage ? styles.active : ''}
+                        >
                             {!isCollapsed && (
                                 <span className={styles.navArrow} style={{ width: '1rem', display: 'inline-block', fontFamily: 'monospace' }}>
                                     {item.href === activePage ? ">" : ""}

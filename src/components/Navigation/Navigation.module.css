@@ -25,7 +25,8 @@
     justify-content: center;
 }
 
-.navigationList a:hover {
+.navigationList a:hover,
+.navigationList a.active {
     background-color: var(--accent);
     color: var(--background);
 }
