@@ -10,20 +10,26 @@ export default function Skills() {
             </div>
             
             <div className={styles.group}>
-                {skillsData.map((group) => (
-                    <div key={group.category} className={styles.categoryBlock}>
-                        <div className={styles.categoryTitle}>// {group.category}</div>
-                        <div className={styles.items}>
-                            {group.items.map((item) => (
-                                <div key={item.name} className={styles.skillRow}>
-                                    <div className={styles.skillHeader}>
-                                        <span>{item.name}</span>
+                <div className={styles.categoriesWrapper}>
+                    {skillsData.map((group) => {
+                        const isInverted = group.category === "FRONTEND & MOBILE";
+                        const isLanguages = group.category === "LANGUAGES";
+                        return (
+                        <div key={group.category} className={`${styles.itemsBox} ${isInverted ? styles.inverted : ''} ${isLanguages ? styles.textStyle : ''}`}>
+                            <div className={styles.categoryTitle}>// {group.category}</div>
+                            <div className={styles.itemsGrid}>
+                                {group.items.map((item) => (
+                                    <div key={item.name} className={styles.skillRow}>
+                                        <div className={styles.skillHeader}>
+                                            <span>{item.name}</span>
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </div>
-                    </div>
-                ))}
+                        );
+                    })}
+                </div>
             </div>
         </section>
     );

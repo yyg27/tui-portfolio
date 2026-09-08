@@ -26,13 +26,16 @@
 }
 
 .group {
-    background: var(--surface);
-    border: 2px solid var(--border);
+    background: var(--accent);
+    border: 2px solid var(--accent);
     border-radius: var(--radius-md);
     padding: var(--space-lg);
+}
+
+.categoriesWrapper {
     display: flex;
     flex-direction: column;
-    gap: var(--space-xl); /* space between categories */
+    gap: var(--space-xl);
 }
 
 .categoryBlock {
@@ -49,29 +52,39 @@
     margin-bottom: var(--space-sm);
 }
 
-.items {
+.itemsBox {
+    background-color: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.itemsGrid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: var(--space-md);
 }
 
 .skillRow {
-    border: 1px dashed var(--accent);
+    border: 1px solid transparent;
     padding: var(--space-sm) var(--space-md);
-    background-color: transparent;
-    color: var(--accent);
+    background-color: var(--accent);
+    color: var(--background);
     cursor: default;
     transition: all 0.1s;
 }
 
 .skillRow:hover {
-    background-color: var(--accent);
-    color: var(--background);
-    border: 1px solid var(--accent);
+    background-color: transparent;
+    color: var(--accent);
+    border: 1px dotted var(--accent);
 }
 
 .skillRow:hover .skillHeader {
-    color: var(--background);
+    color: var(--accent);
 }
 
 .skillHeader {
@@ -80,5 +93,58 @@
     font-family: monospace;
     font-weight: bold;
     font-size: 1.1rem;
+    color: var(--background);
+    text-transform: uppercase;
+}
+
+/* Inverted State for Specific Category */
+.inverted {
+    background-color: var(--accent);
+    color: var(--background);
+    border: 2px solid var(--background);
+}
+
+.inverted .categoryTitle {
+    color: var(--background);
+}
+
+.inverted .skillRow {
+    background-color: var(--background);
     color: var(--accent);
+    border: 1px dotted var(--background);
+}
+
+.inverted .skillRow:hover {
+    background-color: transparent;
+    color: var(--background);
+    border: 1px dashed var(--background);
+}
+
+.inverted .skillHeader {
+    color: var(--accent);
+}
+
+.inverted .skillRow:hover .skillHeader {
+    color: var(--background);
+}
+
+/* Text Style for Languages Category */
+.textStyle .skillRow {
+    border: 1px solid var(--border);
+    background-color: transparent;
+    color: var(--text);
+}
+
+.textStyle .skillHeader {
+    color: var(--text);
+}
+
+.textStyle .skillRow:hover {
+    background-color: var(--accent);
+    color: var(--background);
+    border: 1px solid var(--accent);
+}
+
+.textStyle .skillRow:hover .skillHeader {
+    color: var(--background);
 }
