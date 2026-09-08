@@ -5,6 +5,7 @@ import Home from "./components/Home/Home";
 import Projects from "./components/Projects/Projects";
 import Skills from "./components/Skills/Skills";
 import Contact from "./components/Contact/Contact";
+import Journey from "./components/Journey/Journey";
 import Terminal from "./components/Terminal/Terminal";
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
           {currentPage === "home" && <Home />}
           {currentPage === "projects" && <Projects />}
           {currentPage === "skills" && <Skills />}
+          {currentPage === "journey" && <Journey />}
           {currentPage === "contact" && <Contact />}
         </main>
         <Terminal />
