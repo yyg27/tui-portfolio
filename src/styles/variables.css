@@ -1,22 +1,98 @@
 :root {
-    --background: #050403;
-    --surface: #0c0a06;
-    --surface-hover: #16120b;
-
-    --text: #e9ddc2;
-    --heading: #ffb000;
-    --accent: #ffb000;
-
-    --border: #2a2110;
-    --muted: #8f7d57;
-    
     --space-xs: 0.5rem;
     --space-sm: 1rem;
     --space-md: 1.5rem;
     --space-lg: 2rem;
     --space-xl: 3rem;
-    
     --radius-sm: 0px;
     --radius-md: 0px;
     --radius-lg: 0px;
+}
+
+:root, [data-theme="amber"] {
+    --background: #050403;
+    --surface: #0c0a06;
+    --surface-hover: #16120b;
+    --text: #e9ddc2;
+    --heading: #ffb000;
+    --accent: #ffb000;
+    --border: #2a2110;
+    --muted: #8f7d57;
+}
+
+[data-theme="matrix"] {
+    --background: #030a04;
+    --surface: #061407;
+    --surface-hover: #0a210b;
+    --text: #d3f9d8;
+    --heading: #27c93f;
+    --accent: #27c93f;
+    --border: #144018;
+    --muted: #5c8760;
+}
+
+[data-theme="cyan"] {
+    --background: #050b14;
+    --surface: #0a1628;
+    --surface-hover: #0e203b;
+    --text: #d8e8f9;
+    --heading: #2196f3;
+    --accent: #2196f3;
+    --border: #163666;
+    --muted: #607d8b;
+}
+
+[data-theme="dracula"] {
+    --background: #282a36;
+    --surface: #383a59;
+    --surface-hover: #44475a;
+    --text: #f8f8f2;
+    --heading: #ff79c6;
+    --accent: #bd93f9;
+    --border: #6272a4;
+    --muted: #8be9fd;
+}
+
+[data-theme="royal"] {
+    --background: #F8F3F0;
+    --surface: #EBE5E0;
+    --surface-hover: #DFD9D3;
+    --text: #014BAA;
+    --heading: #014BAA;
+    --accent: #014BAA;
+    --border: #80A5D5;
+    --muted: #6B8CB3;
+}
+
+[data-theme="layor"] {
+    --background: #013A8A;
+    --surface: #014BAA;
+    --surface-hover: #0156C4;
+    --text: #F8F3F0;
+    --heading: #F8F3F0;
+    --accent: #F8F3F0;
+    --border: #3A78D0;
+    --muted: #9BB8E0;
+}
+
+[data-theme="peach"] {
+    --background: #202D32;
+    --surface: #3F5A62;
+    --surface-hover: #4C6A73;
+    --text: #F5EAE6;
+    --heading: #FE8254;
+    --accent: #FE8254;
+    --border: #5C7F8A;
+    --muted: #90B0BC;
+}
+
+[data-theme="fener"] {
+    --background: #171A29;
+    --surface: #1F2235;
+    --surface-hover: #2A2D45;
+    --text: #E8E9F0;
+    --heading: #E4A419;
+    --accent: #E4A419;
+    --border: #383D5C;
+    --muted: #7E84A6;
 }

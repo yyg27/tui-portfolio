@@ -1,5 +1,5 @@
 .sidebar {
-    width: 280px;
+    width: 240px;
     background-color: var(--panel);
     border-right: 2px solid var(--border);
     display: flex;
@@ -53,9 +53,53 @@
 }
 
 .clockCollapsed {
-    padding: 1rem 0;
-    font-size: 0.7rem;
-    letter-spacing: -0.5px;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.themeMenu {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-md);
+    padding: var(--space-sm);
+    border: 1px solid var(--border);
+    background-color: var(--surface);
+    border-radius: var(--radius-sm);
+}
+
+.themeOptionBtn {
+    background: none;
+    border: none;
+    font-family: monospace;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-align: left;
+    padding: 4px;
+    transition: background-color 0.1s;
+}
+
+.collapsed .themeOptionBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.themeOptionBtn:hover {
+    background-color: var(--panel);
+}
+
+.themeDot {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.activeThemeBtn {
+    color: var(--background);
+    background-color: var(--accent);
 }
 
 .actions {

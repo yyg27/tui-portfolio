@@ -17,6 +17,14 @@ export default function Terminal() {
                 window.location.href = "/";
             } else if (cmd === "clear") {
                 setInput("");
+            } else if (cmd.startsWith("/theme ")) {
+                const themeName = cmd.split(" ")[1];
+                const validThemes = ["amber", "matrix", "cyan", "dracula", "royal", "layor", "peach", "fener"];
+                if (validThemes.includes(themeName)) {
+                    document.documentElement.setAttribute('data-theme', themeName);
+                    localStorage.setItem("theme", themeName);
+                    window.dispatchEvent(new Event("storage"));
+                }
             }
             setInput("");
         }
