@@ -4,19 +4,34 @@ import styles from "./Terminal.module.css";
 export default function Terminal() {
     const [input, setInput] = useState("");
 
+    const routes: Record<string, string> = {
+        "/": "/",
+        "/home": "/",
+        "home": "/",
+        "cd home": "/",
+        "cd": "/",
+        "cd ~": "/",
+        "cd ..": "/",
+        "/projects": "/projects",
+        "projects": "/projects",
+        "cd projects": "/projects",
+        "/skills": "/skills",
+        "skills": "/skills",
+        "cd skills": "/skills",
+        "/journey": "/journey",
+        "journey": "/journey",
+        "cd journey": "/journey",
+        "/contact": "/contact",
+        "contact": "/contact",
+        "cd contact": "/contact",
+    };
+
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter") {
             const cmd = input.trim().toLowerCase();
-            if (cmd === "/projects" || cmd === "cd projects") {
-                window.location.href = "/projects";
-            } else if (cmd === "/skills" || cmd === "cd skills") {
-                window.location.href = "/skills";
-            } else if (cmd === "/contact" || cmd === "cd contact") {
-                window.location.href = "/contact";
-            } else if (cmd === "/home" || cmd === "cd home") {
-                window.location.href = "/";
-            } else if (cmd === "clear") {
-                setInput("");
+            if (routes[cmd]) {
+                window.history.pushState({}, "", routes[cmd]);
+                window.dispatchEvent(new PopStateEvent("popstate"));
             } else if (cmd.startsWith("/theme ")) {
                 const themeName = cmd.split(" ")[1];
                 const validThemes = ["amber", "matrix", "cyan", "dracula", "royal", "layor", "peach", "fener"];

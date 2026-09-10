@@ -35,28 +35,22 @@ export default function Projects() {
 
     useEffect(() => {
         fetch("https://api.github.com/users/yyg27/repos?per_page=100")
-            .then(res => res.json())
+            .then(res => res.ok ? res.json() : Promise.reject(res))
             .then(data => {
                 if (!Array.isArray(data)) return;
                 
-                const filtered = FEATURED_PROJECTS.map(config => {
+                const filtered = FEATURED_PROJECTS.flatMap(config => {
                     const found = data.find((r: Repo) => r.name === config.name);
-                    if (found) {
-                        return {
-                            ...found,
-                            description: config.customDescription || found.description
-                        };
-                    }
-                    return null;
-                }).filter(Boolean) as Repo[];
+                    return found ? [{
+                        ...found,
+                        description: config.customDescription || found.description
+                    }] : [];
+                });
 
                 setRepos(filtered);
-                setLoading(false);
             })
-            .catch(err => {
-                console.error(err);
-                setLoading(false);
-            });
+            .catch(console.error)
+            .finally(() => setLoading(false));
     }, []);
 
     if (loading) {

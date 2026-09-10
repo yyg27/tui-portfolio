@@ -3,6 +3,19 @@ import styles from "./Sidebar.module.css";
 import Navigation from "../Navigation/Navigation";
 
 const themes = ["amber", "matrix", "cyan", "dracula", "royal", "layor", "peach", "fener"];
+const darkThemes = ["amber", "matrix", "cyan", "dracula", "layor", "peach", "fener"];
+const lightThemes = ["royal"];
+const themeColors: Record<string, string> = {
+    amber: "#ffb000",
+    matrix: "#27c93f",
+    cyan: "#2196f3",
+    dracula: "#bd93f9",
+    royal: "#014BAA",
+    layor: "#F8F3F0",
+    peach: "#FE8254",
+    fener: "#E4A419"
+};
+const frames = ["/", "-", "\\", "|"];
 
 export default function Sidebar() {
     const [frame, setFrame] = useState(0);
@@ -17,7 +30,10 @@ export default function Sidebar() {
         return idx !== -1 ? idx : 0;
     });
 
-    const frames = ["/", "-", "\\", "|"];
+    const [themeTab, setThemeTab] = useState<'dark' | 'light'>(() => {
+        const saved = localStorage.getItem("theme");
+        return saved && lightThemes.includes(saved) ? 'light' : 'dark';
+    });
 
     useEffect(() => {
         localStorage.setItem("sidebarCollapsed", String(isCollapsed));
@@ -28,6 +44,19 @@ export default function Sidebar() {
         document.documentElement.setAttribute('data-theme', currentTheme);
         localStorage.setItem("theme", currentTheme);
     }, [themeIndex]);
+
+    useEffect(() => {
+        const syncTheme = () => {
+            const saved = localStorage.getItem("theme");
+            const idx = saved ? themes.indexOf(saved) : -1;
+            if (idx !== -1) {
+                setThemeIndex(idx);
+                setThemeTab(lightThemes.includes(saved!) ? 'light' : 'dark');
+            }
+        };
+        window.addEventListener("storage", syncTheme);
+        return () => window.removeEventListener("storage", syncTheme);
+    }, []);
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -51,22 +80,6 @@ export default function Sidebar() {
     const handleThemeSelect = (idx: number) => {
         setThemeIndex(idx);
     };
-
-    const themeColors: Record<string, string> = {
-        amber: "#ffb000",
-        matrix: "#27c93f",
-        cyan: "#2196f3",
-        dracula: "#bd93f9",
-        royal: "#014BAA",
-        layor: "#F8F3F0",
-        peach: "#FE8254",
-        fener: "#E4A419"
-    };
-
-    const darkThemes = ["amber", "matrix", "cyan", "dracula", "layor", "peach", "fener"];
-    const lightThemes = ["royal"];
-    
-    const [themeTab, setThemeTab] = useState<'dark' | 'light'>('dark');
 
     const renderThemeBtn = (theme: string) => {
         const idx = themes.indexOf(theme);

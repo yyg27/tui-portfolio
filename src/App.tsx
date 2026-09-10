@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import "./App.css";
 
 import Sidebar from './components/Sidebar/Sidebar';
@@ -9,8 +10,37 @@ import Journey from "./components/Journey/Journey";
 import Terminal from "./components/Terminal/Terminal";
 
 function App() {
-  const path = window.location.pathname;
-  const currentPage = path === "/" ? "home" : path.replace("/", "");
+  const [currentPage, setCurrentPage] = useState(() => {
+    const p = window.location.pathname.replace(/^\//, "");
+    return p || "home";
+  });
+
+  useEffect(() => {
+    const onPopState = () => {
+      const p = window.location.pathname.replace(/^\//, "");
+      setCurrentPage(p || "home");
+    };
+
+    const onClick = (e: MouseEvent) => {
+      const link = (e.target as HTMLElement).closest("a");
+      if (!link) return;
+      const href = link.getAttribute("href");
+      if (href?.startsWith("/") && !href.startsWith("//") && link.target !== "_blank") {
+        e.preventDefault();
+        if (window.location.pathname !== href) {
+          window.history.pushState({}, "", href);
+          onPopState();
+        }
+      }
+    };
+
+    window.addEventListener("popstate", onPopState);
+    window.addEventListener("click", onClick);
+    return () => {
+      window.removeEventListener("popstate", onPopState);
+      window.removeEventListener("click", onClick);
+    };
+  }, []);
 
   return (
     <div className="App">
