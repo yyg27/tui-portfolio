@@ -5,7 +5,7 @@
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-lg);
     max-width: 1200px;
 }
@@ -58,6 +58,7 @@
     gap: var(--space-md);
     transition: all 0.2s;
     color: var(--text);
+    min-width: 0;
 }
 
 .repoCard:hover {
@@ -69,7 +70,8 @@
 .repoHeader {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: flex-start;
+    gap: var(--space-sm);
 }
 
 .repoName {
@@ -78,6 +80,9 @@
     color: var(--accent);
     text-decoration: none;
     transition: color 0.2s;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    min-width: 0;
 }
 
 .repoCard:hover .repoName {
@@ -96,6 +101,7 @@
     color: var(--muted);
     text-transform: uppercase;
     transition: all 0.2s;
+    flex-shrink: 0;
 }
 
 .repoCard:hover .repoVisibility {
@@ -107,6 +113,8 @@
     font-size: 0.95rem;
     line-height: 1.4;
     opacity: 0.9;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .repoFooter {
@@ -147,4 +155,14 @@
 @keyframes pulse {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.5; }
+}
+
+@media (max-width: 768px) {
+    .grid {
+        display: flex;
+        flex-direction: column;
+    }
+    .layoutBtn {
+        display: none;
+    }
 }
