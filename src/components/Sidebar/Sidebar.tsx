@@ -17,12 +17,14 @@ const themeColors: Record<string, string> = {
 };
 const frames = ["/", "-", "\\", "|"];
 
-export default function Sidebar() {
+interface SidebarProps {
+    isCollapsed: boolean;
+    onToggleCollapse: () => void;
+}
+
+export default function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
     const [frame, setFrame] = useState(0);
     const [time, setTime] = useState(new Date());
-    const [isCollapsed, setIsCollapsed] = useState(() => {
-        return localStorage.getItem("sidebarCollapsed") === "true";
-    });
     
     const [themeIndex, setThemeIndex] = useState(() => {
         const saved = localStorage.getItem("theme");
@@ -34,10 +36,6 @@ export default function Sidebar() {
         const saved = localStorage.getItem("theme");
         return saved && lightThemes.includes(saved) ? 'light' : 'dark';
     });
-
-    useEffect(() => {
-        localStorage.setItem("sidebarCollapsed", String(isCollapsed));
-    }, [isCollapsed]);
 
     useEffect(() => {
         const currentTheme = themes[themeIndex];
@@ -90,14 +88,13 @@ export default function Sidebar() {
                 onClick={() => handleThemeSelect(idx)}
                 title={`Set theme: ${theme}`}
             >
-                {isCollapsed ? (
-                    <span 
-                        className={styles.themeDot} 
-                        style={{ backgroundColor: themeColors[theme] }}
-                    />
-                ) : (
-                    <span style={{ color: themeColors[theme] }}>{themeIndex === idx ? `[${theme}]` : ` ${theme} `}</span>
-                )}
+                <span 
+                    className={styles.themeDot} 
+                    style={{ backgroundColor: themeColors[theme] }}
+                />
+                <span className={styles.themeText} style={{ color: themeColors[theme] }}>
+                    {themeIndex === idx ? `[${theme}]` : ` ${theme} `}
+                </span>
             </button>
         );
     };
@@ -163,25 +160,12 @@ export default function Sidebar() {
                     {!isCollapsed ? `SYS_TIME: ${timeString}` : timeString}
                 </div>
                 <div className={styles.actions}>
-                    {isCollapsed ? (
-                        <>
-                            <button onClick={() => setIsThemeMenuOpen(!isThemeMenuOpen)} className={`${styles.actionBtn} ${isThemeMenuOpen ? styles.activeThemeBtn : ''}`} title="Themes">
-                                [T]
-                            </button>
-                            <button onClick={() => setIsCollapsed(!isCollapsed)} className={styles.actionBtn} title="Toggle Sidebar">
-                                {"[>]"}
-                            </button>
-                        </>
-                    ) : (
-                        <>
-                            <button onClick={() => setIsThemeMenuOpen(!isThemeMenuOpen)} className={`${styles.actionBtn} ${isThemeMenuOpen ? styles.activeThemeBtn : ''}`} title="Themes">
-                                [T]
-                            </button>
-                            <button onClick={() => setIsCollapsed(!isCollapsed)} className={styles.actionBtn} title="Toggle Sidebar">
-                                {"[<]"}
-                            </button>
-                        </>
-                    )}
+                    <button onClick={() => setIsThemeMenuOpen(!isThemeMenuOpen)} className={`${styles.actionBtn} ${isThemeMenuOpen ? styles.activeThemeBtn : ''}`} title="Themes">
+                        [T]
+                    </button>
+                    <button onClick={onToggleCollapse} className={`${styles.actionBtn} ${styles.collapseBtn}`} title="Toggle Sidebar">
+                        {isCollapsed ? "[>]" : "[<]"}
+                    </button>
                 </div>
             </div>
         </aside>

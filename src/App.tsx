@@ -10,6 +10,23 @@ import Journey from "./components/Journey/Journey";
 import Terminal from "./components/Terminal/Terminal";
 
 function App() {
+  const [showSidebar, setShowSidebar] = useState(true);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(() => {
+    return localStorage.getItem("sidebarCollapsed") === "true";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("sidebarCollapsed", String(isSidebarCollapsed));
+  }, [isSidebarCollapsed]);
+
+  const toggleSidebarCollapse = () => {
+    if (!showSidebar) {
+      setShowSidebar(true);
+    } else {
+      setIsSidebarCollapsed(c => !c);
+    }
+  };
+
   const [currentPage, setCurrentPage] = useState(() => {
     const p = window.location.pathname.replace(/^\//, "");
     return p || "home";
@@ -44,8 +61,13 @@ function App() {
 
   return (
     <div className="App">
-      <Sidebar />
-      <div className="contentWrapper">
+      {showSidebar && (
+        <Sidebar
+          isCollapsed={isSidebarCollapsed}
+          onToggleCollapse={toggleSidebarCollapse}
+        />
+      )}
+      <div className={`contentWrapper ${!showSidebar ? "noSidebar" : ""}`}>
         <main className="main">
           <div style={{ 
               marginBottom: currentPage === 'home' ? '0' : '1.5rem', 
@@ -57,10 +79,41 @@ function App() {
               alignItems: 'center',
               gap: '0.8rem'
           }}>
-            <div style={{ display: 'flex', gap: '4px', fontSize: '22px' }}>
-                <span style={{ color: '#ff5f56' }}>●</span>
-                <span style={{ color: '#ffbd2e' }}>●</span>
-                <span style={{ color: '#27c93f' }}>●</span>
+            <div 
+                className="windowControls" 
+                onClick={() => setShowSidebar(s => !s)}
+                title="Toggle Taskbar"
+            >
+                <button
+                    className="windowDot"
+                    onClick={(e) => { e.stopPropagation(); setShowSidebar(s => !s); }}
+                    style={{ color: '#ff5f56' }}
+                    title={showSidebar ? "Hide sidebar (Red)" : "Show sidebar (Red)"}
+                    aria-label="Toggle Sidebar Visibility"
+                >
+                    ●
+                </button>
+                <button
+                    className="windowDot"
+                    onClick={(e) => { e.stopPropagation(); toggleSidebarCollapse(); }}
+                    style={{ color: '#ffbd2e' }}
+                    title={isSidebarCollapsed ? "Expand sidebar (Yellow)" : "Collapse sidebar (Yellow)"}
+                    aria-label="Toggle Sidebar Collapse"
+                >
+                    ●
+                </button>
+                <button
+                    className="windowDot"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        window.dispatchEvent(new CustomEvent("terminal-command", { detail: "toggle-help" }));
+                    }}
+                    style={{ color: '#27c93f' }}
+                    title="Toggle /help in terminal (Green)"
+                    aria-label="Toggle /help in terminal"
+                >
+                    ●
+                </button>
             </div>
             <div>
                 <span style={{ color: 'var(--accent)' }}>~</span> /{currentPage}
