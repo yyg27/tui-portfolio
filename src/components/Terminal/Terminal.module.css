@@ -3,10 +3,31 @@
     border-top: 2px solid var(--border);
     padding: var(--space-md) var(--space-lg);
     display: flex;
-    align-items: center;
-    gap: var(--space-sm);
+    flex-direction: column;
+    gap: var(--space-xs);
     font-family: monospace;
     flex-shrink: 0;
+}
+
+.output {
+    color: var(--muted);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    border-bottom: 1px dashed var(--border);
+    padding-bottom: var(--space-xs);
+}
+
+.output pre {
+    margin: 0;
+    font-family: inherit;
+    white-space: pre-wrap;
+}
+
+.inputRow {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    width: 100%;
 }
 
 .prompt {
