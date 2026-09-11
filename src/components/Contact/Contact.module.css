@@ -40,6 +40,7 @@
 .photoWrapper {
     flex: 1 1 300px;
     max-width: 450px;
+    aspect-ratio: 350 / 487;
     border: 2px solid var(--accent);
     padding: 6px;
     background-color: var(--background);
