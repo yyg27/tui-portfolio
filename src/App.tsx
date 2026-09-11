@@ -70,8 +70,8 @@ function App() {
       <div className={`contentWrapper ${!showSidebar ? "noSidebar" : ""}`}>
         <main className="main">
           <div style={{ 
-              marginBottom: currentPage === 'home' ? '0' : '1.5rem', 
-              marginLeft: '1rem',
+              marginBottom: '1.5rem', 
+              marginLeft: '0.5rem',
               color: 'var(--text)', 
               fontFamily: 'monospace',
               opacity: 0.7,
