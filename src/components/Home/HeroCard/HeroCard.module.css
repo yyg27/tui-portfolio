@@ -143,6 +143,7 @@
 
 @media (max-width: 768px) {
     .heroCard {
+        margin: var(--space-sm);
         padding: var(--space-md);
         gap: var(--space-md);
     }
