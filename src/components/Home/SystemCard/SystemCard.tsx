@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./SystemCard.module.css";
 import { systemInfo } from "../../../data/system.data";
 
 export default function SystemCard() {
     const [asciiPortrait, setAsciiPortrait] = useState("Loading portrait...");
+    const portraitRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         fetch("/portrait.txt")
@@ -15,9 +16,17 @@ export default function SystemCard() {
             .catch(() => setAsciiPortrait("Failed to load portrait.txt"));
     }, []);
 
+    useEffect(() => {
+        if (portraitRef.current) {
+            const el = portraitRef.current;
+            const targetX = el.scrollWidth * 0.7 - el.clientWidth / 2;
+            el.scrollLeft = Math.max(0, targetX);
+        }
+    }, [asciiPortrait]);
+
     return (
         <section className={styles.systemCard}>
-            <div className={styles.portrait}>
+            <div ref={portraitRef} className={styles.portrait}>
                 <pre>{asciiPortrait}</pre>
             </div>
 
