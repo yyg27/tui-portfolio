@@ -96,3 +96,35 @@
     color: var(--text);
     text-transform: uppercase;
 }
+
+@media (max-width: 768px) {
+    .skillsContainer {
+        padding: 0;
+        gap: var(--space-md);
+    }
+    .header {
+        font-size: 1.4rem;
+        padding-bottom: var(--space-xs);
+        margin-bottom: var(--space-xs);
+    }
+    .group {
+        padding: var(--space-sm);
+    }
+    .categoriesWrapper {
+        gap: var(--space-md);
+    }
+    .itemsBox {
+        padding: var(--space-md);
+        gap: var(--space-md);
+    }
+    .itemsGrid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: var(--space-sm);
+    }
+    .skillRow {
+        padding: var(--space-xs) var(--space-sm);
+    }
+    .skillHeader {
+        font-size: 0.95rem;
+    }
+}
