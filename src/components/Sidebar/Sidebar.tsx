@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import styles from "./Sidebar.module.css";
 import Navigation from "../Navigation/Navigation";
 
-const themes = ["amber", "matrix", "cyan", "dracula", "royal", "layor", "peach", "fener"];
-const darkThemes = ["amber", "matrix", "cyan", "dracula", "layor", "peach", "fener"];
+const themes = ["amber", "matrix", "cyan", "dracula", "royal", "layor", "peach", "fener", "evangelion"];
+const darkThemes = ["amber", "matrix", "cyan", "dracula", "layor", "peach", "fener", "evangelion"];
 const lightThemes = ["royal"];
 const themeColors: Record<string, string> = {
     amber: "#ffb000",
@@ -13,7 +13,8 @@ const themeColors: Record<string, string> = {
     royal: "#014BAA",
     layor: "#F8F3F0",
     peach: "#FE8254",
-    fener: "#E4A419"
+    fener: "#E4A419",
+    evangelion: "#8338EC"
 };
 const frames = ["/", "-", "\\", "|"];
 

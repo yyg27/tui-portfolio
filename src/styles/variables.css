@@ -96,3 +96,14 @@
     --border: #383D5C;
     --muted: #7E84A6;
 }
+
+[data-theme="evangelion"] {
+    --background: #12091e;
+    --surface: #1e1031;
+    --surface-hover: #2b1845;
+    --text: #f0eaf7;
+    --heading: #88FF5F;
+    --accent: #88FF5F;
+    --border: #8338EC;
+    --muted: #a670f5;
+}
