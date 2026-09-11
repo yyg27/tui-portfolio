@@ -143,18 +143,13 @@
 
 @media (max-width: 768px) {
     .heroCard {
-        background: var(--surface);
-        border: 2px solid var(--accent);
-        color: var(--text);
         padding: var(--space-md);
         gap: var(--space-md);
     }
     .intro h1 {
-        color: var(--heading);
         font-size: 1.35rem;
     }
     .intro p {
-        color: var(--text);
         font-size: 0.9rem;
         line-height: 1.5;
     }
@@ -163,13 +158,7 @@
         margin-top: var(--space-md);
     }
     .links a {
-        color: var(--accent);
-        border-color: var(--accent);
         font-size: 0.85rem;
         padding: 4px 8px;
-    }
-    .links a:hover {
-        background-color: var(--accent);
-        color: var(--background);
     }
 }
