@@ -140,3 +140,25 @@
     padding: 2px 6px;
     margin-top: 4px;
 }
+
+@media (max-width: 768px) {
+    .heroCard {
+        padding: var(--space-md);
+        gap: var(--space-md);
+    }
+    .intro h1 {
+        font-size: 1.35rem;
+    }
+    .intro p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+    .links {
+        gap: var(--space-xs);
+        margin-top: var(--space-md);
+    }
+    .links a {
+        font-size: 0.85rem;
+        padding: 4px 8px;
+    }
+}

@@ -20,13 +20,20 @@
 @media (max-width: 768px) {
     .systemCard {
         flex-direction: column-reverse;
-        align-items: center;
+        align-items: stretch;
+        padding: var(--space-md);
+        gap: var(--space-md);
     }
     .portrait {
         justify-content: center;
         width: 100%;
         overflow-x: auto;
-        margin-top: var(--space-lg);
+        margin-top: var(--space-md);
+    }
+    .portrait pre {
+        font-size: clamp(0.35rem, 1.3vw, 0.55rem);
+        line-height: 0.9;
+        letter-spacing: -0.5px;
     }
 }
 

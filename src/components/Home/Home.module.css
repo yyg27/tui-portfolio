@@ -4,3 +4,10 @@
     gap: 2rem;
     padding: 2rem;
 }
+
+@media (max-width: 768px) {
+    .home {
+        padding: 0;
+        gap: var(--space-md);
+    }
+}
