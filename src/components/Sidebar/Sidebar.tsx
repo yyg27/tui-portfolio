@@ -114,49 +114,50 @@ export default function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps)
             </header>
             <Navigation isCollapsed={isCollapsed} />
             
-            <div className={styles.footer}>
-                {isThemeMenuOpen && (
-                    <div className={styles.themeMenu}>
-                        <div style={{ display: 'flex', justifyContent: isCollapsed ? 'center' : 'flex-start', marginBottom: '8px' }}>
-                            <button 
-                                onClick={() => setIsThemeMenuOpen(false)}
-                                style={{ background: 'none', border: 'none', color: 'var(--muted)', cursor: 'pointer', fontFamily: 'monospace' }}
-                                title="Close Menu"
-                            >
-                                [V]
-                            </button>
-                        </div>
-                        
-                        <div style={{ minHeight: '160px', display: 'flex', flexDirection: 'column' }}>
-                            {currentThemesList.map(renderThemeBtn)}
-                        </div>
-                        
-                        <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginTop: '8px', borderTop: '1px solid var(--border)', paddingTop: '4px' }}>
-                            <button 
-                                onClick={() => setThemeTab('dark')}
-                                style={{ background: 'none', border: 'none', color: themeTab === 'dark' ? 'var(--accent)' : 'var(--muted)', cursor: 'pointer', fontFamily: 'monospace', fontSize: '0.8rem', fontWeight: 'bold', display: 'flex', alignItems: 'center' }}
-                                title="Dark Themes"
-                            >
-                                {isCollapsed ? (
-                                    <span style={{ display: 'inline-block', width: '14px', height: '14px', borderRadius: '50%', backgroundColor: '#000', border: '2px solid #fff', opacity: themeTab === 'dark' ? 1 : 0.4 }} />
-                                ) : (
-                                    themeTab === 'dark' ? '[DARK]' : 'DARK'
-                                )}
-                            </button>
-                            <button 
-                                onClick={() => setThemeTab('light')}
-                                style={{ background: 'none', border: 'none', color: themeTab === 'light' ? 'var(--accent)' : 'var(--muted)', cursor: 'pointer', fontFamily: 'monospace', fontSize: '0.8rem', fontWeight: 'bold', display: 'flex', alignItems: 'center' }}
-                                title="Light Themes"
-                            >
-                                {isCollapsed ? (
-                                    <span style={{ display: 'inline-block', width: '14px', height: '14px', borderRadius: '50%', backgroundColor: '#fff', border: '2px solid #000', opacity: themeTab === 'light' ? 1 : 0.4 }} />
-                                ) : (
-                                    themeTab === 'light' ? '[LIGHT]' : 'LIGHT'
-                                )}
-                            </button>
-                        </div>
+            {isThemeMenuOpen && (
+                <div className={styles.themeMenu}>
+                    <div style={{ display: 'flex', justifyContent: isCollapsed ? 'center' : 'flex-start', marginBottom: '8px', flexShrink: 0 }}>
+                        <button 
+                            onClick={() => setIsThemeMenuOpen(false)}
+                            style={{ background: 'none', border: 'none', color: 'var(--muted)', cursor: 'pointer', fontFamily: 'monospace' }}
+                            title="Close Menu"
+                        >
+                            [V]
+                        </button>
                     </div>
-                )}
+                    
+                    <div style={{ display: 'flex', flexDirection: 'column', overflowY: 'auto', flex: 1, minHeight: '0' }}>
+                        {currentThemesList.map(renderThemeBtn)}
+                    </div>
+                    
+                    <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginTop: '8px', borderTop: '1px solid var(--border)', paddingTop: '4px', flexShrink: 0 }}>
+                        <button 
+                            onClick={() => setThemeTab('dark')}
+                            style={{ background: 'none', border: 'none', color: themeTab === 'dark' ? 'var(--accent)' : 'var(--muted)', cursor: 'pointer', fontFamily: 'monospace', fontSize: '0.8rem', fontWeight: 'bold', display: 'flex', alignItems: 'center' }}
+                            title="Dark Themes"
+                        >
+                            {isCollapsed ? (
+                                <span style={{ display: 'inline-block', width: '14px', height: '14px', borderRadius: '50%', backgroundColor: '#000', border: '2px solid #fff', opacity: themeTab === 'dark' ? 1 : 0.4 }} />
+                            ) : (
+                                themeTab === 'dark' ? '[DARK]' : 'DARK'
+                            )}
+                        </button>
+                        <button 
+                            onClick={() => setThemeTab('light')}
+                            style={{ background: 'none', border: 'none', color: themeTab === 'light' ? 'var(--accent)' : 'var(--muted)', cursor: 'pointer', fontFamily: 'monospace', fontSize: '0.8rem', fontWeight: 'bold', display: 'flex', alignItems: 'center' }}
+                            title="Light Themes"
+                        >
+                            {isCollapsed ? (
+                                <span style={{ display: 'inline-block', width: '14px', height: '14px', borderRadius: '50%', backgroundColor: '#fff', border: '2px solid #000', opacity: themeTab === 'light' ? 1 : 0.4 }} />
+                            ) : (
+                                themeTab === 'light' ? '[LIGHT]' : 'LIGHT'
+                            )}
+                        </button>
+                    </div>
+                </div>
+            )}
+            
+            <div className={styles.footer}>
                 <div className={`${styles.clock} ${isCollapsed ? styles.clockCollapsed : ''}`}>
                     {!isCollapsed ? `SYS_TIME: ${timeString}` : timeString}
                 </div>
