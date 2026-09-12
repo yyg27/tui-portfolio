@@ -76,6 +76,19 @@ export default function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps)
     
     const [isThemeMenuOpen, setIsThemeMenuOpen] = useState(false);
     
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            const target = event.target as Element;
+            if (!target.closest('#theme-menu') && !target.closest('#theme-toggle-btn')) {
+                setIsThemeMenuOpen(false);
+            }
+        };
+        if (isThemeMenuOpen) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, [isThemeMenuOpen]);
+    
     const handleThemeSelect = (idx: number) => {
         setThemeIndex(idx);
     };
@@ -115,7 +128,7 @@ export default function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps)
             <Navigation isCollapsed={isCollapsed} />
             
             {isThemeMenuOpen && (
-                <div className={styles.themeMenu}>
+                <div id="theme-menu" className={styles.themeMenu}>
                     <div style={{ display: 'flex', justifyContent: isCollapsed ? 'center' : 'flex-start', marginBottom: '8px', flexShrink: 0 }}>
                         <button 
                             onClick={() => setIsThemeMenuOpen(false)}
@@ -162,7 +175,7 @@ export default function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps)
                     {!isCollapsed ? `SYS_TIME: ${timeString}` : timeString}
                 </div>
                 <div className={styles.actions}>
-                    <button onClick={() => setIsThemeMenuOpen(!isThemeMenuOpen)} className={`${styles.actionBtn} ${isThemeMenuOpen ? styles.activeThemeBtn : ''}`} title="Themes">
+                    <button id="theme-toggle-btn" onClick={() => setIsThemeMenuOpen(!isThemeMenuOpen)} className={`${styles.actionBtn} ${isThemeMenuOpen ? styles.activeThemeBtn : ''}`} title="Themes">
                         [T]
                     </button>
                     <button onClick={onToggleCollapse} className={`${styles.actionBtn} ${styles.collapseBtn}`} title="Toggle Sidebar">
