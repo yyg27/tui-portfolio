@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import styles from "./Sidebar.module.css";
 import Navigation from "../Navigation/Navigation";
 
-const themes = ["amber", "matrix", "cyan", "dracula", "royal", "layor", "peach", "fener", "evangelion"];
-const darkThemes = ["amber", "matrix", "cyan", "dracula", "layor", "peach", "fener", "evangelion"];
-const lightThemes = ["royal"];
+const themes = ["amber", "matrix", "cyan", "dracula", "royal", "layor", "peach", "fener", "evangelion", "emerald", "coral", "cyberpunk", "everforest", "nord"];
+const darkThemes = ["amber", "matrix", "cyan", "dracula", "layor", "peach", "fener", "evangelion", "cyberpunk", "everforest", "nord"];
+const lightThemes = ["royal", "emerald", "coral"];
 const themeColors: Record<string, string> = {
     amber: "#ffb000",
     matrix: "#27c93f",
@@ -14,7 +14,12 @@ const themeColors: Record<string, string> = {
     layor: "#F8F3F0",
     peach: "#FE8254",
     fener: "#E4A419",
-    evangelion: "#8338EC"
+    evangelion: "#8338EC",
+    emerald: "#013E37",
+    coral: "#f0544d",
+    cyberpunk: "#fcee09",
+    everforest: "#a7c080",
+    nord: "#81a1c1",
 };
 const frames = ["/", "-", "\\", "|"];
 

@@ -44,6 +44,21 @@
     line-height: 0.95;
     letter-spacing: -1px;
     color: var(--accent);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+}
+
+:root[data-theme="royal"] .portrait pre,
+:root[data-theme="emerald"] .portrait pre,
+:root[data-theme="coral"] .portrait pre {
+    background-color: var(--accent);
+    color: var(--background);
+    padding: var(--space-sm);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+:root[data-theme="coral"] .portrait pre {
+    background-color: #8b2b28;
 }
 
 .content {
