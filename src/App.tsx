@@ -8,6 +8,7 @@ import Skills from "./components/Skills/Skills";
 import Contact from "./components/Contact/Contact";
 import Journey from "./components/Journey/Journey";
 import Terminal from "./components/Terminal/Terminal";
+import NotFound from "./components/NotFound/NotFound";
 
 function App() {
   const [showSidebar, setShowSidebar] = useState(true);
@@ -124,6 +125,9 @@ function App() {
           {currentPage === "skills" && <Skills />}
           {currentPage === "journey" && <Journey />}
           {currentPage === "contact" && <Contact />}
+          {!["home", "projects", "skills", "journey", "contact"].includes(currentPage) && (
+            <NotFound pageName={currentPage} />
+          )}
         </main>
         <Terminal />
       </div>

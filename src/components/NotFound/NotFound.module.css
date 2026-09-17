@@ -1,0 +1,216 @@
+.container {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+    font-family: monospace;
+    z-index: 1;
+    overflow: hidden;
+    padding: var(--space-xl) 0;
+    text-align: center;
+    transition: filter 0.1s;
+}
+
+.massive.shake, .subtitle.shake {
+    animation: shake 0.18s steps(2, end) 3;
+}
+
+@keyframes shake {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(-3px, 1px); }
+    50% { transform: translate(2px, -2px); }
+    75% { transform: translate(-1px, 2px); }
+    100% { transform: translate(0, 0); }
+}
+
+.massive.rgb, .subtitle.rgb {
+    animation: rgbshift 0.22s steps(2, end) 2;
+}
+
+@keyframes rgbshift {
+    0% { filter: none; }
+    33% { filter: drop-shadow(-4px 0 #ff2f6d) drop-shadow(4px 0 #00e5ff); }
+    66% { filter: drop-shadow(3px 0 #00e5ff) drop-shadow(-3px 0 #ff2f6d) saturate(1.6); }
+    100% { filter: none; }
+}
+
+.tear {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 7;
+    pointer-events: none;
+    height: 0;
+    background: rgba(255, 176, 0, 0.1);
+    box-shadow: 0 0 0 1px rgba(0, 229, 255, 0.25) inset;
+    opacity: 0;
+}
+
+.scanlines {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
+    background: repeating-linear-gradient(to bottom, rgba(0,0,0,0.1) 0 1px, transparent 1px 3px);
+}
+
+.glow {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: radial-gradient(ellipse at 50% 50%, var(--accent), transparent 60%);
+    opacity: 0.15;
+}
+
+.content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* MASSIVE GLITCH 404 */
+.massive {
+    font-size: clamp(6rem, 15vw, 12rem);
+    font-weight: 900;
+    color: var(--accent);
+    margin: 0;
+    line-height: 1;
+    position: relative;
+    text-shadow: 0 0 20px var(--accent);
+    display: inline-block;
+}
+
+.massive::before,
+.massive::after,
+.subtitle::before,
+.subtitle::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    background: transparent;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.massive::before,
+.subtitle::before {
+    color: var(--accent);
+    animation: g-top 2.6s steps(3, end) infinite;
+    clip-path: inset(0 0 55% 0);
+    z-index: 2;
+}
+
+.massive::after,
+.subtitle::after {
+    color: var(--text);
+    animation: g-bot 2.1s steps(3, end) infinite;
+    clip-path: inset(55% 0 0 0);
+    z-index: 3;
+}
+
+@keyframes g-top {
+    0%, 72%, 100% { transform: translate(0, 0); opacity: 0; }
+    74% { transform: translate(-6px, -2px); opacity: 0.9; }
+    78% { transform: translate(5px, 1px); opacity: 0.85; }
+    82% { transform: translate(-3px, 2px); opacity: 0.6; }
+    86% { transform: translate(0, 0); opacity: 0; }
+}
+
+@keyframes g-bot {
+    0%, 64%, 100% { transform: translate(0, 0); opacity: 0; }
+    66% { transform: translate(7px, 2px); opacity: 0.9; }
+    70% { transform: translate(-5px, -1px); opacity: 0.8; }
+    75% { transform: translate(2px, 3px); opacity: 0.5; }
+    80% { transform: translate(0, 0); opacity: 0; }
+}
+
+.slice {
+    position: absolute;
+    inset: 0;
+    color: var(--heading);
+    background: transparent;
+    clip-path: inset(42% 0 41% 0);
+    animation: slice 3.4s steps(2, end) infinite;
+    z-index: 4;
+}
+
+@keyframes slice {
+    0%, 88%, 100% { transform: translateX(0); opacity: 0; }
+    89% { transform: translateX(-14px); opacity: 1; }
+    92% { transform: translateX(11px); opacity: 1; }
+    95% { transform: translateX(-4px); opacity: 1; }
+}
+
+/* SUBTITLE & TEXT */
+.subtitle {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+}
+
+.subtitle.alert {
+    color: #ff2f6d;
+    text-shadow: 0 0 10px #ff2f6d;
+}
+
+.subtitle.alert::before,
+.subtitle.alert::after {
+    color: #ff2f6d;
+}
+
+.textBlock {
+    margin-top: 1rem;
+    text-align: left;
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    min-width: 320px;
+}
+
+.desc {
+    font-size: 1.1rem;
+    margin: 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px dashed var(--border);
+}
+
+.accent {
+    color: var(--accent);
+    font-weight: bold;
+}
+
+.suggestedTitle {
+    color: var(--muted);
+    margin: 0;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
