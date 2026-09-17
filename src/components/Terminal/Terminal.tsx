@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import styles from "./Terminal.module.css";
 
-const validThemes = ["amber", "matrix", "cyan", "dracula", "royal", "layor", "peach", "fener", "evangelion", "emerald", "coral", "cyberpunk", "everforest", "nord"];
+const validThemes = ["amber", "matrix", "dracula", "evangelion", "cyberpunk", "everforest", "nord", "fenerbahce", "peach", "cyan", "layor", "bubblegum", "emerald", "coral", "royal", "gruvbox", "violet", "wine", "mimosa"];
 
 const HELP_MESSAGE = [
     "AVAILABLE COMMANDS:",

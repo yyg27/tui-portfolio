@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import styles from "./Sidebar.module.css";
 import Navigation from "../Navigation/Navigation";
 
-const themes = ["amber", "matrix", "cyan", "dracula", "royal", "layor", "peach", "fener", "evangelion", "emerald", "coral", "cyberpunk", "everforest", "nord"];
-const darkThemes = ["amber", "matrix", "cyan", "dracula", "layor", "peach", "fener", "evangelion", "cyberpunk", "everforest", "nord"];
-const lightThemes = ["royal", "emerald", "coral"];
+const themes = ["amber", "matrix", "dracula", "evangelion", "cyberpunk", "everforest", "nord", "fenerbahce", "peach", "cyan", "layor", "bubblegum", "emerald", "coral", "royal", "gruvbox", "violet", "wine", "mimosa"];
+const darkThemes = ["amber", "matrix", "dracula", "evangelion", "cyberpunk", "everforest", "nord", "fenerbahce", "peach", "cyan", "layor", "bubblegum"];
+const lightThemes = ["emerald", "coral", "royal", "gruvbox", "violet", "wine", "mimosa"];
 const themeColors: Record<string, string> = {
     amber: "#ffb000",
     matrix: "#27c93f",
@@ -13,13 +13,18 @@ const themeColors: Record<string, string> = {
     royal: "#014BAA",
     layor: "#F8F3F0",
     peach: "#FE8254",
-    fener: "#E4A419",
-    evangelion: "#8338EC",
+    fenerbahce: "#E4A419",
+    evangelion: "#88FF5F",
     emerald: "#013E37",
     coral: "#f0544d",
     cyberpunk: "#fcee09",
     everforest: "#a7c080",
     nord: "#81a1c1",
+    gruvbox: "#9c4b2b",
+    violet: "#5f4a8b",
+    bubblegum: "#e3caff",
+    wine: "#7f011f",
+    mimosa: "#ffb000"
 };
 const frames = ["/", "-", "\\", "|"];
 

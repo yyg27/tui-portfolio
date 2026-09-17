@@ -86,7 +86,7 @@
     --muted: #90B0BC;
 }
 
-[data-theme="fener"] {
+[data-theme="fenerbahce"] {
     --background: #171A29;
     --surface: #1F2235;
     --surface-hover: #2A2D45;
@@ -162,4 +162,61 @@
     --border: #4c566a;
     --muted: #d8dee9;
 }
+
+[data-theme="gruvbox"] {
+    --background: #fbf1c7;
+    --surface: #ebdbb2;
+    --surface-hover: #d5c4a1;
+    --text: #3c3836;
+    --muted: #928374;
+    --heading: #9c4b2b;
+    --accent: #9c4b2b;
+    --border: #d5c4a1;
+}
+
+[data-theme="violet"] {
+    --background: #fefacd;
+    --surface: #f4f0c4;
+    --surface-hover: #eae6b9;
+    --text: #2d2342;
+    --muted: #826dae;
+    --heading: #4b3670;
+    --accent: #5f4a8b;
+    --border: #cdc99f;
+}
+
+[data-theme="bubblegum"] {
+    --background: #523763;
+    --surface: #5f4172;
+    --surface-hover: #6c4b81;
+    --text: #f0e6ff;
+    --muted: #a389ba;
+    --heading: #e3caff;
+    --accent: #e3caff;
+    --border: #795590;
+}
+
+[data-theme="wine"] {
+    --background: #f5ebd0;
+    --surface: #efe1bc;
+    --surface-hover: #e5d5a6;
+    --text: #3c000e;
+    --muted: #9e465a;
+    --heading: #600017;
+    --accent: #7f011f;
+    --border: #c4b58e;
+}
+
+[data-theme="mimosa"] {
+    --background: #fefacd;
+    --surface: #f4f0c4;
+    --surface-hover: #eae6b9;
+    --text: #4a3300;
+    --muted: #a67c00;
+    --heading: #d99600;
+    --accent: #ffb000;
+    --border: #f0dbb4;
+}
+
+
 
