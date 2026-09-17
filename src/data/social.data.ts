@@ -7,16 +7,16 @@ export const socialLinks = [
     {
         short: "L",
         label: "LinkedIn",
-        href: "#",
+        href: "https://www.linkedin.com/in/yusuf-yi%C4%9Fit-g%C3%BCltekin-87152539b/",
     },
     {
         short: "M",
         label: "Mail",
-        href: "mailto:example@example.com",
+        href: "mailto:yusufyigitgultekin@gmail.com",
     },
     {
         short: "C",
         label: "CV",
-        href: "#",
+        href: "/Yusuf_Yiğit_Gültekin_Resume.pdf",
     },
 ];
