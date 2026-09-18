@@ -13,6 +13,7 @@ interface Repo {
 
 const FEATURED_PROJECTS = [
     { name: "tui-portfolio", customDescription: "You are now viewing this project" },
+    { name: "manbun"},
     { name: "yildiz-fizyoterapi"},
     { name: "yayy"},
     { name: "aptt"},
