@@ -146,6 +146,7 @@
         margin: var(--space-sm);
         padding: var(--space-md);
         gap: var(--space-md);
+        flex-direction: column;
     }
     .intro h1 {
         font-size: 1.35rem;

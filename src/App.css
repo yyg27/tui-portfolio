@@ -41,12 +41,12 @@ main{
     }
     .contentWrapper {
         order: 1;
-        height: calc(100vh - 60px);
-        height: calc(100dvh - (60px + env(safe-area-inset-bottom, 0px)));
+        flex: 1;
+        height: auto;
+        min-height: 0;
     }
     .contentWrapper.noSidebar {
-        height: 100vh;
-        height: 100dvh;
+        height: auto;
     }
     .windowControls {
         cursor: pointer;

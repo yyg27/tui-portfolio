@@ -26,7 +26,9 @@ const FEATURED_PROJECTS = [
     { name: "NLP_insurance_agent"},
     { name: "NLP_lora_finetuning"},
     { name: "AnimalsAR_mediapie"},
+    { name: "subscription-tracker"},
     { name: "yyg-arch-gnome-setup"},
+    { name: "raylib-blockblast"},
 ];
 
 export default function Projects() {
