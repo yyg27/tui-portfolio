@@ -15,7 +15,7 @@ The project was built with **React**, **TypeScript**, and **Vite**, focusing on 
 
 ## Live Demo
 
-**[tui-portfolio-ecru.vercel.app](https://tui-portfolio-ecru.vercel.app/)**
+**[yyg27.runs-on.dev](https://yyg27.runs-on.dev)**
 
 ----------
 
