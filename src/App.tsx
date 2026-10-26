@@ -20,6 +20,9 @@ const pages: Record<string, ReactNode> = {
   contact: <Contact />,
 };
 
+// "/Projects/" and "/projects" open the same page
+const pageFromPath = () => window.location.pathname.replace(/^\/+|\/+$/g, "").toLowerCase() || "home";
+
 function App() {
   const [showSidebar, setShowSidebar] = useState(true);
   // boot animation once per browser session, never with reduced motion
@@ -46,18 +49,13 @@ function App() {
     }
   };
 
-  const [currentPage, setCurrentPage] = useState(() => {
-    const p = window.location.pathname.replace(/^\//, "");
-    return p || "home";
-  });
+  const [currentPage, setCurrentPage] = useState(pageFromPath);
 
   useEffect(() => {
-    const onPopState = () => {
-      const p = window.location.pathname.replace(/^\//, "");
-      setCurrentPage(p || "home");
-    };
+    const onPopState = () => setCurrentPage(pageFromPath());
 
     const onClick = (e: MouseEvent) => {
+      if (e.button || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return; // let the browser open a new tab/window
       const link = (e.target as HTMLElement).closest("a");
       if (!link) return;
       const href = link.getAttribute("href");
