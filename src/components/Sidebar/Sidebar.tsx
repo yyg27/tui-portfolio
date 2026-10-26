@@ -2,30 +2,9 @@ import { useState, useEffect } from "react";
 import styles from "./Sidebar.module.css";
 import Navigation from "../Navigation/Navigation";
 import Icon from "../Icon/Icon";
-import { themes, darkThemes, lightThemes } from "../../data/themes.data";
+import { themes, darkThemes, lightThemes, themeColors } from "../../data/themes.data";
 import { readStorage, writeStorage } from "../../utils/storage";
 
-const themeColors: Record<string, string> = {
-    amber: "#ffb000",
-    matrix: "#27c93f",
-    cyan: "#2196f3",
-    dracula: "#bd93f9",
-    royal: "#014BAA",
-    layor: "#F8F3F0",
-    peach: "#FE8254",
-    fenerbahce: "#E4A419",
-    evangelion: "#88FF5F",
-    emerald: "#013E37",
-    coral: "#f0544d",
-    cyberpunk: "#fcee09",
-    everforest: "#a7c080",
-    nord: "#81a1c1",
-    gruvbox: "#9c4b2b",
-    violet: "#5f4a8b",
-    bubblegum: "#e3caff",
-    wine: "#7f011f",
-    mimosa: "#ffb000"
-};
 const bootTime = Date.now(); // module load = page load, so uptime survives sidebar remounts
 const frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"];
 
