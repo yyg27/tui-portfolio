@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import styles from "./Projects.module.css";
+import { readStorage, writeStorage } from "../../utils/storage";
 
 interface Repo {
     id: number;
@@ -33,16 +34,17 @@ const FEATURED_PROJECTS = [
 ];
 
 export default function Projects() {
-    const [repos, setRepos] = useState<Repo[]>([]);
-    const [loading, setLoading] = useState(true);
+    // null while loading; kept for the session because GitHub allows 60 unauthenticated requests an hour per IP
+    const [repos, setRepos] = useState<Repo[] | null>(() => JSON.parse(readStorage("repos", "sessionStorage") ?? "null"));
     const [isGrid, setIsGrid] = useState(true);
 
     useEffect(() => {
+        if (repos) return;
         fetch("https://api.github.com/users/yyg27/repos?per_page=100")
             .then(res => res.ok ? res.json() : Promise.reject(res))
             .then(data => {
-                if (!Array.isArray(data)) return;
-                
+                if (!Array.isArray(data)) return setRepos([]);
+
                 const filtered = FEATURED_PROJECTS.flatMap(config => {
                     const found = data.find((r: Repo) => r.name === config.name);
                     return found ? [{
@@ -51,13 +53,16 @@ export default function Projects() {
                     }] : [];
                 });
 
+                writeStorage("repos", JSON.stringify(filtered), "sessionStorage");
                 setRepos(filtered);
             })
-            .catch(console.error)
-            .finally(() => setLoading(false));
-    }, []);
+            .catch(err => {
+                console.error(err);
+                setRepos([]);
+            });
+    }, [repos]);
 
-    if (loading) {
+    if (!repos) {
         return <div className={styles.loading}>[SYS] FETCHING_GITHUB_REPOS...</div>;
     }
 
