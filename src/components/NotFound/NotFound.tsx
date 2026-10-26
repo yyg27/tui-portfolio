@@ -9,6 +9,7 @@ export default function NotFound({ pageName }: { pageName: string }) {
     const tearRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
         const chars = "▓█▒░#@%&8§4Ø0";
         const junk = "!@#$%^&*<>/\\|~░▒▓█";
 

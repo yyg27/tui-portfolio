@@ -26,7 +26,7 @@ export default function SystemCard() {
 
     return (
         <section className={styles.systemCard}>
-            <div ref={portraitRef} className={styles.portrait}>
+            <div ref={portraitRef} className={styles.portrait} aria-hidden="true">
                 <pre>{asciiPortrait}</pre>
             </div>
 

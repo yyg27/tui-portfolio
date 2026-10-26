@@ -214,3 +214,9 @@
 .link:hover {
     text-decoration: underline;
 }
+
+@media (prefers-reduced-motion: reduce) {
+    .container * {
+        animation: none !important;
+    }
+}
