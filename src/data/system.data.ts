@@ -28,7 +28,7 @@ export const systemInfo = [
     },
     {
         label: "Languages",
-        value: "JavaScript, TypeScript, Python, C, C++",
+        value: "C, C++, C#, Python, JavaScript, TypeScript, Bash",
     },
     {
         label: "Frontend",
@@ -41,6 +41,14 @@ export const systemInfo = [
     {
         label: "Database",
         value: "MongoDB, PostgreSQL",
+    },
+    {
+        label: "AI & Robotics",
+        value: "PyTorch, Hugging Face, LangChain, ROS",
+    },
+    {
+        label: "Game Dev & XR",
+        value: "Unity, Raylib",
     },
     {
         label: "Tools",

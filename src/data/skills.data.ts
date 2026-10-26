@@ -13,9 +13,11 @@ export const skillsData: SkillGroup[] = [
         items: [
             { name: "C" },
             { name: "C++" },
+            { name: "C#" },
             { name: "Python" },
             { name: "JavaScript" },
-            { name: "TypeScript" }
+            { name: "TypeScript" },
+            { name: "Bash" }
         ]
     },
     { 
@@ -39,6 +41,22 @@ export const skillsData: SkillGroup[] = [
             { name: "Prisma" },
             { name: "PostgreSQL" },
             { name: "MongoDB" }
+        ]
+    },
+    { 
+        category: "AI & ROBOTICS", 
+        items: [
+            { name: "PyTorch" },
+            { name: "Hugging Face" },
+            { name: "LangChain" },
+            { name: "ROS" }
+        ]
+    },
+    { 
+        category: "GAME DEV & XR", 
+        items: [
+            { name: "Unity" },
+            { name: "Raylib" }
         ]
     },
     { 
