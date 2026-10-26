@@ -21,11 +21,12 @@ The project was built with **React**, **TypeScript**, and **Vite**, focusing on 
 
 ## Features
 
-- Responsive Design: Mobile, tablet, and desktop support.
-- Interactive Terminal: Page routes (`/projects`, `cd skills`, ...), `/theme <name>`, `neofetch`, `whoami`, `cv`, `/help` and `clear`, with Tab completion and ↑/↓ command history. On mobile it opens from the `[>_]` button.
+- Responsive Design: Mobile, tablet, and desktop support, with an app-style icon tab bar on phones.
+- Sharp SVG Icons: One small icon set for navigation, links, and the theme switcher, no icon library needed.
+- Interactive Terminal: Page routes (`/projects`, `cd skills`, ...), `/theme <name>`, `neofetch`, `whoami`, `github`, `linkedin`, `mail`, `cv`, `/help` and `clear`, with Tab completion and ↑/↓ command history. On mobile it opens from the `[>_]` button.
 - Fastfetch Dashboard: System info and portrait presentation.
 - Skill Constellations: Skills drawn as a star map, one constellation per category, laid out automatically from the data file.
-- 19 Dynamic Themes: Gruvbox, Nord, Dracula, Matrix, etc. with instant switching.
+- 19 Dynamic Themes: Gruvbox, Nord, Dracula, Matrix, etc. with instant switching. Dark themes get a CRT-style phosphor glow on text.
 - Custom 404: A shell session with a glitching figlet `404` and links to every page.
 - Live Status: Sidebar uptime counter and the deployed commit hash on the home page.
 - Accessible: Keyboard navigable, screen reader labels, and reduced motion respected.
@@ -107,7 +108,7 @@ This allows all personal portfolio content to be updated without modifying the R
 
 -   **`system.data.ts`**: Fastfetch system info (Bio, OS, Editor, Shell), also printed by the `neofetch` command
 -   **`skills.data.ts`**: Skill categories and items; each category becomes a constellation on the Skills page
--   **`social.data.ts`**: GitHub, LinkedIn, Mail, and CV links
+-   **`social.data.ts`**: GitHub, LinkedIn, Mail, and CV links (also available as terminal commands)
 -   **`themes.data.ts`**: Theme names shared by the theme menu and the `/theme` command
 -   **`navigation.data.ts`**: Pages shown in the sidebar, the terminal routes, and the 404 page
 
@@ -151,7 +152,7 @@ To update your CV, replace this file while ensuring the filename matches the lin
 public/favicon.svg
 ```
 
-The terminal `>_` tab icon.
+A single star from the Skills constellations, used as the tab icon. It switches colour with the browser's light or dark mode.
 
 ----------
 
@@ -169,6 +170,7 @@ The terminal `>_` tab icon.
 │   ├── components/
 │   │   ├── Contact/
 │   │   ├── Home/
+│   │   ├── Icon/
 │   │   ├── Journey/
 │   │   ├── Navigation/
 │   │   ├── NotFound/
