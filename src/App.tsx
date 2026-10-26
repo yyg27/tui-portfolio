@@ -86,7 +86,8 @@ function App() {
         />
       )}
       <div className={`contentWrapper ${!showSidebar ? "noSidebar" : ""}`}>
-        <main className="main">
+        {/* new key per page, so each page opens scrolled to the top */}
+        <main className="main" key={currentPage}>
           <div style={{ 
               marginBottom: '1.5rem', 
               marginLeft: '0.5rem',
