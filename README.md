@@ -22,10 +22,13 @@ The project was built with **React**, **TypeScript**, and **Vite**, focusing on 
 ## Features
 
 - Responsive Design: Mobile, tablet, and desktop support.
-- Interactive Terminal: Working commands (`ls`, `cd`, `whoami`, `theme`).
+- Interactive Terminal: Page routes (`/projects`, `cd skills`, ...), `/theme <name>`, `neofetch`, `whoami`, `cv`, `/help` and `clear`, with Tab completion and ↑/↓ command history. On mobile it opens from the `[>_]` button.
 - Fastfetch Dashboard: System info and portrait presentation.
-- 18 Dynamic Themes: Gruvbox, Nord, Dracula, Matrix, etc. with instant switching.
-- Custom 404: CRT-glitch hardware aesthetic for broken routes.
+- Skill Constellations: Skills drawn as a star map, one constellation per category, laid out automatically from the data file.
+- 19 Dynamic Themes: Gruvbox, Nord, Dracula, Matrix, etc. with instant switching.
+- Custom 404: A shell session with a glitching figlet `404` and links to every page.
+- Live Status: Sidebar uptime counter and the deployed commit hash on the home page.
+- Accessible: Keyboard navigable, screen reader labels, and reduced motion respected.
 - Centralized Content: TypeScript data files for easy management.
 - Static Architecture: No backend or database required.
 - Vercel Ready: Optimized for instant deployment.
@@ -34,9 +37,9 @@ The project was built with **React**, **TypeScript**, and **Vite**, focusing on 
 
 ## Tech Stack
 
--   **React 18**
--   **TypeScript 5**
--   **Vite**
+-   **React 19**
+-   **TypeScript 6**
+-   **Vite 8**
 -   **CSS Modules (Vanilla CSS)**
 -   **ESLint**
 
@@ -102,10 +105,13 @@ src/data/
 
 This allows all personal portfolio content to be updated without modifying the React components or CSS logic. The following information can be managed from these files:
 
--   **`system.data.ts`**: Fastfetch system info (Bio, OS, Editor, Shell)
--   **`projects.data.ts`**: Your GitHub projects and descriptions
--   **`skills.data.ts`**: Tech stack, frontend, backend, and tools
+-   **`system.data.ts`**: Fastfetch system info (Bio, OS, Editor, Shell), also printed by the `neofetch` command
+-   **`skills.data.ts`**: Skill categories and items; each category becomes a constellation on the Skills page
 -   **`social.data.ts`**: GitHub, LinkedIn, Mail, and CV links
+-   **`themes.data.ts`**: Theme names shared by the theme menu and the `/theme` command
+-   **`navigation.data.ts`**: Pages shown in the sidebar, the terminal routes, and the 404 page
+
+The list of featured GitHub repositories lives in `src/components/Projects/Projects.tsx` (`FEATURED_PROJECTS`); descriptions are fetched from the GitHub API.
 
 Changes made during local development are reflected immediately.
 
@@ -124,6 +130,12 @@ public/portrait.txt
 ```
 
 To replace the fastfetch portrait, update the ASCII art in this file. (Or replace it with an actual image if you prefer a standard photo).
+
+```text
+public/portrait.jpeg
+```
+
+The photo on the Contact page ID card, also used as the link preview image (`og:image` in `index.html`).
 
 ### Resume (CV)
 
@@ -149,24 +161,34 @@ The terminal `>_` tab icon.
 .
 ├── public/
 │   ├── favicon.svg
+│   ├── portrait.jpeg
 │   ├── portrait.txt
 │   └── Yusuf_Yiğit_Gültekin_Resume.pdf
 │
 ├── src/
 │   ├── components/
-│   │   ├── Terminal/
-│   │   ├── Sidebar/
+│   │   ├── Contact/
 │   │   ├── Home/
-│   │   └── NotFound/
+│   │   ├── Journey/
+│   │   ├── Navigation/
+│   │   ├── NotFound/
+│   │   ├── Projects/
+│   │   ├── Sidebar/
+│   │   ├── Skills/
+│   │   └── Terminal/
 │   │
 │   ├── data/
-│   │   ├── projects.data.ts
+│   │   ├── navigation.data.ts
 │   │   ├── skills.data.ts
 │   │   ├── social.data.ts
-│   │   └── system.data.ts
+│   │   ├── system.data.ts
+│   │   └── themes.data.ts
 │   │
 │   ├── styles/
 │   │   └── variables.css
+│   │
+│   ├── utils/
+│   │   └── storage.ts
 │   │
 │   ├── App.tsx
 │   └── main.tsx
@@ -187,6 +209,7 @@ The terminal `>_` tab icon.
 | `src/components/Terminal/` | The interactive CLI engine |
 | `src/data/` | Centralized website content |
 | `src/styles/` | Global styles and theme variables |
+| `src/utils/` | Small helpers (safe `localStorage` access) |
 | `src/App.tsx` | Main application router |
 | `public/` | Static files (Favicon, CV, ASCII art) |
 
@@ -205,6 +228,8 @@ Vercel
    ▼
 Production
 ```
+
+The `BUILD:` hash on the home page comes from `VERCEL_GIT_COMMIT_SHA` on Vercel (keep "Automatically expose System Environment Variables" enabled) and from `git rev-parse HEAD` in local builds. It shows `dev` when neither is available.
 
 ----------
 
