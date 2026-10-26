@@ -76,9 +76,11 @@ function App() {
     };
   }, []);
 
+  // the page mounts after the boot screen, so the hero starts typing in view
+  if (showBoot) return <BootScreen onDone={finishBoot} />;
+
   return (
     <div className="App">
-      {showBoot && <BootScreen onDone={finishBoot} />}
       {showSidebar && (
         <Sidebar
           isCollapsed={isSidebarCollapsed}

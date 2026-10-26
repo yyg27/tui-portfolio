@@ -36,14 +36,11 @@ export default function BootScreen({ onDone }: { onDone: () => void }) {
     // any key or click skips straight to the site
     useEffect(() => {
         const skip = () => setLeaving(true);
-        const keepFocus = (e: MouseEvent) => e.preventDefault(); // clicking the overlay shouldn't pull focus off the terminal
         window.addEventListener("keydown", skip);
         window.addEventListener("pointerdown", skip);
-        window.addEventListener("mousedown", keepFocus);
         return () => {
             window.removeEventListener("keydown", skip);
             window.removeEventListener("pointerdown", skip);
-            window.removeEventListener("mousedown", keepFocus);
         };
     }, []);
 
