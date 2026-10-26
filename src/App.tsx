@@ -10,6 +10,7 @@ import Contact from "./components/Contact/Contact";
 import Journey from "./components/Journey/Journey";
 import Terminal from "./components/Terminal/Terminal";
 import NotFound from "./components/NotFound/NotFound";
+import BootScreen from "./components/BootScreen/BootScreen";
 
 const pages: Record<string, ReactNode> = {
   home: <Home />,
@@ -21,6 +22,14 @@ const pages: Record<string, ReactNode> = {
 
 function App() {
   const [showSidebar, setShowSidebar] = useState(true);
+  // boot animation once per browser session, never with reduced motion
+  const [showBoot, setShowBoot] = useState(() =>
+    !readStorage("booted", "sessionStorage") && !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+  const finishBoot = () => {
+    writeStorage("booted", "true", "sessionStorage");
+    setShowBoot(false);
+  };
   const [isTerminalOpen, setIsTerminalOpen] = useState(false); // mobile only, desktop always shows it
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(() => {
     return readStorage("sidebarCollapsed") === "true";
@@ -72,6 +81,7 @@ function App() {
 
   return (
     <div className="App">
+      {showBoot && <BootScreen onDone={finishBoot} />}
       {showSidebar && (
         <Sidebar
           isCollapsed={isSidebarCollapsed}

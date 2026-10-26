@@ -1,0 +1,49 @@
+.boot {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: var(--background);
+    color: var(--text);
+    font-family: monospace;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    padding: var(--space-lg);
+    transition: opacity 0.25s;
+}
+
+.leaving {
+    opacity: 0;
+}
+
+.ok {
+    color: var(--accent);
+    font-weight: bold;
+}
+
+.login {
+    margin-top: var(--space-md);
+}
+
+.cursor {
+    color: var(--accent);
+    animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+.hint {
+    position: absolute;
+    right: var(--space-lg);
+    bottom: var(--space-lg);
+    color: var(--muted);
+    font-size: 0.75rem;
+}
+
+@media (max-width: 768px) {
+    .boot {
+        font-size: 0.8rem;
+        padding: var(--space-md);
+    }
+}
