@@ -7,7 +7,7 @@ export const socialLinks = [
     {
         short: "L",
         label: "LinkedIn",
-        href: "https://www.linkedin.com/in/yusuf-yi%C4%9Fit-g%C3%BCltekin-87152539b/",
+        href: "https://www.linkedin.com/in/yusuf-yi%C4%9Fit-g%C3%BCltekin-a9982a21b",
     },
     {
         short: "M",

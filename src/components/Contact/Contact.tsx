@@ -26,7 +26,7 @@ export default function Contact() {
                         </div>
                         <div className={styles.row}>
                             <span className={styles.label}>ROLE:</span>
-                            <span className={styles.value}>SOFTWARE ENGINEER</span>
+                            <span className={styles.value}>WEB &amp; MOBILE DEVELOPER</span>
                         </div>
                         <div className={styles.row}>
                             <span className={styles.label}>STATUS:</span>

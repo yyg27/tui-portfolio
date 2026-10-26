@@ -6,7 +6,7 @@ import { readStorage, writeStorage } from "../../../utils/storage";
 
 export default function HeroCard() {
     const title = "YUSUF YIGIT GULTEKIN";
-    const desc = "Junior Web & Mobile Developer & Linux enthusiast. I build things across the stack, explore how systems work, and enjoy turning technical ideas into something people can actually use.";
+    const desc = "Web & Mobile Developer & Linux enthusiast. I build things across the stack, explore how systems work, and enjoy turning technical ideas into something people can actually use.";
     const fullText = title + desc;
 
     const [textLen, setTextLen] = useState(() => {

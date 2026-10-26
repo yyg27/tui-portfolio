@@ -7,7 +7,7 @@ export const systemInfo = [
     },
     {
         label: "Role",
-        value: "Junior Web & Mobile Developer",
+        value: "Web & Mobile Developer",
     },
     {
         label: "Study",
