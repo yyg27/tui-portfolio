@@ -83,6 +83,7 @@ function App() {
     <div className="App">
       {showSidebar && (
         <Sidebar
+          currentPage={currentPage}
           isCollapsed={isSidebarCollapsed}
           onToggleCollapse={toggleSidebarCollapse}
         />

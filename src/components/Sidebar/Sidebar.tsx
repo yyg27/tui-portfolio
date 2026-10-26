@@ -9,6 +9,7 @@ const bootTime = Date.now(); // module load = page load, so uptime survives side
 const frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"];
 
 interface SidebarProps {
+    currentPage: string;
     isCollapsed: boolean;
     onToggleCollapse: () => void;
 }
@@ -41,7 +42,7 @@ function Uptime({ showLabel }: { showLabel: boolean }) {
     return <>{showLabel ? `UPTIME: ${time}` : time}</>;
 }
 
-export default function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
+export default function Sidebar({ currentPage, isCollapsed, onToggleCollapse }: SidebarProps) {
     // read from the page, not storage: it's set even when storage is blocked or the terminal changed it while the sidebar was hidden
     const current = document.documentElement.getAttribute("data-theme") ?? "";
     const [themeIndex, setThemeIndex] = useState(() => Math.max(0, themes.indexOf(current)));
@@ -123,7 +124,7 @@ export default function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps)
                     {!isCollapsed && "yyg27"}
                 </a>
             </header>
-            <Navigation isCollapsed={isCollapsed} />
+            <Navigation currentPage={currentPage} isCollapsed={isCollapsed} />
             
             {isThemeMenuOpen && (
                 <div id="theme-menu" className={styles.themeMenu}>
