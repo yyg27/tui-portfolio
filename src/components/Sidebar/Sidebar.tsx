@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import styles from "./Sidebar.module.css";
 import Navigation from "../Navigation/Navigation";
 import { themes, darkThemes, lightThemes } from "../../data/themes.data";
+import { readStorage, writeStorage } from "../../utils/storage";
 
 const themeColors: Record<string, string> = {
     amber: "#ffb000",
@@ -36,25 +37,25 @@ export default function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps)
     const [time, setTime] = useState(new Date());
     
     const [themeIndex, setThemeIndex] = useState(() => {
-        const saved = localStorage.getItem("theme");
+        const saved = readStorage("theme");
         const idx = saved ? themes.indexOf(saved) : 0;
         return idx !== -1 ? idx : 0;
     });
 
     const [themeTab, setThemeTab] = useState<'dark' | 'light'>(() => {
-        const saved = localStorage.getItem("theme");
+        const saved = readStorage("theme");
         return saved && lightThemes.includes(saved) ? 'light' : 'dark';
     });
 
     useEffect(() => {
         const currentTheme = themes[themeIndex];
         document.documentElement.setAttribute('data-theme', currentTheme);
-        localStorage.setItem("theme", currentTheme);
+        writeStorage("theme", currentTheme);
     }, [themeIndex]);
 
     useEffect(() => {
         const syncTheme = () => {
-            const saved = localStorage.getItem("theme");
+            const saved = readStorage("theme");
             const idx = saved ? themes.indexOf(saved) : -1;
             if (idx !== -1) {
                 setThemeIndex(idx);

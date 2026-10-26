@@ -1,5 +1,6 @@
 import { useState, useEffect, type ReactNode } from "react";
 import "./App.css";
+import { readStorage, writeStorage } from "./utils/storage";
 
 import Sidebar from './components/Sidebar/Sidebar';
 import Home from "./components/Home/Home";
@@ -21,11 +22,11 @@ const pages: Record<string, ReactNode> = {
 function App() {
   const [showSidebar, setShowSidebar] = useState(true);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(() => {
-    return localStorage.getItem("sidebarCollapsed") === "true";
+    return readStorage("sidebarCollapsed") === "true";
   });
 
   useEffect(() => {
-    localStorage.setItem("sidebarCollapsed", String(isSidebarCollapsed));
+    writeStorage("sidebarCollapsed", String(isSidebarCollapsed));
   }, [isSidebarCollapsed]);
 
   const toggleSidebarCollapse = () => {

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "./HeroCard.module.css";
 import { socialLinks } from "../../../data/social.data";
+import { readStorage, writeStorage } from "../../../utils/storage";
 
 
 export default function HeroCard() {
@@ -9,7 +10,8 @@ export default function HeroCard() {
     const fullText = title + desc;
 
     const [textLen, setTextLen] = useState(() => {
-        return sessionStorage.getItem("heroAnimated") ? fullText.length : 0;
+        const skip = readStorage("heroAnimated", "sessionStorage") || window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        return skip ? fullText.length : 0;
     });
 
     useEffect(() => {
@@ -17,7 +19,7 @@ export default function HeroCard() {
             const timer = setTimeout(() => setTextLen(l => l + 1), 30);
             return () => clearTimeout(timer);
         } else {
-            sessionStorage.setItem("heroAnimated", "true");
+            writeStorage("heroAnimated", "true", "sessionStorage");
         }
     }, [textLen, fullText.length]);
 

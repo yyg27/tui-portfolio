@@ -4,6 +4,7 @@ import { themes as validThemes } from "../../data/themes.data";
 import { navigationItems } from "../../data/navigation.data";
 import { systemInfo } from "../../data/system.data";
 import { socialLinks } from "../../data/social.data";
+import { writeStorage } from "../../utils/storage";
 
 const HELP_MESSAGE = [
     "AVAILABLE COMMANDS:",
@@ -60,7 +61,7 @@ export default function Terminal() {
                 setOutput(`Usage: /theme <name>\nAvailable: ${validThemes.join(", ")}`);
             } else if (validThemes.includes(themeName)) {
                 document.documentElement.setAttribute('data-theme', themeName);
-                localStorage.setItem("theme", themeName);
+                writeStorage("theme", themeName);
                 window.dispatchEvent(new Event("storage"));
                 setOutput(`[SYS] Theme set to: ${themeName}`);
             } else {
