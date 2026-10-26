@@ -33,9 +33,11 @@ export default function Terminal() {
             setOutput(prev => prev ? null : HELP_MESSAGE);
         } else if (cmd === "clear") {
             setOutput(null);
-        } else if (cmd.startsWith("/theme ")) {
-            const themeName = cmd.split(" ")[1];
-            if (validThemes.includes(themeName)) {
+        } else if (cmd === "/theme" || cmd.startsWith("/theme ")) {
+            const themeName = cmd.split(/\s+/)[1];
+            if (!themeName) {
+                setOutput(`Usage: /theme <name>\nAvailable: ${validThemes.join(", ")}`);
+            } else if (validThemes.includes(themeName)) {
                 document.documentElement.setAttribute('data-theme', themeName);
                 localStorage.setItem("theme", themeName);
                 window.dispatchEvent(new Event("storage"));
