@@ -57,8 +57,8 @@ export default function Skills() {
                                     <circle key={i} className={styles.dust} cx={d.x} cy={d.y} r={d.r} />
                                 ))}
                                 <polyline className={styles.line} pathLength={1} points={stars.map(s => `${s.x},${s.y}`).join(" ")} />
-                                {stars.map(s => (
-                                    <g key={s.name} className={styles.starGroup} style={{ "--t": s.twinkle } as CSSProperties}>
+                                {stars.map((s, si) => (
+                                    <g key={s.name} className={styles.starGroup} style={{ "--t": s.twinkle, "--n": si } as CSSProperties}>
                                         <circle className={styles.halo} cx={s.x} cy={s.y} r={7} />
                                         <circle className={styles.star} cx={s.x} cy={s.y} r={3.2} />
                                         <text className={styles.label} x={s.x} y={s.upper ? s.y - 12 : s.y + 19}>{s.name}</text>

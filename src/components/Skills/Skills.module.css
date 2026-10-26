@@ -190,9 +190,23 @@
     }
 }
 
+/* hovering a constellation wakes its stars one after another along the line */
+.constellation:hover .star {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: wake 0.6s ease-out both;
+    animation-delay: calc(var(--n) * 90ms);
+}
+
+/* a gentle swell, not a bounce */
+@keyframes wake {
+    50% { transform: scale(1.2); opacity: 1; }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .line,
-    .star {
+    .star,
+    .constellation:hover .star {
         animation: none;
     }
     .meteorLayer {
