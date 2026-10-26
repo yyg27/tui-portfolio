@@ -52,6 +52,43 @@
     outline: none;
 }
 
+.input {
+    caret-color: transparent;
+}
+
+/* while empty, push the placeholder right so the block cursor sits in front of it, not on its first letter */
+.input:placeholder-shown {
+    text-indent: 1.5ch;
+}
+
+/* invisible copy of the text up to the caret, so the block lands right after it */
+.caretLayer {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: monospace;
+    font-size: 1rem;
+    white-space: pre;
+    color: transparent;
+    pointer-events: none;
+}
+
+/* CSS tracks focus, so the block also shows when the input is auto-focused on load */
+.inputWrapper:not(:focus-within) .caretLayer {
+    display: none;
+}
+
+.blockCaret {
+    color: var(--accent);
+    opacity: 0.85;
+    animation: caret-blink 1s step-end infinite;
+}
+
+@keyframes caret-blink {
+    50% { opacity: 0; }
+}
+
 .input::placeholder {
     color: var(--muted);
 }
@@ -74,5 +111,21 @@
 
     .prompt {
         font-size: 0.8rem;
+    }
+}
+
+/* command output appears one line at a time, like a real terminal */
+.outLine {
+    display: block;
+    animation: out-print 0s calc(var(--i) * 25ms) both;
+}
+
+@keyframes out-print {
+    from { visibility: hidden; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .outLine {
+        animation: none;
     }
 }

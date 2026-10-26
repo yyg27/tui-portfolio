@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useLayoutEffect, useCallback, useRef, type CSSProperties } from "react";
 import styles from "./Terminal.module.css";
 import { themes as validThemes } from "../../data/themes.data";
 import { navigationItems } from "../../data/navigation.data";
@@ -43,6 +43,7 @@ function commonPrefix(words: string[]) {
 export default function Terminal({ mobileOpen }: { mobileOpen: boolean }) {
     const inputRef = useRef<HTMLInputElement>(null);
     const [input, setInput] = useState("");
+    const [caret, setCaret] = useState(0);
     const [output, setOutput] = useState<string | null>(null);
     const [history, setHistory] = useState<string[]>([]);
     const [historyIndex, setHistoryIndex] = useState(-1); // -1: not browsing history
@@ -100,6 +101,12 @@ export default function Terminal({ mobileOpen }: { mobileOpen: boolean }) {
         if (mobileOpen) inputRef.current?.focus();
     }, [mobileOpen]);
 
+    // the native caret is hidden; a block cursor is drawn at the caret position instead
+    const syncCaret = () => setCaret(inputRef.current?.selectionStart ?? 0);
+    useLayoutEffect(() => {
+        setCaret(inputRef.current?.selectionStart ?? 0);
+    }, [input]);
+
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter") {
             executeCommand(input);
@@ -131,12 +138,20 @@ export default function Terminal({ mobileOpen }: { mobileOpen: boolean }) {
         <div className={`${styles.terminal} ${mobileOpen ? styles.mobileOpen : ""}`}>
             {output && (
                 <div className={styles.output}>
-                    <pre>{output}</pre>
+                    {/* key replays the line-by-line print for each new output */}
+                    <pre key={output}>
+                        {output.split("\n").map((line, i) => (
+                            <span key={i} className={styles.outLine} style={{ "--i": i } as CSSProperties}>{line || " "}</span>
+                        ))}
+                    </pre>
                 </div>
             )}
             <div className={styles.inputRow}>
                 <span className={styles.prompt}>yyg27@portfolio:~$</span>
                 <div className={styles.inputWrapper}>
+                    <span className={styles.caretLayer} aria-hidden="true">
+                        {input.slice(0, caret)}<span className={styles.blockCaret}>█</span>
+                    </span>
                     <input
                         ref={inputRef}
                         type="text"
@@ -144,6 +159,7 @@ export default function Terminal({ mobileOpen }: { mobileOpen: boolean }) {
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                         onKeyDown={handleKeyDown}
+                        onSelect={syncCaret}
                         placeholder="Type /help for available commands or enter a route..."
                         autoFocus
                     />
