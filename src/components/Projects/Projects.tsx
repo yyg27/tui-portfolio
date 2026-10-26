@@ -6,7 +6,6 @@ interface Repo {
     name: string;
     description: string;
     html_url: string;
-    stargazers_count: number;
     language: string;
     visibility: string;
 }
@@ -91,7 +90,6 @@ export default function Projects() {
                                 <span>{repo.language}</span>
                             </div>
                         )}
-                        <div>★ {repo.stargazers_count}</div>
                     </div>
                 </div>
             ))}

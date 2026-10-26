@@ -16,3 +16,11 @@ body {
     background: var(--background);
     color: var(--text);
 }
+/* scrolling still works, only the bars are hidden (same as mobile nav) */
+* {
+    scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}

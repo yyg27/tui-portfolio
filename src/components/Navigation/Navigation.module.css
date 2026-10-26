@@ -38,12 +38,7 @@
         height: 100%;
         overflow-x: auto;
         overflow-y: hidden;
-        scrollbar-width: none;
         -webkit-overflow-scrolling: touch;
-    }
-
-    nav::-webkit-scrollbar {
-        display: none;
     }
 
     .navigationList {
