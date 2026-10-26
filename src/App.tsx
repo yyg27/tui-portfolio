@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, type ReactNode } from "react";
 import "./App.css";
 
 import Sidebar from './components/Sidebar/Sidebar';
@@ -9,6 +9,14 @@ import Contact from "./components/Contact/Contact";
 import Journey from "./components/Journey/Journey";
 import Terminal from "./components/Terminal/Terminal";
 import NotFound from "./components/NotFound/NotFound";
+
+const pages: Record<string, ReactNode> = {
+  home: <Home />,
+  projects: <Projects />,
+  skills: <Skills />,
+  journey: <Journey />,
+  contact: <Contact />,
+};
 
 function App() {
   const [showSidebar, setShowSidebar] = useState(true);
@@ -120,14 +128,7 @@ function App() {
                 <span style={{ color: 'var(--accent)' }}>~</span> /{currentPage}
             </div>
           </div>
-          {currentPage === "home" && <Home />}
-          {currentPage === "projects" && <Projects />}
-          {currentPage === "skills" && <Skills />}
-          {currentPage === "journey" && <Journey />}
-          {currentPage === "contact" && <Contact />}
-          {!["home", "projects", "skills", "journey", "contact"].includes(currentPage) && (
-            <NotFound pageName={currentPage} />
-          )}
+          {Object.hasOwn(pages, currentPage) ? pages[currentPage] : <NotFound pageName={currentPage} />}
         </main>
         <Terminal />
       </div>

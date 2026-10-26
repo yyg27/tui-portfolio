@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import styles from "./Terminal.module.css";
-
-const validThemes = ["amber", "matrix", "dracula", "evangelion", "cyberpunk", "everforest", "nord", "fenerbahce", "peach", "cyan", "layor", "bubblegum", "emerald", "coral", "royal", "gruvbox", "violet", "wine", "mimosa"];
+import { themes as validThemes } from "../../data/themes.data";
+import { navigationItems } from "../../data/navigation.data";
 
 const HELP_MESSAGE = [
     "AVAILABLE COMMANDS:",
@@ -11,27 +11,11 @@ const HELP_MESSAGE = [
     "  clear          (clear output)",
 ].join("\n");
 
-const routes: Record<string, string> = {
-    "/": "/",
-    "/home": "/",
-    "home": "/",
-    "cd home": "/",
-    "cd": "/",
-    "cd ~": "/",
-    "cd ..": "/",
-    "/projects": "/projects",
-    "projects": "/projects",
-    "cd projects": "/projects",
-    "/skills": "/skills",
-    "skills": "/skills",
-    "cd skills": "/skills",
-    "/journey": "/journey",
-    "journey": "/journey",
-    "cd journey": "/journey",
-    "/contact": "/contact",
-    "contact": "/contact",
-    "cd contact": "/contact",
-};
+const routes: Record<string, string> = { "/": "/", "cd": "/", "cd ~": "/", "cd ..": "/" };
+for (const { label, href } of navigationItems) {
+    const page = label.toLowerCase();
+    routes[`/${page}`] = routes[page] = routes[`cd ${page}`] = href;
+}
 
 export default function Terminal() {
     const [input, setInput] = useState("");
@@ -39,7 +23,7 @@ export default function Terminal() {
 
     const executeCommand = useCallback((raw: string) => {
         const cmd = raw.trim().toLowerCase();
-        if (routes[cmd]) {
+        if (Object.hasOwn(routes, cmd)) {
             window.history.pushState({}, "", routes[cmd]);
             window.dispatchEvent(new PopStateEvent("popstate"));
             setOutput(null);

@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
 import styles from "./Sidebar.module.css";
 import Navigation from "../Navigation/Navigation";
+import { themes, darkThemes, lightThemes } from "../../data/themes.data";
 
-const themes = ["amber", "matrix", "dracula", "evangelion", "cyberpunk", "everforest", "nord", "fenerbahce", "peach", "cyan", "layor", "bubblegum", "emerald", "coral", "royal", "gruvbox", "violet", "wine", "mimosa"];
-const darkThemes = ["amber", "matrix", "dracula", "evangelion", "cyberpunk", "everforest", "nord", "fenerbahce", "peach", "cyan", "layor", "bubblegum"];
-const lightThemes = ["emerald", "coral", "royal", "gruvbox", "violet", "wine", "mimosa"];
 const themeColors: Record<string, string> = {
     amber: "#ffb000",
     matrix: "#27c93f",
