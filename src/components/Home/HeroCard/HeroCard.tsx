@@ -47,17 +47,6 @@ export default function HeroCard() {
                 )}
             </div>
             
-            {/*STATUS BANNER */}
-            {/* 
-            {textLen === fullText.length && (
-                <div className={styles.statusBanner}>
-                    <span className={styles.blink}>[ ! ]</span>
-                    <div>STATUS:</div>
-                    <div className={styles.statusHighlight}>{heroStatus}</div>
-                </div>
-            )}
-            */}
-            
             <div className={styles.sysMem}>BUILD: {import.meta.env.VITE_BUILD}</div>
         </section>
     );

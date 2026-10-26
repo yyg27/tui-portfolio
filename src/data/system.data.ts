@@ -1,5 +1,3 @@
-// export const heroStatus = "OPEN TO INTERNSHIPS";
-
 export const systemInfo = [
     {
         label: "User",
