@@ -65,9 +65,10 @@ export default function Terminal() {
             if (!themeName) {
                 setOutput(`Usage: /theme <name>\nAvailable: ${validThemes.join(", ")}`);
             } else if (validThemes.includes(themeName)) {
+                // applied here too: the sidebar may be hidden (unmounted); the event only updates its menu
                 document.documentElement.setAttribute('data-theme', themeName);
                 writeStorage("theme", themeName);
-                window.dispatchEvent(new Event("storage"));
+                window.dispatchEvent(new CustomEvent("theme", { detail: themeName }));
                 setOutput(`[SYS] Theme set to: ${themeName}`);
             } else {
                 setOutput(`[ERR] Unknown theme '${themeName}'. Valid: ${validThemes.join(", ")}`);

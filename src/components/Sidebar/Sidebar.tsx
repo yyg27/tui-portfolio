@@ -30,16 +30,10 @@ function Spinner() {
 export default function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
     const [time, setTime] = useState(new Date());
     
-    const [themeIndex, setThemeIndex] = useState(() => {
-        const saved = readStorage("theme");
-        const idx = saved ? themes.indexOf(saved) : 0;
-        return idx !== -1 ? idx : 0;
-    });
-
-    const [themeTab, setThemeTab] = useState<'dark' | 'light'>(() => {
-        const saved = readStorage("theme");
-        return saved && lightThemes.includes(saved) ? 'light' : 'dark';
-    });
+    // read from the page, not storage: it's set even when storage is blocked or the terminal changed it while the sidebar was hidden
+    const current = document.documentElement.getAttribute("data-theme") ?? "";
+    const [themeIndex, setThemeIndex] = useState(() => Math.max(0, themes.indexOf(current)));
+    const [themeTab, setThemeTab] = useState<'dark' | 'light'>(() => lightThemes.includes(current) ? 'light' : 'dark');
 
     useEffect(() => {
         const currentTheme = themes[themeIndex];
@@ -47,17 +41,23 @@ export default function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps)
         writeStorage("theme", currentTheme);
     }, [themeIndex]);
 
+    // the terminal's /theme command and other tabs change the theme through here too
     useEffect(() => {
-        const syncTheme = () => {
-            const saved = readStorage("theme");
-            const idx = saved ? themes.indexOf(saved) : -1;
+        const select = (name: string | null) => {
+            const idx = name ? themes.indexOf(name) : -1;
             if (idx !== -1) {
                 setThemeIndex(idx);
-                setThemeTab(lightThemes.includes(saved!) ? 'light' : 'dark');
+                setThemeTab(lightThemes.includes(name!) ? 'light' : 'dark');
             }
         };
-        window.addEventListener("storage", syncTheme);
-        return () => window.removeEventListener("storage", syncTheme);
+        const fromTerminal = (e: Event) => select((e as CustomEvent<string>).detail);
+        const fromOtherTab = () => select(readStorage("theme"));
+        window.addEventListener("theme", fromTerminal);
+        window.addEventListener("storage", fromOtherTab);
+        return () => {
+            window.removeEventListener("theme", fromTerminal);
+            window.removeEventListener("storage", fromOtherTab);
+        };
     }, []);
 
     useEffect(() => {
