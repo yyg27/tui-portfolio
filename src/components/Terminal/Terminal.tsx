@@ -6,20 +6,23 @@ import { systemInfo } from "../../data/system.data";
 import { socialLinks } from "../../data/social.data";
 import { writeStorage } from "../../utils/storage";
 
+// "github", "linkedin", "mail", "cv" open the same links as the hero buttons
+const links = Object.fromEntries(socialLinks.map(l => [l.label.toLowerCase(), l.href]));
+const linkCommands = Object.keys(links);
+
 const HELP_MESSAGE = [
     "AVAILABLE COMMANDS:",
     "  /home, /projects, /skills, /journey, /contact  (or 'cd <page>')",
     `  /theme <name>  (${validThemes.join(" | ")})`,
     "  neofetch       (system info)",
     "  whoami         (who is this)",
-    "  cv             (open resume)",
+    `  ${linkCommands.join(", ")}  (open links)`,
     "  /help          (list commands)",
     "  clear          (clear output)",
     "  [TAB] complete  [UP/DOWN] history",
 ].join("\n");
 
 const NEOFETCH = ["yyg27@portfolio", "-".repeat(15), ...systemInfo.map(i => `${i.label}: ${i.value}`)].join("\n");
-const CV_HREF = socialLinks.find(l => l.label === "CV")!.href;
 
 const routes: Record<string, string> = { "/": "/", "cd": "/", "cd ~": "/", "cd ..": "/" };
 for (const { label, href } of navigationItems) {
@@ -27,7 +30,7 @@ for (const { label, href } of navigationItems) {
     routes[`/${page}`] = routes[page] = routes[`cd ${page}`] = href;
 }
 
-const completions = [...new Set([...Object.keys(routes), "/help", "clear", "neofetch", "whoami", "cv", ...validThemes.map(t => `/theme ${t}`)])];
+const completions = [...new Set([...Object.keys(routes), "/help", "clear", "neofetch", "whoami", ...linkCommands, ...validThemes.map(t => `/theme ${t}`)])];
 
 function commonPrefix(words: string[]) {
     return words.reduce((a, b) => {
@@ -72,9 +75,11 @@ export default function Terminal({ mobileOpen }: { mobileOpen: boolean }) {
             setOutput(NEOFETCH);
         } else if (cmd === "whoami") {
             setOutput(`yyg27 (${systemInfo[0].value})`);
-        } else if (cmd === "cv") {
-            window.open(CV_HREF, "_blank", "noopener");
-            setOutput(`[SYS] Opening ${CV_HREF}`);
+        } else if (Object.hasOwn(links, cmd)) {
+            const href = links[cmd];
+            if (href.startsWith("mailto:")) window.location.href = href;
+            else window.open(href, "_blank", "noopener");
+            setOutput(`[SYS] Opening ${href.replace(/^(https?:\/\/(www\.)?|mailto:)/, "")}`);
         } else if (cmd) {
             setOutput(`command not found: ${cmd}. Type /help for available commands.`);
         }
