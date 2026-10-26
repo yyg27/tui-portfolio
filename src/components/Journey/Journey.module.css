@@ -23,7 +23,7 @@
     position: absolute;
     left: calc(var(--space-xl) * -1 - 9px);
     color: var(--accent);
-    background: var(--panel);
+    background: var(--surface);
     font-size: 1.2rem;
 }
 .date {

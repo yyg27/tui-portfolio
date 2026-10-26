@@ -1,6 +1,6 @@
 .sidebar {
     width: 240px;
-    background-color: var(--panel);
+    background-color: var(--surface);
     border-right: 2px solid var(--border);
     display: flex;
     flex-direction: column;
@@ -94,7 +94,7 @@
 }
 
 .themeOptionBtn:hover {
-    background-color: var(--panel);
+    background-color: var(--surface);
 }
 
 .themeDot {

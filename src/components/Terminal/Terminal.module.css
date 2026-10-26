@@ -1,5 +1,5 @@
 .terminal {
-    background-color: var(--panel);
+    background-color: var(--surface);
     border-top: 2px solid var(--border);
     padding: var(--space-md) var(--space-lg);
     display: flex;
