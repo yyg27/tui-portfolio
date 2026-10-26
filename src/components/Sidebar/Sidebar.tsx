@@ -25,7 +25,7 @@ const themeColors: Record<string, string> = {
     wine: "#7f011f",
     mimosa: "#ffb000"
 };
-const frames = ["/", "-", "\\", "|"];
+const frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"];
 
 interface SidebarProps {
     isCollapsed: boolean;
@@ -34,14 +34,14 @@ interface SidebarProps {
     onToggleTerminal: () => void;
 }
 
-// own component so the 150ms tick re-renders only the spinner, not the whole sidebar
+// own component so the 80ms tick re-renders only the spinner, not the whole sidebar
 function Spinner() {
     const [frame, setFrame] = useState(0);
 
     useEffect(() => {
         const timer = setInterval(() => {
             setFrame(f => (f + 1) % frames.length);
-        }, 150);
+        }, 80);
         return () => clearInterval(timer);
     }, []);
 
@@ -136,7 +136,7 @@ export default function Sidebar({ isCollapsed, onToggleCollapse, isTerminalOpen,
             <header className={`${styles.header} ${isCollapsed ? styles.headerCollapsed : ''}`}>
                 <a href="/">
                     <span style={{ marginRight: isCollapsed ? '0' : '8px', opacity: 0.8 }}>
-                        {isCollapsed ? "***" : <Spinner />}
+                        {isCollapsed ? "~" : <Spinner />}
                     </span>
                     {!isCollapsed && "yyg27"}
                 </a>
