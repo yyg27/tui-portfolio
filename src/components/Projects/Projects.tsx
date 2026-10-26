@@ -95,7 +95,7 @@ export default function Projects() {
                     </div>
                 </div>
             ))}
-            {repos.length === 0 && <div>Projeler bulunamadı veya FEATURED_PROJECTS listesi boş.</div>}
+            {repos.length === 0 && <div className={styles.loading}>[ERR] GITHUB_API_UNREACHABLE. See <a href="https://github.com/yyg27" target="_blank" rel="noreferrer">github.com/yyg27</a></div>}
         </section>
         </div>
     );

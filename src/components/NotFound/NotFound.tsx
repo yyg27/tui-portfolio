@@ -4,7 +4,7 @@ import styles from "./NotFound.module.css";
 export default function NotFound({ pageName }: { pageName: string }) {
     const bigRef = useRef<HTMLHeadingElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
-    const descRef = useRef<HTMLParagraphElement>(null);
+    const descRef = useRef<HTMLSpanElement>(null);
     const subRef = useRef<HTMLHeadingElement>(null);
     const tearRef = useRef<HTMLDivElement>(null);
 
@@ -44,9 +44,9 @@ export default function NotFound({ pageName }: { pageName: string }) {
             const s = base.split("").map((c) => {
                 return (c !== " " && Math.random() < 0.09) ? junk[Math.floor(Math.random() * junk.length)] : c;
             }).join("");
-            descRef.current.innerHTML = `${s}<span class="${styles.accent}">/${pageName}</span>`;
+            descRef.current.textContent = s;
             setTimeout(() => {
-                if (descRef.current) descRef.current.innerHTML = `${base}<span class="${styles.accent}">/${pageName}</span>`;
+                if (descRef.current) descRef.current.textContent = base;
             }, 120);
         }, 2200);
 
@@ -125,8 +125,8 @@ export default function NotFound({ pageName }: { pageName: string }) {
                 </h2>
                 
                 <div className={styles.textBlock}>
-                    <p ref={descRef} className={styles.desc}>
-                        path not found: <span className={styles.accent}>/{pageName}</span>
+                    <p className={styles.desc}>
+                        <span ref={descRef}>path not found: </span><span className={styles.accent}>/{pageName}</span>
                     </p>
                     
                     <p className={styles.suggestedTitle}>Suggested actions:</p>
