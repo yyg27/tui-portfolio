@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "./Sidebar.module.css";
 import Navigation from "../Navigation/Navigation";
+import Icon from "../Icon/Icon";
 import { themes, darkThemes, lightThemes } from "../../data/themes.data";
 import { readStorage, writeStorage } from "../../utils/storage";
 
@@ -196,8 +197,8 @@ export default function Sidebar({ isCollapsed, onToggleCollapse, isTerminalOpen,
                     <button onClick={onToggleTerminal} className={`${styles.actionBtn} ${styles.terminalBtn} ${isTerminalOpen ? styles.activeThemeBtn : ''}`} title="Terminal" aria-expanded={isTerminalOpen}>
                         [&gt;_]
                     </button>
-                    <button id="theme-toggle-btn" onClick={() => setIsThemeMenuOpen(!isThemeMenuOpen)} className={`${styles.actionBtn} ${isThemeMenuOpen ? styles.activeThemeBtn : ''}`} title="Themes">
-                        [T]
+                    <button id="theme-toggle-btn" onClick={() => setIsThemeMenuOpen(!isThemeMenuOpen)} className={`${styles.actionBtn} ${isThemeMenuOpen ? styles.activeThemeBtn : ''}`} title="Themes" aria-label="Themes" aria-expanded={isThemeMenuOpen}>
+                        <Icon name="theme" />
                     </button>
                     <button onClick={onToggleCollapse} className={`${styles.actionBtn} ${styles.collapseBtn}`} title="Toggle Sidebar">
                         {isCollapsed ? "[>]" : "[<]"}

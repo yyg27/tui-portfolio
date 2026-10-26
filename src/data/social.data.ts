@@ -1,21 +1,23 @@
-export const socialLinks = [
+import type { IconName } from "../components/Icon/Icon";
+
+export const socialLinks: { icon: IconName; label: string; href: string }[] = [
     {
-        short: "G",
+        icon: "github",
         label: "GitHub",
         href: "https://github.com/yyg27",
     },
     {
-        short: "L",
+        icon: "linkedin",
         label: "LinkedIn",
         href: "https://www.linkedin.com/in/yusuf-yi%C4%9Fit-g%C3%BCltekin-a9982a21b",
     },
     {
-        short: "M",
+        icon: "mail",
         label: "Mail",
         href: "mailto:yusufyigitgultekin@gmail.com",
     },
     {
-        short: "C",
+        icon: "file",
         label: "CV",
         href: "/Yusuf_Yiğit_Gültekin_Resume.pdf",
     },

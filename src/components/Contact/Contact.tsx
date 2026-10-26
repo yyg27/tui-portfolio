@@ -1,5 +1,6 @@
 import styles from "./Contact.module.css";
 import { socialLinks } from "../../data/social.data";
+import Icon from "../Icon/Icon";
 
 export default function Contact() {
     return (
@@ -38,7 +39,7 @@ export default function Contact() {
                             <div className={styles.linksWrapper}>
                                 {socialLinks.map(link => (
                                     <a key={link.label} href={link.href} target="_blank" rel="noreferrer" className={styles.socialLink}>
-                                        <span className={styles.icon}>[{link.short}]</span> {link.label}
+                                        <span className={styles.icon}><Icon name={link.icon} /></span> {link.label}
                                     </a>
                                 ))}
                             </div>

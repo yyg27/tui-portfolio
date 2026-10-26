@@ -1,5 +1,6 @@
 import { navigationItems } from "../../data/navigation.data";
 import styles from "./Navigation.module.css";
+import Icon from "../Icon/Icon";
 
 export default function Navigation({ isCollapsed = false }: { isCollapsed?: boolean }) {
     const activePage = window.location.pathname;
@@ -9,19 +10,15 @@ export default function Navigation({ isCollapsed = false }: { isCollapsed?: bool
             <ul className={`${styles.navigationList} ${isCollapsed ? styles.collapsed : ''}`}>
                 {navigationItems.map((item) => (
                     <li key={item.href}>
-                        <a 
-                            href={item.href} 
+                        <a
+                            href={item.href}
                             title={item.label}
+                            aria-label={isCollapsed ? item.label : undefined}
+                            aria-current={item.href === activePage ? "page" : undefined}
                             className={item.href === activePage ? styles.active : ''}
                         >
-                            {!isCollapsed && (
-                                <span className={styles.navArrow} style={{ width: '1rem', display: 'inline-block', fontFamily: 'monospace' }}>
-                                    {item.href === activePage ? ">" : ""}
-                                </span>
-                            )}
-                            <span className={styles.navText}>
-                                {isCollapsed ? `[${item.label[0]}]` : item.label}
-                            </span>
+                            <span className={styles.navIcon}><Icon name={item.icon} /></span>
+                            {!isCollapsed && <span className={styles.navText}>{item.label}</span>}
                         </a>
                     </li>
                 ))}

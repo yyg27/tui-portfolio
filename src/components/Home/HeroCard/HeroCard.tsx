@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "./HeroCard.module.css";
 import { socialLinks } from "../../../data/social.data";
+import Icon from "../../Icon/Icon";
 import { readStorage, writeStorage } from "../../../utils/storage";
 
 
@@ -39,7 +40,7 @@ export default function HeroCard() {
                     <div className={styles.links}>
                         {socialLinks.map((link) => (
                             <a key={link.label} href={link.href} target="_blank" rel="noreferrer">
-                                [{link.short}] {link.label}
+                                <Icon name={link.icon} /> {link.label}
                             </a>
                         ))}
                     </div>

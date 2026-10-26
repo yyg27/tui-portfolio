@@ -137,6 +137,9 @@
 }
 
 .icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     color: var(--accent);
     border: 1px solid var(--accent);
     padding: 4px 8px;
