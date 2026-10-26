@@ -27,9 +27,21 @@ function Spinner() {
     return <>[{frames[frame]}]</>;
 }
 
+// own component too, so the 1s tick doesn't re-render the theme menu and navigation
+function Uptime({ showLabel }: { showLabel: boolean }) {
+    const [now, setNow] = useState(Date.now);
+
+    useEffect(() => {
+        const clock = setInterval(() => setNow(Date.now()), 1000);
+        return () => clearInterval(clock);
+    }, []);
+
+    const up = Math.floor((now - bootTime) / 1000);
+    const time = [up / 3600, (up / 60) % 60, up % 60].map(n => String(Math.floor(n)).padStart(2, "0")).join(":");
+    return <>{showLabel ? `UPTIME: ${time}` : time}</>;
+}
+
 export default function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
-    const [time, setTime] = useState(new Date());
-    
     // read from the page, not storage: it's set even when storage is blocked or the terminal changed it while the sidebar was hidden
     const current = document.documentElement.getAttribute("data-theme") ?? "";
     const [themeIndex, setThemeIndex] = useState(() => Math.max(0, themes.indexOf(current)));
@@ -60,16 +72,6 @@ export default function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps)
         };
     }, []);
 
-    useEffect(() => {
-        const clock = setInterval(() => {
-            setTime(new Date());
-        }, 1000);
-        return () => clearInterval(clock);
-    }, []);
-
-    const up = Math.floor((time.getTime() - bootTime) / 1000);
-    const timeString = [up / 3600, (up / 60) % 60, up % 60].map(n => String(Math.floor(n)).padStart(2, "0")).join(":");
-    
     const [isThemeMenuOpen, setIsThemeMenuOpen] = useState(false);
     
     useEffect(() => {
@@ -168,7 +170,7 @@ export default function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps)
             
             <div className={styles.footer}>
                 <div className={`${styles.clock} ${isCollapsed ? styles.clockCollapsed : ''}`}>
-                    {!isCollapsed ? `UPTIME: ${timeString}` : timeString}
+                    <Uptime showLabel={!isCollapsed} />
                 </div>
                 <div className={styles.actions}>
                     <button id="theme-toggle-btn" onClick={() => setIsThemeMenuOpen(!isThemeMenuOpen)} className={`${styles.actionBtn} ${isThemeMenuOpen ? styles.activeThemeBtn : ''}`} title="Themes" aria-label="Themes" aria-expanded={isThemeMenuOpen}>
