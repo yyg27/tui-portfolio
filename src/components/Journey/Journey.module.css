@@ -18,13 +18,17 @@
 .event {
     position: relative;
 }
+/* a drawn 10px dot centred on the 2px timeline line (a text glyph's width varies by font) */
 .event::before {
-    content: "●";
+    content: "";
     position: absolute;
-    left: calc(var(--space-xl) * -1 - 9px);
-    color: var(--accent);
-    background: var(--surface);
-    font-size: 1.2rem;
+    top: 0.35rem;
+    left: calc(var(--space-xl) * -1 - 6px);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 4px var(--background); /* page-coloured ring hides the line right around the dot */
 }
 .date {
     font-family: monospace;
@@ -63,6 +67,6 @@
         margin-left: var(--space-sm);
     }
     .event::before {
-        left: calc(var(--space-lg) * -1 - 8px);
+        left: calc(var(--space-lg) * -1 - 6px);
     }
 }
