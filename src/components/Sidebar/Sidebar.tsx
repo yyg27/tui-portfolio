@@ -32,8 +32,21 @@ interface SidebarProps {
     onToggleCollapse: () => void;
 }
 
-export default function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
+// own component so the 150ms tick re-renders only the spinner, not the whole sidebar
+function Spinner() {
     const [frame, setFrame] = useState(0);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setFrame(f => (f + 1) % frames.length);
+        }, 150);
+        return () => clearInterval(timer);
+    }, []);
+
+    return <>[{frames[frame]}]</>;
+}
+
+export default function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
     const [time, setTime] = useState(new Date());
     
     const [themeIndex, setThemeIndex] = useState(() => {
@@ -67,18 +80,10 @@ export default function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps)
     }, []);
 
     useEffect(() => {
-        const timer = setInterval(() => {
-            setFrame(f => (f + 1) % frames.length);
-        }, 150);
-        
         const clock = setInterval(() => {
             setTime(new Date());
         }, 1000);
-        
-        return () => {
-            clearInterval(timer);
-            clearInterval(clock);
-        };
+        return () => clearInterval(clock);
     }, []);
 
     const timeString = time.toLocaleTimeString('en-US', { hour12: false });
@@ -129,7 +134,7 @@ export default function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps)
             <header className={`${styles.header} ${isCollapsed ? styles.headerCollapsed : ''}`}>
                 <a href="/">
                     <span style={{ marginRight: isCollapsed ? '0' : '8px', opacity: 0.8 }}>
-                        {isCollapsed ? "***" : `[${frames[frame]}]`}
+                        {isCollapsed ? "***" : <Spinner />}
                     </span>
                     {!isCollapsed && "yyg27"}
                 </a>
