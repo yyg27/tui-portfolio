@@ -155,10 +155,6 @@
     padding: 0.2rem;
 }
 
-.terminalBtn {
-    display: none;
-}
-
 /* the palette icon needs room for its dots to read */
 .actionBtn svg {
     width: 1.25em;
@@ -213,10 +209,6 @@
 
     .collapseBtn {
         display: none;
-    }
-
-    .terminalBtn {
-        display: inline;
     }
 
     .themeMenu {

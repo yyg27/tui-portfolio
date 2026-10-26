@@ -23,7 +23,7 @@ The project was built with **React**, **TypeScript**, and **Vite**, focusing on 
 
 - Responsive Design: Mobile, tablet, and desktop support, with an app-style icon tab bar on phones.
 - Sharp SVG Icons: One small icon set for navigation, links, and the theme switcher, no icon library needed.
-- Interactive Terminal: Page routes (`/projects`, `cd skills`, ...), `/theme <name>`, `neofetch`, `whoami`, `github`, `linkedin`, `mail`, `cv`, `/help` and `clear`, with Tab completion and ↑/↓ command history. On mobile it opens from the `[>_]` button.
+- Interactive Terminal: Page routes (`/projects`, `cd skills`, ...), `/theme <name>`, `neofetch`, `whoami`, `github`, `linkedin`, `mail`, `cv`, `/help` and `clear`, with Tab completion and ↑/↓ command history. Desktop only.
 - Fastfetch Dashboard: System info and portrait presentation.
 - Skill Constellations: Skills drawn as a star map, one constellation per category, laid out automatically from the data file.
 - 19 Dynamic Themes: Gruvbox, Nord, Dracula, Matrix, etc. with instant switching. Dark themes get a CRT-style phosphor glow on text.

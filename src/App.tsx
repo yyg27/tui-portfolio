@@ -30,7 +30,6 @@ function App() {
     writeStorage("booted", "true", "sessionStorage");
     setShowBoot(false);
   };
-  const [isTerminalOpen, setIsTerminalOpen] = useState(false); // mobile only, desktop always shows it
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(() => {
     return readStorage("sidebarCollapsed") === "true";
   });
@@ -86,8 +85,6 @@ function App() {
         <Sidebar
           isCollapsed={isSidebarCollapsed}
           onToggleCollapse={toggleSidebarCollapse}
-          isTerminalOpen={isTerminalOpen}
-          onToggleTerminal={() => setIsTerminalOpen(o => !o)}
         />
       )}
       <div className={`contentWrapper ${!showSidebar ? "noSidebar" : ""}`}>
@@ -144,7 +141,7 @@ function App() {
           </div>
           {Object.hasOwn(pages, currentPage) ? pages[currentPage] : <NotFound pageName={currentPage} />}
         </main>
-        <Terminal mobileOpen={isTerminalOpen} />
+        <Terminal />
       </div>
     </div>
   );

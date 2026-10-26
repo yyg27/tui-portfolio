@@ -40,7 +40,7 @@ function commonPrefix(words: string[]) {
     });
 }
 
-export default function Terminal({ mobileOpen }: { mobileOpen: boolean }) {
+export default function Terminal() {
     const inputRef = useRef<HTMLInputElement>(null);
     const [input, setInput] = useState("");
     const [caret, setCaret] = useState(0);
@@ -97,10 +97,6 @@ export default function Terminal({ mobileOpen }: { mobileOpen: boolean }) {
         return () => window.removeEventListener("terminal-command", onCustomCmd);
     }, [executeCommand]);
 
-    useEffect(() => {
-        if (mobileOpen) inputRef.current?.focus();
-    }, [mobileOpen]);
-
     // the native caret is hidden; a block cursor is drawn at the caret position instead
     const syncCaret = () => setCaret(inputRef.current?.selectionStart ?? 0);
     useLayoutEffect(() => {
@@ -135,7 +131,7 @@ export default function Terminal({ mobileOpen }: { mobileOpen: boolean }) {
     };
 
     return (
-        <div className={`${styles.terminal} ${mobileOpen ? styles.mobileOpen : ""}`}>
+        <div className={styles.terminal}>
             {output && (
                 <div className={styles.output}>
                     {/* key replays the line-by-line print for each new output */}

@@ -96,21 +96,6 @@
 @media (max-width: 768px) {
     .terminal {
         display: none;
-        padding: var(--space-sm);
-    }
-
-    .terminal.mobileOpen {
-        display: flex;
-    }
-
-    .output {
-        max-height: 40vh;
-        overflow-y: auto;
-        font-size: 0.75rem;
-    }
-
-    .prompt {
-        font-size: 0.8rem;
     }
 }
 

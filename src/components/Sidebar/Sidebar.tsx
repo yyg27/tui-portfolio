@@ -32,8 +32,6 @@ const frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "
 interface SidebarProps {
     isCollapsed: boolean;
     onToggleCollapse: () => void;
-    isTerminalOpen: boolean;
-    onToggleTerminal: () => void;
 }
 
 // own component so the 80ms tick re-renders only the spinner, not the whole sidebar
@@ -50,7 +48,7 @@ function Spinner() {
     return <>[{frames[frame]}]</>;
 }
 
-export default function Sidebar({ isCollapsed, onToggleCollapse, isTerminalOpen, onToggleTerminal }: SidebarProps) {
+export default function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
     const [time, setTime] = useState(new Date());
     
     const [themeIndex, setThemeIndex] = useState(() => {
@@ -194,9 +192,6 @@ export default function Sidebar({ isCollapsed, onToggleCollapse, isTerminalOpen,
                     {!isCollapsed ? `UPTIME: ${timeString}` : timeString}
                 </div>
                 <div className={styles.actions}>
-                    <button onClick={onToggleTerminal} className={`${styles.actionBtn} ${styles.terminalBtn} ${isTerminalOpen ? styles.activeThemeBtn : ''}`} title="Terminal" aria-expanded={isTerminalOpen}>
-                        [&gt;_]
-                    </button>
                     <button id="theme-toggle-btn" onClick={() => setIsThemeMenuOpen(!isThemeMenuOpen)} className={`${styles.actionBtn} ${isThemeMenuOpen ? styles.activeThemeBtn : ''}`} title="Themes" aria-label="Themes" aria-expanded={isThemeMenuOpen}>
                         <Icon name="theme" />
                     </button>
