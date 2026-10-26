@@ -1,130 +1,201 @@
 .skillsContainer {
-    /* Normal TUI Look */
-    
-    min-height: 100%;
-    padding: var(--space-xl);
+    padding: var(--space-lg) var(--space-md);
     display: flex;
     flex-direction: column;
     gap: var(--space-xl);
+    font-family: monospace;
 }
 
+/* centred title flanked by hairlines, like the constellation screen in Skyrim */
 .header {
-    font-family: monospace;
-    font-size: 2rem;
-    font-weight: bold;
-    border-bottom: 4px solid var(--accent);
-    padding-bottom: var(--space-md);
-    margin-bottom: var(--space-md);
+    text-align: center;
 }
 
-.blinker {
-    animation: blink 1s step-end infinite;
-}
-
-@keyframes blink {
-    50% { opacity: 0; }
-}
-
-.group {
-    background: var(--surface);
-    border: 2px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: var(--space-lg);
-}
-
-.categoriesWrapper {
+.title {
     display: flex;
-    flex-direction: column;
-    gap: var(--space-xl);
-}
-
-.categoryBlock {
-    display: flex;
-    flex-direction: column;
+    align-items: center;
     gap: var(--space-md);
-}
-
-.categoryTitle {
-    font-family: monospace;
-    font-weight: bold;
-    font-size: 1.2rem;
-    color: var(--accent);
-    margin-bottom: var(--space-sm);
-}
-
-.itemsBox {
-    background-color: var(--surface);
-    border: 2px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: var(--space-lg);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-lg);
-}
-
-.itemsGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: var(--space-md);
-}
-
-.skillRow {
-    border: 1px solid var(--border);
-    padding: var(--space-sm) var(--space-md);
-    background-color: transparent;
-    color: var(--text);
-    cursor: default;
-    transition: all 0.1s;
-}
-
-.skillRow:hover {
-    background-color: var(--accent);
-    color: var(--background);
-    border: 1px solid var(--accent);
-}
-
-.skillRow:hover .skillHeader {
-    color: var(--background);
-}
-
-.skillHeader {
-    display: flex;
-    justify-content: space-between;
-    font-family: monospace;
-    font-weight: bold;
-    font-size: 1.1rem;
-    color: var(--text);
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: normal;
+    letter-spacing: 0.6em;
     text-transform: uppercase;
+    color: var(--heading);
+}
+
+.title::before,
+.title::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
+.title::after {
+    margin-left: -0.6em; /* cancel the trailing letter-spacing so the word stays centred */
+}
+
+.subtitle {
+    margin: var(--space-xs) 0 0;
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+/* at most 3 columns, so 6 constellations always fill whole rows (3x2, 2x3 or 1x6) */
+.sky {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(max(min(100%, 320px), calc((100% - 2 * var(--space-lg)) / 3)), 1fr));
+    gap: var(--space-xl) var(--space-lg);
+    width: 100%;
+    max-width: 1200px; /* keeps each constellation around 370px on wide screens */
+    margin: 0 auto;
+}
+
+.meteorLayer {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* one streak every 20s, visible for about a second */
+.meteor {
+    position: absolute;
+    top: 8%;
+    left: 5%;
+    width: 140px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--accent));
+    opacity: 0;
+    animation: shoot 20s linear 6s infinite;
+}
+
+@keyframes shoot {
+    0% { opacity: 0; transform: translate(0, 0) rotate(18deg); }
+    1% { opacity: 1; }
+    5% { opacity: 0; transform: translate(min(60vw, 700px), 230px) rotate(18deg); }
+    100% { opacity: 0; transform: translate(min(60vw, 700px), 230px) rotate(18deg); }
+}
+
+.constellation {
+    margin: 0;
+}
+
+.constellation svg {
+    display: block;
+    width: 100%;
+    overflow: visible;
+}
+
+.dust {
+    fill: var(--muted);
+    opacity: 0.45;
+}
+
+/* lines trace in once on load, one constellation after another */
+.line {
+    fill: none;
+    stroke: var(--muted);
+    stroke-width: 0.9;
+    stroke-dasharray: 1;
+    animation: draw 1.4s ease-out both;
+    animation-delay: calc(var(--i) * 180ms);
+    transition: stroke 0.2s;
+}
+
+@keyframes draw {
+    from { stroke-dashoffset: 1; }
+    to { stroke-dashoffset: 0; }
+}
+
+.halo {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 0.6;
+    opacity: 0.3;
+}
+
+.star {
+    fill: var(--accent);
+    animation: twinkle 4s ease-in-out infinite;
+    animation-delay: calc(var(--t) * -4s);
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.55; }
+}
+
+.label {
+    fill: var(--text);
+    font-family: monospace;
+    font-size: 9px;
+    text-anchor: middle;
+    transition: fill 0.15s;
+}
+
+.constellation:hover .line {
+    stroke: var(--accent);
+}
+
+.starGroup:hover .label {
+    fill: var(--accent);
+}
+
+.starGroup:hover .halo {
+    opacity: 0.8;
+}
+
+.caption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    margin-top: var(--space-xs);
+}
+
+.name {
+    color: var(--accent);
+    font-weight: bold;
+    font-size: 0.9rem;
+    letter-spacing: 0.25em;
+}
+
+.count {
+    color: var(--muted);
+    font-size: 0.75rem;
+}
+
+.srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
 }
 
 @media (max-width: 768px) {
     .skillsContainer {
-        padding: 0;
-        gap: var(--space-md);
+        padding: var(--space-sm) 0;
+        gap: var(--space-lg);
     }
-    .header {
-        font-size: 1.4rem;
-        padding-bottom: var(--space-xs);
-        margin-bottom: var(--space-xs);
+    .title {
+        font-size: 1.2rem;
+        letter-spacing: 0.4em;
     }
-    .group {
-        padding: var(--space-sm);
+    .title::after {
+        margin-left: -0.4em;
     }
-    .categoriesWrapper {
-        gap: var(--space-md);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .line,
+    .star {
+        animation: none;
     }
-    .itemsBox {
-        padding: var(--space-md);
-        gap: var(--space-md);
-    }
-    .itemsGrid {
-        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-        gap: var(--space-sm);
-    }
-    .skillRow {
-        padding: var(--space-xs) var(--space-sm);
-    }
-    .skillHeader {
-        font-size: 0.95rem;
+    .meteorLayer {
+        display: none;
     }
 }
