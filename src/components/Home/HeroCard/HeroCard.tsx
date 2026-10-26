@@ -57,7 +57,7 @@ export default function HeroCard() {
             )}
             */}
             
-            <div className={styles.sysMem}>MEM_ALLC: 1024KB</div>
+            <div className={styles.sysMem}>BUILD: {import.meta.env.VITE_BUILD}</div>
         </section>
     );
 }

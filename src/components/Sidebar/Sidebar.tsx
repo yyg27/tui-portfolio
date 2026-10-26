@@ -25,6 +25,7 @@ const themeColors: Record<string, string> = {
     wine: "#7f011f",
     mimosa: "#ffb000"
 };
+const bootTime = Date.now(); // module load = page load, so uptime survives sidebar remounts
 const frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"];
 
 interface SidebarProps {
@@ -88,7 +89,8 @@ export default function Sidebar({ isCollapsed, onToggleCollapse, isTerminalOpen,
         return () => clearInterval(clock);
     }, []);
 
-    const timeString = time.toLocaleTimeString('en-US', { hour12: false });
+    const up = Math.floor((time.getTime() - bootTime) / 1000);
+    const timeString = [up / 3600, (up / 60) % 60, up % 60].map(n => String(Math.floor(n)).padStart(2, "0")).join(":");
     
     const [isThemeMenuOpen, setIsThemeMenuOpen] = useState(false);
     
@@ -188,7 +190,7 @@ export default function Sidebar({ isCollapsed, onToggleCollapse, isTerminalOpen,
             
             <div className={styles.footer}>
                 <div className={`${styles.clock} ${isCollapsed ? styles.clockCollapsed : ''}`}>
-                    {!isCollapsed ? `SYS_TIME: ${timeString}` : timeString}
+                    {!isCollapsed ? `UPTIME: ${timeString}` : timeString}
                 </div>
                 <div className={styles.actions}>
                     <button onClick={onToggleTerminal} className={`${styles.actionBtn} ${styles.terminalBtn} ${isTerminalOpen ? styles.activeThemeBtn : ''}`} title="Terminal" aria-expanded={isTerminalOpen}>
