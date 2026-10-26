@@ -154,6 +154,10 @@
     padding: 0.2rem;
 }
 
+.terminalBtn {
+    display: none;
+}
+
 .actionBtn:hover {
     background-color: var(--accent);
     color: var(--background);
@@ -202,6 +206,10 @@
 
     .collapseBtn {
         display: none;
+    }
+
+    .terminalBtn {
+        display: inline;
     }
 
     .themeMenu {

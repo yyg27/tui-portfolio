@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import styles from "./Terminal.module.css";
 import { themes as validThemes } from "../../data/themes.data";
 import { navigationItems } from "../../data/navigation.data";
@@ -37,7 +37,8 @@ function commonPrefix(words: string[]) {
     });
 }
 
-export default function Terminal() {
+export default function Terminal({ mobileOpen }: { mobileOpen: boolean }) {
+    const inputRef = useRef<HTMLInputElement>(null);
     const [input, setInput] = useState("");
     const [output, setOutput] = useState<string | null>(null);
     const [history, setHistory] = useState<string[]>([]);
@@ -90,6 +91,10 @@ export default function Terminal() {
         return () => window.removeEventListener("terminal-command", onCustomCmd);
     }, [executeCommand]);
 
+    useEffect(() => {
+        if (mobileOpen) inputRef.current?.focus();
+    }, [mobileOpen]);
+
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter") {
             executeCommand(input);
@@ -118,7 +123,7 @@ export default function Terminal() {
     };
 
     return (
-        <div className={styles.terminal}>
+        <div className={`${styles.terminal} ${mobileOpen ? styles.mobileOpen : ""}`}>
             {output && (
                 <div className={styles.output}>
                     <pre>{output}</pre>
@@ -128,6 +133,7 @@ export default function Terminal() {
                 <span className={styles.prompt}>yyg27@portfolio:~$</span>
                 <div className={styles.inputWrapper}>
                     <input
+                        ref={inputRef}
                         type="text"
                         className={styles.input}
                         value={input}
