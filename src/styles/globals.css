@@ -24,3 +24,37 @@ body {
 *::-webkit-scrollbar {
     display: none;
 }
+
+/* CRT phosphor glow on dark themes: each text glows in its own colour (idea from cyberspace.online) */
+:root:not([data-theme="emerald"], [data-theme="coral"], [data-theme="royal"], [data-theme="gruvbox"], [data-theme="violet"], [data-theme="wine"], [data-theme="mimosa"]) body * {
+    text-shadow:
+        0 0 2px color-mix(in srgb, currentColor 50%, transparent),
+        0 0 12px color-mix(in srgb, currentColor 65%, transparent);
+}
+
+/* no glow on dark text sitting on accent fills, where it would only smudge */
+[class*="_intro_"] *,
+[class*="_cardHeader_"] *,
+[class*="_statusBlink_"],
+[class*="_clock_"],
+[class*="_active_"],
+[class*="_active_"] *,
+a:hover,
+a:hover *,
+button:hover,
+::selection {
+    text-shadow: none !important;
+}
+
+
+/* selected text uses the theme instead of the browser's blue */
+::selection {
+    background: var(--accent);
+    color: var(--background);
+}
+
+/* buttons and links sink 1px while pressed, like a keyboard key */
+button:active,
+a:active {
+    transform: translateY(1px);
+}
