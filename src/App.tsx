@@ -112,18 +112,14 @@ function App() {
                     style={{ color: '#ff5f56' }}
                     title={showSidebar ? "Hide sidebar (Red)" : "Show sidebar (Red)"}
                     aria-label="Toggle Sidebar Visibility"
-                >
-                    ●
-                </button>
+                />
                 <button
                     className="windowDot"
                     onClick={(e) => { e.stopPropagation(); toggleSidebarCollapse(); }}
                     style={{ color: '#ffbd2e' }}
                     title={isSidebarCollapsed ? "Expand sidebar (Yellow)" : "Collapse sidebar (Yellow)"}
                     aria-label="Toggle Sidebar Collapse"
-                >
-                    ●
-                </button>
+                />
                 <button
                     className="windowDot"
                     onClick={(e) => {
@@ -133,9 +129,7 @@ function App() {
                     style={{ color: '#27c93f' }}
                     title="Toggle /help in terminal (Green)"
                     aria-label="Toggle /help in terminal"
-                >
-                    ●
-                </button>
+                />
             </div>
             <div>
                 <span style={{ color: 'var(--accent)' }}>~</span> /{currentPage}
