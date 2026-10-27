@@ -9,6 +9,7 @@
     --radius-lg: 0px;
     /* --accent-2 (optional, per theme): second highlight for labels, stars and names; falls back to --accent */
     /* --label (optional): home system labels and the journey header only; falls back to --accent-2 */
+    /* --hover (optional): skill constellation hover colour; falls back to --accent */
     /* --accent-fill and --on-accent (optional): colour of accent-filled boxes and of the text on them; default to --accent and --background */
     /* CRT phosphor glow, each text in its own colour; light themes turn it off */
     --glow: 0 0 2px color-mix(in srgb, currentColor 50%, transparent), 0 0 12px color-mix(in srgb, currentColor 65%, transparent);
@@ -112,6 +113,7 @@
     --heading: #ff9f43;
     --accent: #88FF5F;
     --label: #ff9f43;
+    --hover: #ff9f43;
     --border: #8338EC;
     --muted: #a670f5;
 }

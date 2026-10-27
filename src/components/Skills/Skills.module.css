@@ -138,14 +138,15 @@
 /* hover effects only on real pointers: on touch screens a tap leaves :hover stuck */
 @media (hover: hover) {
     .constellation:hover .line {
-        stroke: var(--accent);
+        stroke: var(--hover, var(--accent));
     }
 
     .starGroup:hover .label {
-        fill: var(--accent);
+        fill: var(--hover, var(--accent));
     }
 
     .starGroup:hover .halo {
+        stroke: var(--hover, var(--accent));
         opacity: 0.8;
     }
 }
