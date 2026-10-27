@@ -26,7 +26,7 @@ The project was built with **React**, **TypeScript**, and **Vite**, focusing on 
 - Interactive Terminal: Page routes (`/projects`, `cd skills`, ...), `/theme <name>`, `neofetch`, `whoami`, `github`, `linkedin`, `mail`, `cv`, `/help` and `clear`, with Tab completion and ↑/↓ command history. Desktop only.
 - Fastfetch Dashboard: System info and portrait presentation.
 - Skill Constellations: Skills drawn as a star map, one constellation per category, laid out automatically from the data file.
-- 19 Dynamic Themes: Gruvbox, Nord, Dracula, Matrix, etc. with instant switching. Dark themes get a CRT-style phosphor glow on text.
+- 27 Dynamic Themes: Gruvbox, Nord, Catppuccin, Tokyo Night, Skyrim, Redemption, etc. with instant switching. Dark themes get a CRT-style phosphor glow on text.
 - Custom 404: A shell session with a glitching figlet `404` and links to every page.
 - Live Status: Sidebar uptime counter and the deployed commit hash on the home page.
 - Accessible: Keyboard navigable, screen reader labels, and reduced motion respected.

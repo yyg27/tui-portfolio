@@ -17,6 +17,7 @@ const dark: Record<string, string> = {
     rosepine: "#ebbcba",
     kanagawa: "#dca561",
     solarized: "#2aa198",
+    redemption: "#ff3b30",
 };
 const light: Record<string, string> = {
     emerald: "#013E37",
