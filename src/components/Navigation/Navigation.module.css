@@ -27,8 +27,8 @@
 
 .navigationList a:hover,
 .navigationList a.active {
-    background-color: var(--accent);
-    color: var(--background);
+    background-color: var(--accent-fill, var(--accent));
+    color: var(--on-accent, var(--background));
 }
 
 .navIcon {

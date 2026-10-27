@@ -17,8 +17,8 @@
 }
 
 .cardHeader {
-    background-color: var(--accent);
-    color: var(--background);
+    background-color: var(--accent-fill, var(--accent));
+    color: var(--on-accent, var(--background));
     padding: var(--space-md) var(--space-lg);
     display: flex;
     justify-content: space-between;
@@ -82,8 +82,8 @@
 }
 
 .statusBlink {
-    color: var(--background);
-    background-color: var(--accent);
+    color: var(--on-accent, var(--background));
+    background-color: var(--accent-fill, var(--accent));
     padding: 2px 8px;
     font-weight: bold;
     animation: blink 2s infinite;
@@ -131,8 +131,8 @@
 }
 
 .socialLink:hover .icon {
-    background-color: var(--accent);
-    color: var(--background);
+    background-color: var(--accent-fill, var(--accent));
+    color: var(--on-accent, var(--background));
 }
 
 .icon {

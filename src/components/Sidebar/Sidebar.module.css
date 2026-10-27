@@ -46,8 +46,8 @@
     padding: 1rem;
     font-family: monospace;
     font-size: 0.8rem;
-    color: var(--background);
-    background-color: var(--accent);
+    color: var(--on-accent, var(--background));
+    background-color: var(--accent-fill, var(--accent));
     text-align: center;
     border-bottom: 2px solid var(--border);
     transition: all 0.2s ease;

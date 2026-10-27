@@ -47,8 +47,8 @@ button:hover,
 
 /* selected text uses the theme instead of the browser's blue */
 ::selection {
-    background: var(--accent);
-    color: var(--background);
+    background: var(--accent-fill, var(--accent));
+    color: var(--on-accent, var(--background));
 }
 
 /* buttons and links sink 1px while pressed, like a keyboard key */

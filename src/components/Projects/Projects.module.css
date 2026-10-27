@@ -44,8 +44,8 @@
 }
 
 .layoutBtn:hover {
-    background-color: var(--accent);
-    color: var(--background);
+    background-color: var(--accent-fill, var(--accent));
+    color: var(--on-accent, var(--background));
 }
 
 .repoCard {
@@ -62,9 +62,9 @@
 }
 
 .repoCard:hover {
-    background-color: var(--accent);
-    border-color: var(--accent);
-    color: var(--background);
+    background-color: var(--accent-fill, var(--accent));
+    border-color: var(--accent-fill, var(--accent));
+    color: var(--on-accent, var(--background));
 }
 
 .repoHeader {
@@ -86,7 +86,7 @@
 }
 
 .repoCard:hover .repoName {
-    color: var(--background);
+    color: var(--on-accent, var(--background));
 }
 
 .repoName:hover {
@@ -105,8 +105,8 @@
 }
 
 .repoCard:hover .repoVisibility {
-    border-color: var(--background);
-    color: var(--background);
+    border-color: var(--on-accent, var(--background));
+    color: var(--on-accent, var(--background));
 }
 
 .repoDescription {
@@ -140,7 +140,7 @@
 }
 
 .repoCard:hover .langColor {
-    background-color: var(--background);
+    background-color: var(--on-accent, var(--background));
 }
 
 .loading {

@@ -99,8 +99,8 @@
 
 .ls a:hover,
 .ls a:focus-visible {
-    background: var(--accent);
-    color: var(--background);
+    background: var(--accent-fill, var(--accent));
+    color: var(--on-accent, var(--background));
     outline: none;
 }
 

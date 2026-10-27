@@ -4,10 +4,10 @@
     align-items: center;
     gap: var(--space-xl);
     padding: var(--space-lg);
-    background: var(--accent);
-    border: 2px solid var(--accent);
+    background: var(--accent-fill, var(--accent));
+    border: 2px solid var(--accent-fill, var(--accent));
     border-radius: var(--radius-md);
-    color: var(--background);
+    color: var(--on-accent, var(--background));
 }
 
 .sysStatus {
@@ -51,14 +51,14 @@
 }
 
 .intro h1 {
-    color: var(--background);
+    color: var(--on-accent, var(--background));
     font-size: 2rem;
     font-weight: 700;
     margin: 0;
 }
 
 .intro p {
-    color: var(--background);
+    color: var(--on-accent, var(--background));
     line-height: 1.7;
     max-width: 65ch;
     font-weight: 500;
@@ -75,11 +75,11 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--background);
+    color: var(--on-accent, var(--background));
     text-decoration: none;
     font-weight: 700;
     padding: 4px 10px;
-    border: 2px solid var(--background);
+    border: 2px solid var(--on-accent, var(--background));
     transition: all 0.2s ease;
 }
 
