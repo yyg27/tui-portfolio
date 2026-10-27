@@ -101,31 +101,24 @@ function App() {
               alignItems: 'center',
               gap: '0.8rem'
           }}>
-            <div 
-                className="windowControls" 
-                onClick={() => setShowSidebar(s => !s)}
-                title="Toggle Taskbar"
-            >
+            <div className="windowControls">
                 <button
                     className="windowDot"
-                    onClick={(e) => { e.stopPropagation(); setShowSidebar(s => !s); }}
+                    onClick={() => setShowSidebar(s => !s)}
                     style={{ color: '#ff5f56' }}
                     title={showSidebar ? "Hide sidebar (Red)" : "Show sidebar (Red)"}
                     aria-label="Toggle Sidebar Visibility"
                 />
                 <button
                     className="windowDot"
-                    onClick={(e) => { e.stopPropagation(); toggleSidebarCollapse(); }}
+                    onClick={toggleSidebarCollapse}
                     style={{ color: '#ffbd2e' }}
                     title={isSidebarCollapsed ? "Expand sidebar (Yellow)" : "Collapse sidebar (Yellow)"}
                     aria-label="Toggle Sidebar Collapse"
                 />
                 <button
                     className="windowDot"
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        window.dispatchEvent(new CustomEvent("terminal-command", { detail: "toggle-help" }));
-                    }}
+                    onClick={() => window.dispatchEvent(new CustomEvent("terminal-command", { detail: "toggle-help" }))}
                     style={{ color: '#27c93f' }}
                     title="Toggle /help in terminal (Green)"
                     aria-label="Toggle /help in terminal"
