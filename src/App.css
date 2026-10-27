@@ -56,18 +56,27 @@ main.main::-webkit-scrollbar-thumb {
     padding: 0;
 }
 
+/* phones scroll the page itself, not <main>: mobile Safari only shrinks its address bar when the window scrolls */
 @media (max-width: 768px) {
     .App {
         flex-direction: column;
+        height: auto;
+        min-height: 100dvh;
+        overflow: visible;
     }
     .contentWrapper {
         order: 1;
         flex: 1;
         height: auto;
         min-height: 0;
+        padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px)); /* room for the fixed tab bar */
     }
     .contentWrapper.noSidebar {
         height: auto;
+        padding-bottom: 0;
+    }
+    main {
+        overflow-y: visible;
     }
     .windowControls {
         cursor: pointer;

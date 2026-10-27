@@ -51,6 +51,11 @@ function App() {
 
   const [currentPage, setCurrentPage] = useState(pageFromPath);
 
+  // phones scroll the window, which the <main> remount below doesn't reset
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentPage]);
+
   useEffect(() => {
     const onPopState = () => setCurrentPage(pageFromPath());
 
