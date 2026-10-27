@@ -7,6 +7,8 @@
     --radius-sm: 0px;
     --radius-md: 0px;
     --radius-lg: 0px;
+    /* --accent-2 (optional, per theme): second highlight for labels, stars and names; falls back to --accent */
+    /* --label (optional): home system labels and the journey header only; falls back to --accent-2 */
     /* CRT phosphor glow, each text in its own colour; light themes turn it off */
     --glow: 0 0 2px color-mix(in srgb, currentColor 50%, transparent), 0 0 12px color-mix(in srgb, currentColor 65%, transparent);
 }
@@ -18,6 +20,7 @@
     --text: #e9ddc2;
     --heading: #ffb000;
     --accent: #ffb000;
+    --accent-2: #ffd27a;
     --border: #2a2110;
     --muted: #8f7d57;
 }
@@ -29,6 +32,7 @@
     --text: #d3f9d8;
     --heading: #27c93f;
     --accent: #27c93f;
+    --accent-2: #a8ffb0;
     --border: #144018;
     --muted: #5c8760;
 }
@@ -40,6 +44,7 @@
     --text: #f8f8f2;
     --heading: #ff79c6;
     --accent: #bd93f9;
+    --accent-2: #50fa7b;
     --border: #6272a4;
     --muted: #8592c0;
 }
@@ -78,6 +83,7 @@
     --text: #F5EAE6;
     --heading: #FE8254;
     --accent: #FE8254;
+    --accent-2: #7fd1c7;
     --border: #5C7F8A;
     --muted: #90B0BC;
 }
@@ -98,8 +104,9 @@
     --surface: #1e1031;
     --surface-hover: #2b1845;
     --text: #f0eaf7;
-    --heading: #88FF5F;
+    --heading: #ff9f43;
     --accent: #88FF5F;
+    --label: #ff9f43;
     --border: #8338EC;
     --muted: #a670f5;
 }
@@ -111,6 +118,7 @@
     --text: #172b28;
     --heading: #02665a;
     --accent: #013E37;
+    --accent-2: #8a4b00;
     --border: #b8ac82;
     --muted: #55706c;
     /* light theme: no glow, ascii portrait in a filled accent box */
@@ -127,6 +135,7 @@
     --text: #451b19;
     --heading: #d23b34;
     --accent: #c74640;
+    --accent-2: #1d6b66;
     --border: #d4b19c;
     --muted: #96615e;
     /* light theme: no glow, ascii portrait in a filled accent box */
@@ -143,6 +152,7 @@
     --text: #00f0ff;
     --heading: #b431ff;
     --accent: #fcee09;
+    --accent-2: #ff2a6d;
     --border: #ff003c;
     --muted: #008f99;
 }
@@ -154,6 +164,7 @@
     --text: #d3c6aa;
     --heading: #e67e80;
     --accent: #a7c080;
+    --accent-2: #dbbc7f;
     --border: #475258;
     --muted: #99a092;
 }
@@ -165,6 +176,7 @@
     --text: #eceff4;
     --heading: #88c0d0;
     --accent: #81a1c1;
+    --accent-2: #ebcb8b;
     --border: #4c566a;
     --muted: #a3acbd;
 }
@@ -177,6 +189,7 @@
     --muted: #766a60;
     --heading: #9c4b2b;
     --accent: #9c4b2b;
+    --accent-2: #407755;
     --border: #d5c4a1;
     /* light theme: no glow, ascii portrait in a filled accent box */
     --glow: none;
@@ -193,6 +206,7 @@
     --muted: #7a66a4;
     --heading: #4b3670;
     --accent: #5f4a8b;
+    --accent-2: #8a6400;
     --border: #cdc99f;
     /* light theme: no glow, ascii portrait in a filled accent box */
     --glow: none;
@@ -209,6 +223,7 @@
     --muted: #9e465a;
     --heading: #600017;
     --accent: #7f011f;
+    --accent-2: #836500;
     --border: #c4b58e;
     /* light theme: no glow, ascii portrait in a filled accent box */
     --glow: none;

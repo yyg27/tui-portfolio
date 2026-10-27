@@ -90,7 +90,7 @@
 }
 
 .label {
-    color: var(--accent);
+    color: var(--label, var(--accent-2, var(--accent)));
     font-weight: 700;
 }
 

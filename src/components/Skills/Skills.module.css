@@ -117,7 +117,7 @@
 }
 
 .star {
-    fill: var(--accent);
+    fill: var(--accent-2, var(--accent));
     animation: twinkle 4s ease-in-out infinite;
     animation-delay: calc(var(--t) * -4s);
 }
@@ -159,7 +159,7 @@
 }
 
 .name {
-    color: var(--accent);
+    color: var(--accent-2, var(--accent));
     font-weight: bold;
     font-size: 0.9rem;
     letter-spacing: 0.25em;
