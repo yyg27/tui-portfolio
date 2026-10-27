@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import styles from "./Sidebar.module.css";
 import Navigation from "../Navigation/Navigation";
 import Icon from "../Icon/Icon";
-import { themes, darkThemes, lightThemes, themeColors } from "../../data/themes.data";
+import { themes, darkThemes, lightThemes } from "../../data/themes.data";
 import { readStorage, writeStorage } from "../../utils/storage";
 
 const bootTime = Date.now(); // module load = page load, so uptime survives sidebar remounts
@@ -101,11 +101,9 @@ export default function Sidebar({ currentPage, isCollapsed, onToggleCollapse }: 
                 onClick={() => handleThemeSelect(idx)}
                 title={`Set theme: ${theme}`}
             >
-                <span 
-                    className={styles.themeDot} 
-                    style={{ backgroundColor: themeColors[theme] }}
-                />
-                <span className={styles.themeText} style={{ color: themeColors[theme] }}>
+                {/* the theme's own CSS block colours its dot and name */}
+                <span className={styles.themeDot} data-theme={theme} />
+                <span className={styles.themeText} data-theme={theme}>
                     {themeIndex === idx ? `[${theme}]` : ` ${theme} `}
                 </span>
             </button>

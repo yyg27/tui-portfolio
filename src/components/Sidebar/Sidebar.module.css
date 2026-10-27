@@ -104,10 +104,12 @@
     height: 12px;
     border-radius: 50%;
     flex-shrink: 0;
+    background-color: var(--accent);
 }
 
 .themeText {
     margin-left: 6px;
+    color: var(--accent);
     font-family: monospace;
 }
 
