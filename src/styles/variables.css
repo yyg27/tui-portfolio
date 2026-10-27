@@ -21,9 +21,13 @@
     --text: #e9ddc2;
     --heading: #ffb000;
     --accent: #ffb000;
-    --accent-2: #ffd27a;
     --border: #2a2110;
     --muted: #8f7d57;
+}
+
+/* kept off the bare :root so themes without a second colour fall back to their own accent */
+:root:not([data-theme]), [data-theme="amber"] {
+    --accent-2: #ffd27a;
 }
 
 [data-theme="matrix"] {
