@@ -26,7 +26,7 @@ body {
 }
 
 /* CRT phosphor glow on dark themes: each text glows in its own colour (idea from cyberspace.online) */
-:root:not([data-theme="emerald"], [data-theme="coral"], [data-theme="royal"], [data-theme="gruvbox"], [data-theme="violet"], [data-theme="wine"], [data-theme="mimosa"]) body * {
+:root:not([data-theme="emerald"], [data-theme="coral"], [data-theme="royal"], [data-theme="gruvbox"], [data-theme="violet"], [data-theme="wine"]) body * {
     text-shadow:
         0 0 2px color-mix(in srgb, currentColor 50%, transparent),
         0 0 12px color-mix(in srgb, currentColor 65%, transparent);

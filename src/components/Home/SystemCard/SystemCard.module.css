@@ -55,7 +55,6 @@
 :root[data-theme="gruvbox"] .portrait pre,
 :root[data-theme="violet"] .portrait pre,
 :root[data-theme="wine"] .portrait pre,
-:root[data-theme="mimosa"] .portrait pre,
 :root[data-theme="coral"] .portrait pre {
     background-color: var(--accent);
     color: var(--background);
