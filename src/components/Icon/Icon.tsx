@@ -57,8 +57,9 @@ const icons = {
 export type IconName = keyof typeof icons;
 
 export default function Icon({ name }: { name: IconName }) {
+    // a theme's --icon colours every icon; unset, the var is invalid and the icon inherits its text colour
     return (
-        <svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" style={{ flexShrink: 0 }}>
+        <svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" style={{ flexShrink: 0, color: "var(--icon)" }}>
             {icons[name]}
         </svg>
     );

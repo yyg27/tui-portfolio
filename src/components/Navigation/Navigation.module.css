@@ -11,7 +11,7 @@
     align-items: center;
     padding: var(--space-md) var(--space-lg);
     border-bottom: 1px solid var(--accent);
-    color: var(--accent);
+    color: var(--sidebar-text, var(--accent));
     text-transform: uppercase;
     font-size: 0.9rem;
     font-family: monospace;
@@ -29,6 +29,7 @@
 .navigationList a.active {
     background-color: var(--accent-fill, var(--accent));
     color: var(--on-accent, var(--background));
+    --icon: currentColor; /* icons on accent fills follow the text */
 }
 
 .navIcon {

@@ -133,6 +133,7 @@
 .socialLink:hover .icon {
     background-color: var(--accent-fill, var(--accent));
     color: var(--on-accent, var(--background));
+    --icon: currentColor; /* icons on accent fills follow the text */
 }
 
 .icon {

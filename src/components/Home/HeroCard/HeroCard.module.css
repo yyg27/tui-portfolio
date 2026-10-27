@@ -8,6 +8,7 @@
     border: 2px solid var(--accent-fill, var(--accent));
     border-radius: var(--radius-md);
     color: var(--on-accent, var(--background));
+    --icon: currentColor; /* icons on accent fills follow the text */
 }
 
 .sysStatus {

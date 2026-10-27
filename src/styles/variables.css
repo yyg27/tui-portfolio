@@ -10,6 +10,8 @@
     /* --accent-2 (optional, per theme): second highlight for labels, stars and names; falls back to --accent */
     /* --label (optional): home system labels and the journey header only; falls back to --accent-2 */
     /* --hover (optional): skill constellation hover colour; falls back to --accent */
+    /* --icon (optional): colour of every icon; falls back to the surrounding text colour */
+    /* --sidebar-text (optional): sidebar logo, page links and buttons; falls back to --accent */
     /* --accent-fill and --on-accent (optional): colour of accent-filled boxes and of the text on them; default to --accent and --background */
     /* CRT phosphor glow, each text in its own colour; light themes turn it off */
     --glow: 0 0 2px color-mix(in srgb, currentColor 50%, transparent), 0 0 12px color-mix(in srgb, currentColor 65%, transparent);
@@ -335,6 +337,8 @@
     --accent: #ff3b30;
     --accent-fill: #cc1a1a;
     --on-accent: #ffffff;
+    --icon: var(--accent-2);
+    --sidebar-text: var(--accent-2);
     --accent-2: #d6a54a;
     --border: #4a3020;
     --muted: #8f9478;
