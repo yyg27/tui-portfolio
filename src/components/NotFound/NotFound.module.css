@@ -99,6 +99,7 @@
 
 .ls a:hover,
 .ls a:focus-visible {
+    --glow: none; /* glow would only smudge text on the fill */
     background: var(--accent-fill, var(--accent));
     color: var(--on-accent, var(--background));
     outline: none;

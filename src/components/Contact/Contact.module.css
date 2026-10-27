@@ -17,6 +17,7 @@
 }
 
 .cardHeader {
+    --glow: none; /* glow would only smudge text on the fill */
     background-color: var(--accent-fill, var(--accent));
     color: var(--on-accent, var(--background));
     padding: var(--space-md) var(--space-lg);
@@ -82,6 +83,7 @@
 }
 
 .statusBlink {
+    --glow: none; /* glow would only smudge text on the fill */
     color: var(--on-accent, var(--background));
     background-color: var(--accent-fill, var(--accent));
     padding: 2px 8px;
@@ -131,6 +133,7 @@
 }
 
 .socialLink:hover .icon {
+    --glow: none; /* glow would only smudge text on the fill */
     background-color: var(--accent-fill, var(--accent));
     color: var(--on-accent, var(--background));
     --icon: currentColor; /* icons on accent fills follow the text */

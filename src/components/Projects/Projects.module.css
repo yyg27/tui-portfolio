@@ -44,6 +44,7 @@
 }
 
 .layoutBtn:hover {
+    --glow: none; /* glow would only smudge text on the fill */
     background-color: var(--accent-fill, var(--accent));
     color: var(--on-accent, var(--background));
 }
@@ -62,6 +63,7 @@
 }
 
 .repoCard:hover {
+    --glow: none; /* glow would only smudge text on the fill */
     background-color: var(--accent-fill, var(--accent));
     border-color: var(--accent-fill, var(--accent));
     color: var(--on-accent, var(--background));

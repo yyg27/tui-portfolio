@@ -43,6 +43,7 @@
 }
 
 .clock {
+    --glow: none; /* glow would only smudge text on the fill */
     padding: 1rem;
     font-family: monospace;
     font-size: 0.8rem;
