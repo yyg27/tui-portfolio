@@ -10,6 +10,8 @@ const dark: Record<string, string> = {
     fenerbahce: "#E4A419",
     peach: "#FE8254",
     layor: "#F8F3F0",
+    skyrim: "#c9b88a",
+    "skyrim-se": "#c8ced6",
     catppuccin: "#cba6f7",
     tokyonight: "#7aa2f7",
     rosepine: "#ebbcba",

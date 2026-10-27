@@ -233,6 +233,31 @@
     --portrait-pad: var(--space-sm);
 }
 
+[data-theme="skyrim"] {
+    --background: #12110f;
+    --surface: #1b1915;
+    --surface-hover: #26231d;
+    --text: #d8ccb0;
+    --heading: #e6d9b8;
+    --accent: #c9b88a;
+    --accent-2: #8fb8d8;
+    --border: #3a352b;
+    --muted: #9a8f78;
+}
+
+[data-theme="skyrim-se"] {
+    /* Skyrim SE menus: smoky black, silver and white type; frost blue only for the stars, like the skill screen */
+    --background: #0b0c0e;
+    --surface: #121417;
+    --surface-hover: #1b1e22;
+    --text: #d9dcdf;
+    --heading: #ffffff;
+    --accent: #c8ced6;
+    --accent-2: #a9c9e8;
+    --border: #3a4048;
+    --muted: #7d848c;
+}
+
 [data-theme="catppuccin"] {
     --background: #1e1e2e;
     --surface: #181825;
