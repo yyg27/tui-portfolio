@@ -7,6 +7,8 @@
     --radius-sm: 0px;
     --radius-md: 0px;
     --radius-lg: 0px;
+    /* CRT phosphor glow, each text in its own colour; light themes turn it off */
+    --glow: 0 0 2px color-mix(in srgb, currentColor 50%, transparent), 0 0 12px color-mix(in srgb, currentColor 65%, transparent);
 }
 
 :root, [data-theme="amber"] {
@@ -51,6 +53,11 @@
     --accent: #014BAA;
     --border: #80A5D5;
     --muted: #3d70af;
+    /* light theme: no glow, ascii portrait in a filled accent box */
+    --glow: none;
+    --portrait-bg: var(--accent);
+    --portrait-fg: var(--background);
+    --portrait-pad: var(--space-sm);
 }
 
 [data-theme="layor"] {
@@ -106,6 +113,11 @@
     --accent: #013E37;
     --border: #b8ac82;
     --muted: #55706c;
+    /* light theme: no glow, ascii portrait in a filled accent box */
+    --glow: none;
+    --portrait-bg: var(--accent);
+    --portrait-fg: var(--background);
+    --portrait-pad: var(--space-sm);
 }
 
 [data-theme="coral"] {
@@ -117,6 +129,11 @@
     --accent: #c74640;
     --border: #d4b19c;
     --muted: #96615e;
+    /* light theme: no glow, ascii portrait in a filled accent box */
+    --glow: none;
+    --portrait-bg: #8b2b28;
+    --portrait-fg: var(--background);
+    --portrait-pad: var(--space-sm);
 }
 
 [data-theme="cyberpunk"] {
@@ -161,6 +178,11 @@
     --heading: #9c4b2b;
     --accent: #9c4b2b;
     --border: #d5c4a1;
+    /* light theme: no glow, ascii portrait in a filled accent box */
+    --glow: none;
+    --portrait-bg: var(--accent);
+    --portrait-fg: var(--background);
+    --portrait-pad: var(--space-sm);
 }
 
 [data-theme="violet"] {
@@ -172,6 +194,11 @@
     --heading: #4b3670;
     --accent: #5f4a8b;
     --border: #cdc99f;
+    /* light theme: no glow, ascii portrait in a filled accent box */
+    --glow: none;
+    --portrait-bg: var(--accent);
+    --portrait-fg: var(--background);
+    --portrait-pad: var(--space-sm);
 }
 
 [data-theme="wine"] {
@@ -183,4 +210,9 @@
     --heading: #600017;
     --accent: #7f011f;
     --border: #c4b58e;
+    /* light theme: no glow, ascii portrait in a filled accent box */
+    --glow: none;
+    --portrait-bg: var(--accent);
+    --portrait-fg: var(--background);
+    --portrait-pad: var(--space-sm);
 }
