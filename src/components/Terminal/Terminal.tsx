@@ -13,7 +13,7 @@ const linkCommands = Object.keys(links);
 const HELP_MESSAGE = [
     "AVAILABLE COMMANDS:",
     "  /home, /projects, /skills, /journey, /contact  (or 'cd <page>')",
-    `  /theme <name>  (${validThemes.join(" | ")})`,
+    `  /theme <name>  (${validThemes.join(" | ")} | random)`,
     "  neofetch       (system info)",
     "  whoami         (who is this)",
     `  ${linkCommands.join(", ")}  (open links)`,
@@ -30,7 +30,7 @@ for (const { label, href } of navigationItems) {
     routes[`/${page}`] = routes[page] = routes[`cd ${page}`] = href;
 }
 
-const completions = [...new Set([...Object.keys(routes), "/help", "clear", "neofetch", "whoami", ...linkCommands, ...validThemes.map(t => `/theme ${t}`)])];
+const completions = [...new Set([...Object.keys(routes), "/help", "clear", "neofetch", "whoami", ...linkCommands, ...[...validThemes, "random"].map(t => `/theme ${t}`)])];
 
 function commonPrefix(words: string[]) {
     return words.reduce((a, b) => {
@@ -61,9 +61,13 @@ export default function Terminal() {
         } else if (cmd === "clear") {
             setOutput(null);
         } else if (cmd === "/theme" || cmd.startsWith("/theme ")) {
-            const themeName = cmd.split(/\s+/)[1];
+            let themeName = cmd.split(/\s+/)[1];
+            if (themeName === "random") {
+                const others = validThemes.filter(t => t !== document.documentElement.getAttribute("data-theme"));
+                themeName = others[Math.floor(Math.random() * others.length)];
+            }
             if (!themeName) {
-                setOutput(`Usage: /theme <name>\nAvailable: ${validThemes.join(", ")}`);
+                setOutput(`Usage: /theme <name>|random\nAvailable: ${validThemes.join(", ")}`);
             } else if (validThemes.includes(themeName)) {
                 // applied here too: the sidebar may be hidden (unmounted); the event only updates its menu
                 document.documentElement.setAttribute('data-theme', themeName);
