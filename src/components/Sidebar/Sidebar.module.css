@@ -73,6 +73,15 @@
     overflow: hidden;
 }
 
+/* on the other kind's tab the menu flips to the current theme's opposite colour, so those theme names stay readable */
+.flipped {
+    --surface: var(--menu-flip, var(--text));
+    --border: var(--background);
+    --muted: var(--background);
+    --accent: var(--background);
+    --glow: none;
+}
+
 .themeOptionBtn {
     background: none;
     border: none;
@@ -92,6 +101,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.themeList {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
 }
 
 .themeOptionBtn:hover {

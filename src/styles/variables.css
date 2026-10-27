@@ -12,6 +12,7 @@
     /* --hover (optional): skill constellation hover colour; falls back to --accent */
     /* --icon (optional): colour of every icon; falls back to the surrounding text colour */
     /* --sidebar-text (optional): sidebar logo, page links and buttons; falls back to --accent */
+    /* --menu-flip (optional): theme menu colour on the other kind's tab, where --text reads too poorly; falls back to --text */
     /* --accent-fill and --on-accent (optional): colour of accent-filled boxes and of the text on them; default to --accent and --background */
     /* CRT phosphor glow, each text in its own colour; light themes turn it off */
     --glow: 0 0 2px color-mix(in srgb, currentColor 50%, transparent), 0 0 12px color-mix(in srgb, currentColor 65%, transparent);
@@ -71,6 +72,7 @@
     --portrait-bg: var(--accent);
     --portrait-fg: var(--background);
     --portrait-pad: var(--space-sm);
+    --menu-flip: #0b1d3a;
 }
 
 [data-theme="layor"] {
@@ -176,6 +178,7 @@
     --accent-2: #dbbc7f;
     --border: #475258;
     --muted: #99a092;
+    --menu-flip: #fdf6e3;
 }
 
 [data-theme="nord"] {
@@ -288,6 +291,7 @@
     --accent-2: #ff9e64;
     --border: #292e42;
     --muted: #7b83ab;
+    --menu-flip: #e1e2e7;
 }
 
 [data-theme="rosepine"] {
@@ -328,6 +332,7 @@
     --border: #0e4b59;
     --muted: #839496;
     --glow: none;
+    --menu-flip: #fdf6e3;
 }
 
 [data-theme="redemption"] {
@@ -362,6 +367,7 @@
     --portrait-bg: var(--accent);
     --portrait-fg: var(--background);
     --portrait-pad: var(--space-sm);
+    --menu-flip: #1e1e2e;
 }
 
 [data-theme="solarized-light"] {
@@ -396,4 +402,5 @@
     --portrait-bg: var(--accent);
     --portrait-fg: var(--background);
     --portrait-pad: var(--space-sm);
+    --menu-flip: #191724;
 }

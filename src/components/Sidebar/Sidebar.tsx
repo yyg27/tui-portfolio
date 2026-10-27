@@ -111,6 +111,7 @@ export default function Sidebar({ currentPage, isCollapsed, onToggleCollapse }: 
     };
 
     const currentThemesList = themeTab === 'dark' ? darkThemes : lightThemes;
+    const currentKind = lightThemes.includes(themes[themeIndex]) ? 'light' : 'dark';
 
     return (
         <aside className={`${styles.sidebar} ${isCollapsed ? styles.collapsed : ''}`}>
@@ -125,7 +126,7 @@ export default function Sidebar({ currentPage, isCollapsed, onToggleCollapse }: 
             <Navigation currentPage={currentPage} isCollapsed={isCollapsed} />
             
             {isThemeMenuOpen && (
-                <div id="theme-menu" className={styles.themeMenu}>
+                <div id="theme-menu" className={`${styles.themeMenu} ${themeTab !== currentKind ? styles.flipped : ''}`}>
                     <div style={{ display: 'flex', justifyContent: isCollapsed ? 'center' : 'flex-start', marginBottom: '8px', flexShrink: 0 }}>
                         <button 
                             onClick={() => setIsThemeMenuOpen(false)}
@@ -136,7 +137,7 @@ export default function Sidebar({ currentPage, isCollapsed, onToggleCollapse }: 
                         </button>
                     </div>
                     
-                    <div style={{ display: 'flex', flexDirection: 'column', overflowY: 'auto', flex: 1, minHeight: '0' }}>
+                    <div className={styles.themeList}>
                         {currentThemesList.map(renderThemeBtn)}
                     </div>
                     
