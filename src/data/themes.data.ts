@@ -10,6 +10,11 @@ const dark: Record<string, string> = {
     fenerbahce: "#E4A419",
     peach: "#FE8254",
     layor: "#F8F3F0",
+    catppuccin: "#cba6f7",
+    tokyonight: "#7aa2f7",
+    rosepine: "#ebbcba",
+    kanagawa: "#dca561",
+    solarized: "#2aa198",
 };
 const light: Record<string, string> = {
     emerald: "#013E37",
@@ -18,6 +23,9 @@ const light: Record<string, string> = {
     gruvbox: "#9c4b2b",
     violet: "#5f4a8b",
     wine: "#7f011f",
+    latte: "#8839ef",
+    "solarized-light": "#207c75",
+    dawn: "#9b5e5b",
 };
 
 export const themeColors = { ...dark, ...light };
