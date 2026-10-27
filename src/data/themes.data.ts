@@ -13,7 +13,7 @@ const dark: Record<string, string> = {
 };
 const light: Record<string, string> = {
     emerald: "#013E37",
-    coral: "#f0544d",
+    coral: "#c74640",
     royal: "#014BAA",
     gruvbox: "#9c4b2b",
     violet: "#5f4a8b",
