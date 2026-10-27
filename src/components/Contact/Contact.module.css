@@ -2,7 +2,6 @@
     display: flex;
     justify-content: center;
     align-items: stretch;
-    height: 100%;
     padding: var(--space-lg);
 }
 
@@ -152,7 +151,6 @@
 @media (max-width: 768px) {
     .contactContainer {
         padding: 0;
-        height: auto;
     }
     .idCard {
         min-height: auto;
